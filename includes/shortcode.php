@@ -1,12 +1,11 @@
 <?php
 
-add_shortcode( 'ninja_forms_display_form', 'ninja_forms_shortcode' );
 function ninja_forms_shortcode( $atts ){
 	$form = ninja_forms_return_echo( 'ninja_forms_display_form', $atts['id'] );
 	return $form;
 }
+add_shortcode( 'ninja_forms_display_form', 'ninja_forms_shortcode' );
 
-add_shortcode( 'ninja_forms_field', 'ninja_forms_field_shortcode' );
 function ninja_forms_field_shortcode( $atts ){
 	global $ninja_forms_processing;
 	$field_id = $atts['id'];
@@ -17,8 +16,8 @@ function ninja_forms_field_shortcode( $atts ){
 	}
 	return $value;
 }
+add_shortcode( 'ninja_forms_field', 'ninja_forms_field_shortcode' );
 
-add_shortcode( 'ninja_forms_sub_date', 'ninja_forms_sub_date_shortcode' );
 function ninja_forms_sub_date_shortcode( $atts ){
 	global $ninja_forms_processing;
 	if( isset( $atts['format'] ) ){
@@ -26,12 +25,11 @@ function ninja_forms_sub_date_shortcode( $atts ){
 	}else{
 		$date_format = 'm/d/Y';
 	}
-	
 	$date = date( $date_format );
 	return $date;
 }
+add_shortcode( 'ninja_forms_sub_date', 'ninja_forms_sub_date_shortcode' );
 
-add_filter('the_content', 'ninja_forms_pre_process_shortcode', 9999);
 
 function ninja_forms_pre_process_shortcode($content) {
    global $shortcode_tags;
@@ -47,3 +45,4 @@ function ninja_forms_pre_process_shortcode($content) {
    $shortcode_tags = $current_shortcodes;
    return $content;
 }
+add_filter('the_content', 'ninja_forms_pre_process_shortcode', 9999);
