@@ -49,6 +49,8 @@ Please feel free to visit our [demo site](http://demo.wpninjas.com/ninja-forms/)
 
 We have several other extensions in the works.
 
+If you're a developer and would like to talk about creating some premium extensions for Ninja Forms, send us an email: info@wpninjas.com.
+
 == Screenshots ==
 
 To see up to date screenshots, visit the [Ninja Forms](http://wpninjas.com/ninja-forms/) page.
