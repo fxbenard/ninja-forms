@@ -75,6 +75,7 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 *Changes:*
 
 * Improved the way that list fields work slightly.
+* Added four action hooks that are ran whenever an admin page is saved. ninja_forms_save_admin_metabox_option, ninja_forms_save_admin_metabox, ninja_forms_save_admin_sidebar, ninja_forms_save_admin_tab.
 
 *Bugs:*
 
@@ -91,6 +92,7 @@ If you have any feature requests, please feel free to visit [wpninjas.com](http:
 *Changes:*
 
 * Improved the way that list fields work slightly.
+* Added four action hooks that are ran whenever an admin page is saved. ninja_forms_save_admin_metabox_option, ninja_forms_save_admin_metabox, ninja_forms_save_admin_sidebar, ninja_forms_save_admin_tab.
 
 *Bugs:*
 
