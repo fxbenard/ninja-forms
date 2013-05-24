@@ -27,14 +27,9 @@ function ninja_forms_add_custom_box() {
 
 /* Prints the box content */
 function ninja_forms_inner_custom_box() {
-	global $wpdb;
 
-	if( isset( $_REQUEST['post'] ) ){
-		$post_id = esc_html( $_REQUEST['post'] );
-	}else{
-		$post_id = '';
-	}
-	
+	$post_id = ! empty( $_REQUEST['post'] ) ? absint( $_REQUEST['post'] ) : 0;
+
 	// Use nonce for verification
 	wp_nonce_field( plugin_basename(__FILE__), 'ninja_forms_nonce' );
 
@@ -42,19 +37,19 @@ function ninja_forms_inner_custom_box() {
 	?>
 	<select id="ninja_form_select" name="ninja_form_select">
 		<option value="0">-- <?php _e('None', 'ninja-forms');?></option>
-	<?php
-	$all_forms = ninja_forms_get_all_forms();
-	$form_id = get_post_meta( $post_id, 'ninja_forms_form', true );
-	foreach($all_forms as $form){
-		$title = $form['data']['form_title'];
-		$id = $form['id'];
-		?>
-		<option value = "<?php echo $id;?>" <?php selected( $id, $form_id );?>>
-		<?php echo $title;?>
-		</option>
 		<?php
-	}
-	?>
+		$all_forms = ninja_forms_get_all_forms();
+		$form_id = get_post_meta( $post_id, 'ninja_forms_form', true );
+		foreach( $all_forms as $form ){
+			$title = $form['data']['form_title'];
+			$id    = $form['id'];
+			?>
+			<option value="<?php echo esc_attr( $id );?>"<?php selected( $id, $form_id );?>>
+			<?php echo $title;?>
+			</option>
+			<?php
+		}
+		?>
 	</select>
 	<?php
 }
