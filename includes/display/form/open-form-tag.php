@@ -22,6 +22,8 @@ function ninja_forms_display_open_form_tag( $form_id ) {
 		$url = '';
 	}
 
+	$url = apply_filters( 'ninja_forms_form_action_url', $url, $form_id );
+
 	$display = 1;
 
 	$display = apply_filters( 'ninja_forms_display_form_visibility', $display, $form_id );
