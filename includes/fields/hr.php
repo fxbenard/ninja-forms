@@ -1,6 +1,4 @@
 <?php
-add_action('init', 'ninja_forms_register_field_hr');
-
 function ninja_forms_register_field_hr(){
 	$args = array(
 		'name' => 'hr',
@@ -23,9 +21,7 @@ function ninja_forms_register_field_hr(){
 	ninja_forms_register_field('_hr', $args);
 }
 
-function ninja_forms_field_hr_edit($field_id, $data){
-
-}
+add_action('init', 'ninja_forms_register_field_hr');
 
 function ninja_forms_field_hr_display($field_id, $data){
 	if( isset( $data['display_style'] ) ){

@@ -23,6 +23,7 @@ function ninja_forms_post_process(){
 				echo $json;
 				die();
 			}else{
+
 				if( $ninja_forms_processing->get_form_setting( 'landing_page' ) != '' ){
 					$_SESSION['ninja_forms_values'] = $ninja_forms_processing->get_all_fields();
 					header( 'Location: '.$ninja_forms_processing->get_form_setting( 'landing_page' ) );

@@ -1,7 +1,4 @@
 <?php
-//Register the Checkbox field
-add_action('init', 'ninja_forms_register_field_checkbox');
-
 function ninja_forms_register_field_checkbox(){
 	$args = array(
 		'name' => 'Checkbox',
@@ -73,6 +70,9 @@ function ninja_forms_register_field_checkbox(){
 	
 	ninja_forms_register_field('_checkbox', $args);
 }
+
+//Register the Checkbox field
+add_action('init', 'ninja_forms_register_field_checkbox');
 
 //Checkbox Display Function
 function ninja_forms_field_checkbox_display($field_id, $data){

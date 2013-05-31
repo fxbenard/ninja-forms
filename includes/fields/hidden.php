@@ -1,6 +1,4 @@
 <?php
-add_action('init', 'ninja_forms_register_field_hiddenbox');
-
 function ninja_forms_register_field_hiddenbox(){
 	$args = array(
 		'name' => 'Hidden Field',
@@ -29,6 +27,8 @@ function ninja_forms_register_field_hiddenbox(){
 	
 	ninja_forms_register_field('_hidden', $args);
 }
+
+add_action('init', 'ninja_forms_register_field_hiddenbox');
 
 function ninja_forms_field_hidden_edit($field_id, $data){
 

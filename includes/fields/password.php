@@ -1,7 +1,4 @@
 <?php
-
-add_action( 'init', 'ninja_forms_register_field_profile_pass' );
-
 function ninja_forms_register_field_profile_pass(){
 	$args = array(
 		'name' => 'Password',
@@ -54,6 +51,8 @@ function ninja_forms_register_field_profile_pass(){
 		ninja_forms_register_field('_profile_pass', $args);
 	}
 }
+
+add_action( 'init', 'ninja_forms_register_field_profile_pass' );
 
 function ninja_forms_field_profile_pass_display( $field_id, $data ){
 	global $current_user;

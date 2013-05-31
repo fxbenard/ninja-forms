@@ -1,6 +1,4 @@
 <?php
-add_action( 'init', 'ninja_forms_register_field_textbox' );
-
 function ninja_forms_register_field_textbox(){
 	$args = array(
 		'name' => 'Textbox',
@@ -63,6 +61,8 @@ function ninja_forms_register_field_textbox(){
 
 	ninja_forms_register_field( '_text', $args );
 }
+
+add_action( 'init', 'ninja_forms_register_field_textbox' );
 
 function ninja_forms_field_text_edit( $field_id, $data ){
 	$plugin_settings = get_option( 'ninja_forms_settings' );

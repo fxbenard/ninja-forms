@@ -1,10 +1,7 @@
 <?php
-add_action('init', 'ninja_forms_register_field_submit');
-
 function ninja_forms_register_field_submit(){
 	$args = array(
 		'name' => 'Submit',
-		'edit_function' => 'ninja_forms_field_submit_edit',
 		'display_function' => 'ninja_forms_field_submit_display',		
 		'group' => 'standard_fields',	
 		'edit_label' => true,
@@ -28,9 +25,7 @@ function ninja_forms_register_field_submit(){
 	ninja_forms_register_field('_submit', $args);
 }
 
-function ninja_forms_field_submit_edit($field_id, $data){
-
-}
+add_action('init', 'ninja_forms_register_field_submit');
 
 function ninja_forms_field_submit_display($field_id, $data){
 

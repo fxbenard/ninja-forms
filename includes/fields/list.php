@@ -1,6 +1,4 @@
 <?php
-add_action('init', 'ninja_forms_register_field_list');
-
 function ninja_forms_register_field_list(){
 	$args = array(
 		'name' => 'List',
@@ -69,6 +67,8 @@ function ninja_forms_register_field_list(){
 	add_filter( 'ninja_forms_field_wrap_class', 'ninja_forms_field_filter_list_wrap_class', 10, 2 );
 	add_action('ninja_forms_display_after_opening_field_wrap', 'ninja_forms_display_list_type', 10, 2);
 }
+
+add_action('init', 'ninja_forms_register_field_list');
 
 function ninja_forms_display_list_type( $field_id, $data ){
 	$field_row = ninja_forms_get_field_by_id( $field_id );

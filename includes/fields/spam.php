@@ -1,6 +1,4 @@
 <?php
-add_action('init', 'ninja_forms_register_field_spam');
-
 function ninja_forms_register_field_spam(){
 	$args = array(
 		'name' => 'Anti-Spam',
@@ -45,6 +43,8 @@ function ninja_forms_register_field_spam(){
 	
 	ninja_forms_register_field('_spam', $args);
 }
+
+add_action('init', 'ninja_forms_register_field_spam');
 
 function ninja_forms_field_spam_edit($field_id, $data){
 	if(isset($data['label'])){

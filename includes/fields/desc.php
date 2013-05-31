@@ -1,6 +1,4 @@
 <?php
-add_action('init', 'ninja_forms_register_field_desc');
-
 function ninja_forms_register_field_desc(){
 	$args = array(
 		'name' => 'Text',
@@ -49,6 +47,8 @@ function ninja_forms_register_field_desc(){
 
 	ninja_forms_register_field('_desc', $args);
 }
+
+add_action('init', 'ninja_forms_register_field_desc');
 
 function ninja_forms_field_desc_display( $field_id, $data ){
 

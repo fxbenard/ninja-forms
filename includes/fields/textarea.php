@@ -1,6 +1,4 @@
 <?php
-add_action('init', 'ninja_forms_register_field_textarea');
-
 function ninja_forms_register_field_textarea(){
 	$args = array(
 		'name' => 'Textarea',
@@ -39,6 +37,8 @@ function ninja_forms_register_field_textarea(){
 	
 	ninja_forms_register_field('_textarea', $args);
 }
+
+add_action('init', 'ninja_forms_register_field_textarea');
 
 function ninja_forms_field_textarea_display($field_id, $data){
 	if(isset($data['default_value'])){

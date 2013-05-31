@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.7
+Stable tag: 2.2.8
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -72,12 +72,11 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.7 =
+= 2.2.8 =
 
-*Changes:*
+*Features:*
 
-* Fixed the transparency on the help text icon
-* Reformatted several files to make them cleaner and easier to read.
+* Added a Star Rating field that will allow users to select from 1 to X stars. The X can be changed to whatever you'd like.
 
 == Requested Features ==
 
@@ -85,12 +84,29 @@ If you have any feature requests, please feel free to visit [wpninjas.com](http:
 
 == Changelog ==
 
+= 2.2.8 =
+
+*Features:*
+
+* Added a Star Rating field that will allow users to select from 1 to X stars. The X can be changed to whatever you'd like.
+
+*Changes:*
+
+* Cleaned up portions of the code so that it better fits WordPress standards.
+
 = 2.2.7 =
 
 *Changes:*
 
 * Fixed the transparency on the help text icon
 * Reformatted several files to make them cleaner and easier to read.
+
+= 2.2.6 =
+
+*Changes:*
+
+* Improved the way that list fields work slightly.
+* Added four action hooks that are ran whenever an admin page is saved. ninja_forms_save_admin_metabox_option, ninja_forms_save_admin_metabox, ninja_forms_save_admin_sidebar, ninja_forms_save_admin_tab.
 
 = 2.2.5 =
 
