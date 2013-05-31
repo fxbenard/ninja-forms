@@ -99,6 +99,7 @@ If you have any feature requests, please feel free to visit [wpninjas.com](http:
 *Changes:*
 
 * Fixed the transparency on the help text icon
+* Added a new filter for form classes. The filter ninja_forms_form_class can be used to add or remove classes to forms. It is passed the current form class and the form ID.
 * Reformatted several files to make them cleaner and easier to read.
 
 = 2.2.6 =
