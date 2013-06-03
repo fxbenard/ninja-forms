@@ -132,6 +132,13 @@ jQuery(document).ready(function($) {
 			});
 		}, 
 	});
+
+	//Disble the enter key so that it doesn't submit our form if pressed.
+	$("form").live("keydown", function( event ){
+		if(event.keyCode == 13) {
+			return false;
+		}
+	});
 	/*
 	//Make Metaboxes Sortable.
 	$("#ninja_forms_admin_metaboxes").sortable({
@@ -536,6 +543,22 @@ jQuery(document).ready(function($) {
 				}
 			});
 		});
+	});
+
+	//Listen to the option labels and values; if the enter key is pressed, add a new option.
+	$(".ninja-forms-field-list-option-label").live("keydown", function(event){
+		if( event.keyCode == 13 ){
+			var add_id = this.id.replace("option_label", "add_option");
+			$("#" + add_id).click();
+			return false;
+		}
+	});	
+	$(".ninja-forms-field-list-option-value").live("keydown", function(event){
+		if( event.keyCode == 13 ){
+			var add_id = this.id.replace("option_value", "add_option");
+			$("#" + add_id).click();
+			return false;
+		}
 	});
 	
 	//Listen to List Option Labels and Values and change existing criteron option selects

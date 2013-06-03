@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.8
+Stable tag: 2.2.9
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -72,17 +72,25 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.8 =
+= 2.2.9 =
 
-*Features:*
+*Changes:*
 
-* Added a Star Rating field that will allow users to select from 1 to X stars. The X can be changed to whatever you'd like.
+* Pressing the enter key on the Field Settings tab will no longer submit the field settings.
+* Pressing the enter key on the Field Settings tab while typing a list option label or value will now add another option.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.9 =
+
+*Changes:*
+
+* Pressing the enter key on the Field Settings tab will no longer submit the field settings.
+* Pressing the enter key on the Field Settings tab while typing a list option label or value will now add another option.
 
 = 2.2.8 =
 
