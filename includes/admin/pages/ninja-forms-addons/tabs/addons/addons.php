@@ -94,6 +94,14 @@ function ninja_forms_tab_addons(){
             'link' => 'http://wpninjas.com/downloads/mail-chimp/',
             'plugin' => 'ninja-forms-campaign-monitor/ninja-forms-campaign-monitor.php',
             'docs' => '',
+        ),        
+        array (
+            'title' => 'User Analytics',
+            'image' => 'http://wpninjas.com/wp-content/uploads/edd/2013/05/user-analytics-header-300x121.png',
+            'content' => 'The User Analytics extension will help website owners understand how hot a lead is based on extra data automatically collected about the user. …',
+            'link' => 'http://wpninjas.com/downloads/user-analytics/',
+            'plugin' => 'ninja-forms-user-analytics/nf-user-analytics.php',
+            'docs' => '',
         ),
     );
 

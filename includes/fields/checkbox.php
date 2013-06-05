@@ -108,7 +108,7 @@ function ninja_forms_field_checkbox_pre_process( $field_id, $user_value ){
 
 //Checkbox Validation Function
 function ninja_forms_field_checkbox_validation( $field_id, $user_value ){
-	if( $user_value != 'unchecked' ){
+	if( $user_value != 'unchecked' AND $user_value != '' ){
 		return true;
 	}else{
 		return false;

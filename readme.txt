@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.9
+Stable tag: 2.2.10
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -46,6 +46,7 @@ Please feel free to visit our [demo site](http://demo.wpninjas.com/ninja-forms/)
 * [Layout & Styles](http://wpninjas.com/downloads/layout-styles/) - Use Ninja Forms to create amzing form layouts and styles right from your WordPress admin.
 * [MailChimp](http://wpninjas.com/downloads/mail-chimp/) - The MailChimp extension allows you to quickly create newsletter signup forms for your MailChimp account using the power and flexibility that Ninja Forms provides.
 * [Campaign Monitor](http://wpninjas.com/downloads/campaign-monitor/) - The Campaign Monitor extension allows you to quickly create newsletter signup forms for your Campaign Monitor account using the power and flexibility that Ninja Forms provides.
+* [User Analytics](http://wpninjas.com/downloads/user-analytics/) - The User Analytics extension will help website owners understand how hot a lead is based on extra data automatically collected about the user.
 
 We have several other extensions in the works.
 
@@ -72,18 +73,31 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.9 =
+= 2.2.10 =
 
 *Changes:*
 
-* Pressing the enter key on the Field Settings tab will no longer submit the field settings.
-* Pressing the enter key on the Field Settings tab while typing a list option label or value will now add another option.
+* Added User Analytics to the extensions page.
+
+*Bugs:*
+
+* Fixed a bug that could cause checkboxes not to validate properly when set as required.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.10 =
+
+*Changes:*
+
+* Added User Analytics to the extensions page.
+
+*Bugs:*
+
+* Fixed a bug that could cause checkboxes not to validate properly when set as required.
 
 = 2.2.9 =
 
