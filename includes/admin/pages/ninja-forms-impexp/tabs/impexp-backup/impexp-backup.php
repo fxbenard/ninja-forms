@@ -3,14 +3,14 @@
 
 function ninja_forms_register_tab_impexp_backup(){
 	$args = array(
-		'name' => 'Backup / Restore', 
+		'name' => 'Backup / Restore',
 		'page' => 'ninja-forms-impexp',
-		'display_function' => 'ninja_forms_tab_impexp_backup', 
+		'display_function' => 'ninja_forms_tab_impexp_backup',
 		'save_function' => 'ninja_forms_save_impexp_backup',
 		'show_save' => false,
-	); 
+	);
 	ninja_forms_register_tab('impexp_backup', $args);
-	
+
 }
 
 

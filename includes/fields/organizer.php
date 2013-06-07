@@ -4,7 +4,7 @@
 function ninja_forms_register_field_organizer(){
 	$args = array(
 		'name' => 'Organizer',
-		'sidebar' => 'template_fields',		
+		'sidebar' => 'template_fields',
 		'edit_function' => '',
 		'display_function' => '',
 		'edit_label' => true,
@@ -18,6 +18,6 @@ function ninja_forms_register_field_organizer(){
 		'display_label' => false,
 		'process_field' => false,
 	);
-	
+
 	ninja_forms_register_field('_organizer', $args);
 }

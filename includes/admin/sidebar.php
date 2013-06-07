@@ -4,7 +4,7 @@ function ninja_forms_sidebar_sorter($array, $sequence){
   $tmp = array();
   foreach($sequence as $s){
     foreach($array as $key => $a){
-      if($key == $s){ 
+      if($key == $s){
         $tmp[$key] = $a;
         unset( $array[$key] );
         break;
@@ -132,7 +132,7 @@ function ninja_forms_display_sidebars($data){
 									break;
 								case 'text':
 									?>
-									<label for="<?php echo $name;?>"><?php _e($option['label'], 'ninja-forms');?></label>									
+									<label for="<?php echo $name;?>"><?php _e($option['label'], 'ninja-forms');?></label>
 									<input type="text" name="<?php echo $name;?>" id="<?php echo $name;?>" value="<?php echo $value;?>">
 									<?php
 									break;
@@ -140,7 +140,7 @@ function ninja_forms_display_sidebars($data){
 									?>
 									<label for="<?php echo $name;?>"><?php _e($option['label'], 'ninja-forms');?></label>
 									<br>
-									<textarea name="<?php echo $name;?>" id="<?php echo $name;?>"><?php echo $value;?></textarea>	
+									<textarea name="<?php echo $name;?>" id="<?php echo $name;?>"><?php echo $value;?></textarea>
 									<?php
 									break;
 								case 'submit':
@@ -158,7 +158,7 @@ function ninja_forms_display_sidebars($data){
 								        <?php _e($option['help'], 'ninja-forms');?>
 								    </span>
 								</a>
-								
+
 								<?php
 							}
 							if(isset($option['desc']) AND !empty($option['desc'])){
@@ -176,7 +176,7 @@ function ninja_forms_display_sidebars($data){
 			</div>
 			<br />
 
-		</div>		
+		</div>
 		<?php
 				}
 			}

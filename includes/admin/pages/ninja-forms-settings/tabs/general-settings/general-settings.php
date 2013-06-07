@@ -3,18 +3,18 @@ add_action( 'init', 'ninja_forms_register_tab_general_settings', 9 );
 
 function ninja_forms_register_tab_general_settings(){
 	$args = array(
-		'name' => 'General', 
+		'name' => 'General',
 		'page' => 'ninja-forms-settings',
-		'display_function' => '', 
+		'display_function' => '',
 		'save_function' => 'ninja_forms_save_general_settings',
-	); 
+	);
 	ninja_forms_register_tab('general_settings', $args);
 }
 
 add_action('init', 'ninja_forms_register_general_settings_metabox');
 
 function ninja_forms_register_general_settings_metabox(){
-	
+
 	$plugin_settings = get_option( 'ninja_forms_settings' );
 	$current_version = $plugin_settings['version'];
 	$args = array(

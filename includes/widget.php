@@ -70,7 +70,7 @@ class Ninja_Forms_Widget extends WP_Widget {
 			$form_id = $instance['form_id'];
 		}else{
 			$form_id = '';
-		}		
+		}
 
 		if( isset( $instance['display_title'] ) ){
 			$display_title = $instance['display_title'];
@@ -91,7 +91,7 @@ class Ninja_Forms_Widget extends WP_Widget {
 			<option value="0">-- <?php _e('None', 'ninja-forms');?></option>
 			<?php
 			$all_forms = ninja_forms_get_all_forms();
-			
+
 			foreach($all_forms as $form){
 				$title = $form['data']['form_title'];
 				$id = $form['id'];
@@ -105,7 +105,7 @@ class Ninja_Forms_Widget extends WP_Widget {
 			</select>
 		</p>
 
-		<?php 
+		<?php
 	}
 
 } // class Foo_Widget

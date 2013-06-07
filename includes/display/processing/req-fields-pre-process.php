@@ -17,9 +17,9 @@ function ninja_forms_req_fields_process(){
 			}else{
 				$field_data = '';
 			}
-			
+
 			$field_type = $field_row['type'];
-			
+
 			if( isset( $field_data['req'] ) ){
 				$req = $field_data['req'];
 			}else{
@@ -31,7 +31,7 @@ function ninja_forms_req_fields_process(){
 			}else{
 				$label_pos = '';
 			}
-			
+
 			if( isset( $field_data['label'] ) ){
 				$label = $field_data['label'];
 			}else{
@@ -48,7 +48,7 @@ function ninja_forms_req_fields_process(){
 			}else{
 				$req_error_label = __( 'Please check required fields.', 'ninja-forms' );
 			}
-			
+
 
 			if($req == 1){
 				if($req_validation != ''){

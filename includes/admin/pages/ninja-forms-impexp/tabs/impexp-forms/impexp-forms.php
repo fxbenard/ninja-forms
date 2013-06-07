@@ -3,14 +3,14 @@ add_action('init', 'ninja_forms_register_tab_impexp_forms');
 
 function ninja_forms_register_tab_impexp_forms(){
 	$args = array(
-		'name' => 'Forms', 
+		'name' => 'Forms',
 		'page' => 'ninja-forms-impexp',
-		'display_function' => '', 
+		'display_function' => '',
 		'save_function' => 'ninja_forms_save_impexp_forms',
 		'show_save' => false,
-	); 
+	);
 	ninja_forms_register_tab('impexp_forms', $args);
-	
+
 }
 
 add_action('init', 'ninja_forms_register_imp_forms_metabox');
@@ -84,7 +84,7 @@ function ninja_forms_export_form( $form_id ){
 		$field_results = ninja_forms_get_fields_by_form_id($form_id);
 		$data = $form_row['data'];
 		$form_title = $data['form_title'];
-		$form_row['id'] = NULL;	
+		$form_row['id'] = NULL;
 		if(is_array($form_row) AND !empty($form_row)){
 			if(is_array($field_results) AND !empty($field_results)){
 				$x = 0;
@@ -99,7 +99,7 @@ function ninja_forms_export_form( $form_id ){
 		}else{
 			$date_format = 'm/d/Y';
 		}
-		
+
 		//$today = date($date_format);
 		$current_time = current_time('timestamp');
 		$today = date($date_format, $current_time);
@@ -127,10 +127,10 @@ function ninja_forms_save_impexp_forms($data){
 		}
 	}elseif($_REQUEST['submit'] == 'Import Form'){
 		if ($_FILES['userfile']['error'] == UPLOAD_ERR_OK AND is_uploaded_file($_FILES['userfile']['tmp_name'])){
-			$file = file_get_contents($_FILES['userfile']['tmp_name']); 
+			$file = file_get_contents($_FILES['userfile']['tmp_name']);
 			$form = unserialize( $file );
 			$form_fields = $form['field'];
-			
+
 			unset($form['field']);
 			$form = apply_filters( 'ninja_forms_before_import_form', $form );
 			$form['data'] = serialize( $form['data'] );
@@ -138,7 +138,7 @@ function ninja_forms_save_impexp_forms($data){
 			$form_id = $wpdb->insert_id;
 			$form['id'] = $form_id;
 			if(is_array($form_fields)){
-				for ($x=0; $x < count( $form_fields ); $x++) { 
+				for ($x=0; $x < count( $form_fields ); $x++) {
 					$form_fields[$x]['form_id'] = $form_id;
 					$form_fields[$x]['data'] = serialize( $form_fields[$x]['data'] );
 					$old_field_id = $form_fields[$x]['id'];
@@ -165,7 +165,7 @@ function ninja_forms_import_form( $data ){
 	global $wpdb;
 	$form = unserialize( $data );
 	$form_fields = $form['field'];
-	
+
 	unset($form['field']);
 	$form = apply_filters( 'ninja_forms_before_import_form', $form );
 	$form['data'] = serialize( $form['data'] );
@@ -173,7 +173,7 @@ function ninja_forms_import_form( $data ){
 	$form_id = $wpdb->insert_id;
 	$form['id'] = $form_id;
 	if(is_array($form_fields)){
-		for ($x=0; $x < count( $form_fields ); $x++) { 
+		for ($x=0; $x < count( $form_fields ); $x++) {
 			$form_fields[$x]['form_id'] = $form_id;
 			$form_fields[$x]['data'] = serialize( $form_fields[$x]['data'] );
 			$old_field_id = $form_fields[$x]['id'];

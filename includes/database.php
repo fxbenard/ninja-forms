@@ -8,7 +8,7 @@ function ninja_forms_insert_field( $form_id, $args = array() ){
 
 	$insert_array['type'] = $args['type'];
 	$insert_array['form_id'] = $form_id;
-	
+
 	if( isset( $args['data'] ) ){
 		$insert_array['data'] = $args['data'];
 	}else{
@@ -85,7 +85,7 @@ function ninja_forms_get_form_ids_by_post_id( $post_id ){
 				$form_data = $form['data'];
 				if(isset($form_data['append_page']) AND !empty($form_data['append_page'])){
 					if($form_data['append_page'] == $post_id){
-						$form_ids[] = $form['id'];					
+						$form_ids[] = $form['id'];
 					}
 				}
 			}
@@ -100,7 +100,7 @@ function ninja_forms_get_form_ids_by_post_id( $post_id ){
 			$form_ids[] = $form_id;
 		}
 	}
-	
+
 	return $form_ids;
 }
 
@@ -282,7 +282,7 @@ function ninja_forms_get_subs($args = array()){
 		}
 		$where .= "date_updated < '".$end_date."'";
 	}
-	
+
 	$limit = '';
 	if(isset($args['limit'])){
 		$limit = " LIMIT ".$args['limit'];
@@ -290,7 +290,7 @@ function ninja_forms_get_subs($args = array()){
 	}
 
 	$subs_results = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".NINJA_FORMS_SUBS_TABLE_NAME." WHERE ".$where." ORDER BY `date_updated` DESC ".$limit, NINJA_FORMS_SUBS_TABLE_NAME), ARRAY_A);
-	
+
 	if(is_array($subs_results) AND !empty($subs_results)){
 		$x = 0;
 		$sub_count = count($subs_results) - 1;
@@ -299,7 +299,7 @@ function ninja_forms_get_subs($args = array()){
 			$x++;
 		}
 	}
-	
+
 	//Now that we have our sub results, let's loop through them and remove any that don't match our args array.
 	if(is_array($args) AND !empty($args)){ //Make sure that our args variable still has something left in it. If not, we don't need to run anything else.
 		if(is_array($subs_results) AND !empty($subs_results)){
@@ -308,30 +308,30 @@ function ninja_forms_get_subs($args = array()){
 				if(!is_array($subs_results[$key]['data'])){
 					$subs_results[$key]['data'] = unserialize($subs_results[$key]['data']);
 				}
-				$data = $subs_results[$key]['data']; 
-				
+				$data = $subs_results[$key]['data'];
+
 				if(is_array($data) AND !empty($data)){ //Check to make sure that the $data variable isn't empty, or not an array.
 					$unset = false; //We initially assume that the submission should be kept, hence, $unset is set to false.
 					$x = 1; //Initiate our counter.
 					foreach($data as $d){ //Loop through our $data variable.
-						
+
 						if(isset($args[$d['field_id']])){ //If the field id is found within the args array, then we should check its value.
 							if($args[$d['field_id']] != $d['user_value']){ //If the values are not equal, we set $unset to true.
 								$unset = true;
 							}
 						}
-			
+
 						if($x == count($data)){ //If we are on the last item, this is our last chance to find the field id in the args array.
 							if(!isset($args[$d['field_id']])){ //If the field id is not found within the args array, then we know it doesn't exist.
 								$unset = true; //We've reached the last item without finding our field id in the sent args array. Set $untrue to true.
 							}
 						}
-						
+
 						$x++;
 					}
 					if($unset){
 						unset($subs_results[$key]); //If $unset ias been set to true above, unset the given submission before returning the results.
-					}				
+					}
 				}
 			}
 		}
@@ -392,18 +392,18 @@ function utf8_encode_recursive( $input ){
     }else{
         return utf8_encode( $input );
     }
-}  
+}
 
-function ninja_forms_str_replace_deep($search, $replace, $subject){ 
-    if( is_array( $subject ) ){ 
-        foreach( $subject as &$oneSubject ) 
-            $oneSubject = ninja_forms_str_replace_deep($search, $replace, $oneSubject); 
-        unset($oneSubject); 
-        return $subject; 
-    } else { 
-        return str_replace($search, $replace, $subject); 
-    } 
-} 
+function ninja_forms_str_replace_deep($search, $replace, $subject){
+    if( is_array( $subject ) ){
+        foreach( $subject as &$oneSubject )
+            $oneSubject = ninja_forms_str_replace_deep($search, $replace, $oneSubject);
+        unset($oneSubject);
+        return $subject;
+    } else {
+        return str_replace($search, $replace, $subject);
+    }
+}
 
 function ninja_forms_html_entity_decode_deep( $value ){
     $value = is_array($value) ?
@@ -469,7 +469,7 @@ function ninja_forms_json_response(){
 		$fields = utf8_encode_recursive( $fields );
 		$form_settings = utf8_encode_recursive( $form_settings );
 		$extras = utf8_encode_recursive( $extras );
-		
+
 		$errors = ninja_forms_str_replace_deep( '"', "\u0022", $errors );
 		$errors = ninja_forms_str_replace_deep( "'", "\u0027", $errors );
 		$errors = ninja_forms_str_replace_deep( '<', "\u003C", $errors );
@@ -483,7 +483,7 @@ function ninja_forms_json_response(){
 		$fields = ninja_forms_str_replace_deep( '"', "\u0022", $fields );
 		$fields = ninja_forms_str_replace_deep( "'", "\u0027", $fields );
 		$fields = ninja_forms_str_replace_deep( '<', "\u003C", $fields );
-		$fields = ninja_forms_str_replace_deep( '>', "\u003E", $fields );		
+		$fields = ninja_forms_str_replace_deep( '>', "\u003E", $fields );
 
 		$form_settings = ninja_forms_str_replace_deep( '"', "\u0022", $form_settings );
 		$form_settings = ninja_forms_str_replace_deep( "'", "\u0027", $form_settings );
@@ -494,7 +494,7 @@ function ninja_forms_json_response(){
 		$extras = ninja_forms_str_replace_deep( "'", "\u0027", $extras );
 		$extras = ninja_forms_str_replace_deep( '<', "\u003C", $extras );
 		$extras = ninja_forms_str_replace_deep( '>', "\u003E", $extras );
-	
+
 		$json = json_encode( array( 'form_id' => $form_id, 'errors' => $errors, 'success' => $success, 'fields' => $fields, 'form_settings' => $form_settings, 'extras' => $extras ) );
 		$json = str_replace( "\\\u0022", "\\u0022", $json );
 		$json = str_replace( "\\\u0027", "\\u0027", $json );
@@ -521,7 +521,7 @@ function ninja_forms_field_type_dropdown( $args = '' ){
 
 	$groups = $ninja_forms_field_type_groups;
 	ksort( $groups );
-	
+
 	$output = '<select name="field_type" id="field_type">
 		<option value="">- Field Type</option>';
 		foreach( $groups as $gslug => $group ){

@@ -3,8 +3,8 @@ function ninja_forms_register_field_spam(){
 	$args = array(
 		'name' => 'Anti-Spam',
 		'edit_function' => '',
-		'display_function' => 'ninja_forms_field_spam_display',		
-		'group' => 'standard_fields',	
+		'display_function' => 'ninja_forms_field_spam_display',
+		'group' => 'standard_fields',
 		'edit_label' => false,
 		'edit_label_pos' => true,
 		'edit_req' => false,
@@ -40,7 +40,7 @@ function ninja_forms_register_field_spam(){
 		),
 		'req' => true,
 	);
-	
+
 	ninja_forms_register_field('_spam', $args);
 }
 
@@ -65,7 +65,7 @@ function ninja_forms_field_spam_edit($field_id, $data){
 			<?php _e( 'Spam Question' , 'ninja-forms'); ?><br />
 			<input type="text" class="widefat code ninja-forms-field-label" name="ninja_forms_field_<?php echo $field_id;?>[label]" id="ninja_forms_field_<?php echo $field_id;?>_label" value="<?php echo stripslashes( $question );?>">
 		</label>
-	</p>	
+	</p>
 	<p class="description description-wide">
 		<label for="">
 			<?php _e( 'Spam Answer' , 'ninja-forms'); ?><br />
@@ -79,11 +79,11 @@ function ninja_forms_field_spam_display($field_id, $data){
 	if(isset($data['default_value'])){
 		$default_value = $data['default_value'];
 	}else{
-		$default_value = '';	
+		$default_value = '';
 	}
 
 	if(isset($data['show_field'])){
-		$show_field = $data['show_field'];		
+		$show_field = $data['show_field'];
 	}else{
 		$show_field = true;
 	}
@@ -100,11 +100,11 @@ function ninja_forms_field_spam_display($field_id, $data){
 	}else{
 		$label = '';
 	}
-	
+
 	if($label_pos == 'inside'){
 		$default_value = $label;
-	}	
-	
+	}
+
 	?>
 	<input id="ninja_forms_field_<?php echo $field_id;?>" name="ninja_forms_field_<?php echo $field_id;?>" type="text" class="<?php echo $field_class;?>" value="<?php echo $default_value;?>" rel="<?php echo $field_id;?>" />
 	<?php
@@ -113,7 +113,7 @@ function ninja_forms_field_spam_display($field_id, $data){
 
 function ninja_forms_field_spam_pre_process( $field_id, $user_value ){
 	global $ninja_forms_processing;
-	
+
 	$plugin_settings = get_option("ninja_forms_settings");
 	if(isset($plugin_settings['spam_error'])){
 		$spam_error = $plugin_settings['spam_error'];

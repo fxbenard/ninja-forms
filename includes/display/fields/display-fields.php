@@ -27,7 +27,7 @@ function ninja_forms_display_fields($form_id){
 		foreach($field_results as $field){
 			if( isset( $ninja_forms_fields[$field['type']] ) ){
 				$type = $ninja_forms_fields[$field['type']];
-				
+
 				$field_id = $field['id'];
 				if(isset($field['data']['req'])){
 					$req = $field['data']['req'];
@@ -103,7 +103,7 @@ function ninja_forms_display_fields($form_id){
 
 					//Check to see if there is a registered display function. If so, call it.
 					if($display_function != ''){
-						
+
 						do_action( 'ninja_forms_display_before_field_function', $field_id, $data );
 						$arguments['field_id'] = $field_id;
 						$arguments['data'] = $data;
@@ -151,11 +151,11 @@ function ninja_forms_get_field_wrap_class($field_id){
 	$data = $field_row['data'];
 
 	$type_slug = $field_row['type'];
-	
+
 	if(strpos($type_slug, "_") === 0){
 		$type_slug = substr($type_slug, 1);
 	}
-	
+
 	$field_wrap_class .= " ".$type_slug."-wrap";
 	if(isset($data['label_pos'])){
 		$label_pos = $data['label_pos'];

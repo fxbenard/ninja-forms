@@ -1,7 +1,7 @@
 <?php
 add_action('init', 'ninja_forms_register_fields_pre_process');
 function ninja_forms_register_fields_pre_process(){
-	add_action('ninja_forms_pre_process', 'ninja_forms_fields_pre_process', 11 );	
+	add_action('ninja_forms_pre_process', 'ninja_forms_fields_pre_process', 11 );
 }
 
 function ninja_forms_fields_pre_process(){
@@ -13,7 +13,7 @@ function ninja_forms_fields_pre_process(){
 			$field_id = $field['id'];
 			$field_type = $field['type'];
 			$field_data = $field['data'];
-				
+
 			if( isset( $ninja_forms_fields[$field_type] ) ){
 				$reg_field = $ninja_forms_fields[$field_type];
 				//if( $reg_field['process_field'] ){

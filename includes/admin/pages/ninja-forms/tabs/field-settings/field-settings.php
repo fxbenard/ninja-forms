@@ -76,7 +76,7 @@ function ninja_forms_save_field_settings($form_id, $data){
 				call_user_func_array($save_function, $arguments);
 			}
 		}
-		
+
 	}
 
 	$update_msg = __( 'Field Settings Saved', 'ninja-forms' );

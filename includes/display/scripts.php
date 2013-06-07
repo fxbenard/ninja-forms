@@ -74,7 +74,7 @@ function ninja_forms_display_js($form_id, $local_vars = ''){
 	}else{
 		$hide_complete = 0;
 	}
-	
+
 	if( isset( $form_row['data']['clear_complete'] ) ){
 		$clear_complete = $form_row['data']['clear_complete'];
 	}else{
@@ -108,7 +108,7 @@ function ninja_forms_display_js($form_id, $local_vars = ''){
 	}
 
 	wp_localize_script( 'ninja-forms-display', 'ninja_forms_form_'.$form_id.'_settings', $ninja_forms_js_form_settings );
-	
+
 	wp_localize_script( 'ninja-forms-display', 'ninja_forms_password_strength', array(
 		'empty' => __('Strength indicator'),
 		'short' => __('Very weak'),

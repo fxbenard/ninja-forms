@@ -18,7 +18,7 @@ function ninja_forms_display_field_processing_error( $field_id ){
 		$field_errors = '';
 		$style = 'display:none';
 	}
-		
+
 	?>
 	<div id="ninja_forms_field_<?php echo $field_id;?>_error" style="<?php echo $style;?>" class="ninja-forms-field-error">
 	<?php
@@ -29,5 +29,5 @@ function ninja_forms_display_field_processing_error( $field_id ){
 	}
 	?>
 	</div>
-	<?php		
+	<?php
 }

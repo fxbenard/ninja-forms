@@ -28,7 +28,7 @@ function ninja_forms_filter_email_add_fields( $message ){
 			if( $ninja_forms_processing->get_field_value( $field['id'] ) ){
 				$tmp_array[$field['id']] = $ninja_forms_processing->get_field_value( $field['id'] );
 			}
-		}		
+		}
 	}
 	$all_fields = $tmp_array;
 
@@ -63,7 +63,7 @@ function ninja_forms_filter_email_add_fields( $message ){
 							if($email_type == 'html'){
 								$message .= "<tr><td width='50%'>".$field_label.":</td><td width='50%'>".$val."</td></tr>";
 							}else{
-								$message .= $field_label." - ".$val."\r\n"; 
+								$message .= $field_label." - ".$val."\r\n";
 							}
 						}else{
 							foreach($val as $v){
@@ -74,7 +74,7 @@ function ninja_forms_filter_email_add_fields( $message ){
 									if($email_type == 'html'){
 										$message .= "<tr><td width='50%'>".$field_label.":</td><td width='50%'>".$v."</td></tr>";
 									}else{
-										$message .= $field_label." - ".$v."\r\n"; 
+										$message .= $field_label." - ".$v."\r\n";
 									}
 								}else{
 									foreach($v as $a){
@@ -84,7 +84,7 @@ function ninja_forms_filter_email_add_fields( $message ){
 										if($email_type == 'html'){
 											$message .= "<tr><td width='50%'>".$field_label.":</td><td width='50%'>".$a."</td></tr>";
 										}else{
-											$message .= $field_label." - ".$a."\r\n"; 
+											$message .= $field_label." - ".$a."\r\n";
 										}
 									}
 								}
@@ -94,18 +94,18 @@ function ninja_forms_filter_email_add_fields( $message ){
 					}
 				}else{
 					if($email_type == 'html'){
-						$message .= "<tr><td width='50%'>".$field_label.":</td><td width='50%'>".$user_value."</td></tr>";								
+						$message .= "<tr><td width='50%'>".$field_label.":</td><td width='50%'>".$user_value."</td></tr>";
 					}else{
-						$message .= $field_label." - ".$user_value."\r\n";						
+						$message .= $field_label." - ".$user_value."\r\n";
 					}
 				}
-	
+
 			}
 		}
 		if($email_type == 'html'){
 			$message .= "</table>";
 		}
 	}
-	
+
 	return $message;
 }

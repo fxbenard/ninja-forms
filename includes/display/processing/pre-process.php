@@ -11,12 +11,12 @@ function ninja_forms_setup_processing_class(){
 
 function ninja_forms_pre_process(){
 	global $ninja_forms_processing;
-	
+
 	$ajax = $ninja_forms_processing->get_form_setting('ajax');
 	$form_id = $ninja_forms_processing->get_form_ID();
-	
-	do_action('ninja_forms_before_pre_process');	
-	
+
+	do_action('ninja_forms_before_pre_process');
+
 	if(!$ninja_forms_processing->get_all_errors()){
 		do_action('ninja_forms_pre_process');
 	}

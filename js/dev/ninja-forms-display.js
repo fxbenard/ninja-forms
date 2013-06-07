@@ -1,6 +1,6 @@
 jQuery(document).ready(function(jQuery) {
 	// Initiate our response function list variable.
-	window['ninja_forms_response_function_list'] = {};	
+	window['ninja_forms_response_function_list'] = {};
 
 	// Initiate our beforeSubmit function list variable.
 	window['ninja_forms_before_submit_function_list'] = {};
@@ -15,7 +15,7 @@ jQuery(document).ready(function(jQuery) {
 	});
 
 	/* * * Begin Mask JS * * */
-	
+
 	jQuery("div.label-inside input, div.label-inside textarea").focus(function(){
 		var label = jQuery("#" + this.id + "_label_hidden").val();
 		if( this.value == label ){
@@ -36,7 +36,7 @@ jQuery(document).ready(function(jQuery) {
 			jQuery(this).mask(mask);
 		});
 
-		jQuery(".ninja-forms-date").mask('99/99/9999');		
+		jQuery(".ninja-forms-date").mask('99/99/9999');
 	}
 
 	if( jQuery.fn.datepicker ){
@@ -46,11 +46,11 @@ jQuery(document).ready(function(jQuery) {
 	}
 
 	if( jQuery.fn.autoNumeric ){
-		jQuery(".ninja-forms-currency").autoNumeric({aSign: ninja_forms_settings.currency_symbol});	
+		jQuery(".ninja-forms-currency").autoNumeric({aSign: ninja_forms_settings.currency_symbol});
 	}
-		
+
 	/* * * End Mask JS * * */
-	
+
 	/* * * Begin Help Hover JS * * */
 
 	if( jQuery.fn.qtip ){
@@ -58,21 +58,21 @@ jQuery(document).ready(function(jQuery) {
 			style: {
 				classes: 'qtip-shadow qtip-dark'
 			}
-		});		
+		});
 	}
 
 	/* * * End Help Hover JS * * */
 
 
 	/* * * Begin ajaxForms JS * * */
-	
+
 	jQuery(".ninja-forms-form").each(function(){
 		var form_id = this.id.replace("ninja_forms_form_", "");
 		var settings = window['ninja_forms_form_' + form_id + '_settings'];
 		ajax = settings.ajax
 		if(ajax == 1){
-			var options = { 
-			beforeSubmit:  ninja_forms_before_submit, 
+			var options = {
+			beforeSubmit:  ninja_forms_before_submit,
 			success:       ninja_forms_response,
 			//url: 		   'http://demo.wpninjas.com/ninja-forms/wp-admin/admin-ajax.php'
 			dataType: 'json'
@@ -88,7 +88,7 @@ jQuery(document).ready(function(jQuery) {
 	});
 
 	/* * * End ajaxForm JS * * */
-	
+
 	jQuery('.pass1').val('').keyup( function(){
 		var pass1 = this.value;
 		var pass2 = this.id.replace( "pass1", "pass2" );
@@ -133,7 +133,7 @@ function ninja_forms_response(responseText, statusText, xhr, jQueryform){
 
 function ninja_forms_default_before_submit(formData, jqForm, options){
 	var form_id = formData[1].value;
-	
+
 	// Show the ajax spinner and processing message.
 	jQuery("#ninja_forms_form_" + form_id + "_process_msg").show();
 	jQuery("#ninja_forms_form_" + form_id + "_response_msg").prop("innerHTML", "");
@@ -184,7 +184,7 @@ function ninja_forms_update_success_msg(response){
 		if(innerHTML != ''){
 			jQuery("#ninja_forms_form_" + form_id + "_response_msg").removeClass("ninja-forms-error-msg")
 			jQuery("#ninja_forms_form_" + form_id + "_response_msg").addClass("ninja-forms-success-msg")
-			jQuery("#ninja_forms_form_" + form_id + "_response_msg").prop("innerHTML", innerHTML);				
+			jQuery("#ninja_forms_form_" + form_id + "_response_msg").prop("innerHTML", innerHTML);
 		}
 		if(hide_complete == 1 ){
 			jQuery("#ninja_forms_form_" + form_id ).hide();
@@ -246,7 +246,7 @@ function ninja_forms_toggle_login_register(form_type, form_id) {
 		ele.style.display = "block";
 		opp_ele.style.display = "none";
 	}
-} 	
+}
 
 function ninja_forms_get_form_id(element){
 	var form_id = jQuery(element).closest('form').prop("id");
@@ -258,7 +258,7 @@ function ninja_forms_get_form_id(element){
 }
 
 function check_pass_strength(pass1, pass2) {
-	
+
 	jQuery('#pass-strength-result').removeClass('short bad good strong');
 	if ( ! pass1 ) {
 		jQuery('#pass-strength-result').html( ninja_forms_password_strength.empty );

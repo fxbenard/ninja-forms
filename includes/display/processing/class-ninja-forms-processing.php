@@ -4,7 +4,7 @@
  * It is based upon the WordPress Error API.
  *
  * Contains the Ninja_Forms_Processing class
- * 
+ *
  */
 
 /**
@@ -27,7 +27,7 @@
  *		remove_field_value('field_ID') - Used to delete values submitted by the user.
  *		get_field_settings('field_ID') - Used to get all of the back-end data related to the field (type, label, required, show_help, etc.).
  *		update_field_settings('field_ID', $data) - Used to temporarily update the back-end data related to the field. This is NOT permanent and will only affect the current form processing.
- *		
+ *
  * Extra Fields Methods (These are fields that begin with an _ and aren't Ninja Forms Fields )
  * 		get_all_extras() - Returns an array of all extra form inputs.
  *		get_extra_value('name') - Used to access the value of an extra field.
@@ -39,7 +39,7 @@
  *		get_form_setting('setting_ID') - Used to retrieve a form setting from the form currently being processed.
  *		update_form_setting('setting_ID', 'new_value') - Used to change the value of a form setting using its unique ID. If the setting does not exist, it will be created.
  *		remove_form_setting('setting_ID') - Used to remove a form setting by its unique ID.
- * 
+ *
  * Error Reporting Methods:
  *		get_all_errors() - Used to get an array of all error messages in the format: array('unique_id' => array('error_msg' => 'Error Message', 'display_location' => 'Display Location')).
  *			An empty array is returned if no errors are found.
@@ -64,7 +64,7 @@ class Ninja_Forms_Processing {
 	 *
 	 * Stores the data accessed by the other parts of the class.
 	 * All response messages will be stored in this value.
-	 * 
+	 *
 	 * @var array
 	 * @access private
 	 */
@@ -93,7 +93,7 @@ class Ninja_Forms_Processing {
 	/**
 	 * Add the submitted vars to $this->data['fields'].
 	 * Also runs any functions registered to the field's pre_process hook.
-	 * 
+	 *
 	 *
 	 */
 	function setup_submitted_vars() {
@@ -140,14 +140,14 @@ class Ninja_Forms_Processing {
 								$field_type = '';
 							}
 							if(isset($field_row['data']['req'])){
-								$req = $field_row['data']['req'];			
+								$req = $field_row['data']['req'];
 							}else{
 								$req = '';
 							}
 
 							$val = ninja_forms_stripslashes_deep( $val );
 							//$val = ninja_forms_esc_html_deep( $val );
-							
+
 							$this->data['fields'][$field_ID] = $val;
 							$field_row = ninja_forms_get_field_by_id( $field_ID );
 							$this->data['field_data'][$field_ID] = $field_row;
@@ -184,7 +184,7 @@ class Ninja_Forms_Processing {
 				}
 				$this->data['form']['admin_attachments'] = array();
 				$this->data['form']['user_attachments'] = array();
-			}	
+			}
 
 		}
 	}
@@ -202,7 +202,7 @@ class Ninja_Forms_Processing {
 		if ( empty($this->data) ){
 			return false;
 		}else{
-			return $this->data['form_ID'];			
+			return $this->data['form_ID'];
 		}
 	}
 
@@ -214,9 +214,9 @@ class Ninja_Forms_Processing {
 		if ( empty($this->data) ){
 			return false;
 		}else{
-			return $this->data['user_ID'];			
+			return $this->data['user_ID'];
 		}
-	}		
+	}
 
 	/**
 	 * Set the User ID of the form currently being processed.
@@ -226,9 +226,9 @@ class Ninja_Forms_Processing {
 		if ( empty($this->data) ){
 			return false;
 		}else{
-			return $this->data['user_ID'] = $user_id;			
+			return $this->data['user_ID'] = $user_id;
 		}
-	}	
+	}
 
 	/**
 	 * Retrieve the action currently being performed.
@@ -238,7 +238,7 @@ class Ninja_Forms_Processing {
 		if ( empty($this->data['action']) ){
 			return false;
 		}else{
-			return $this->data['action'];			
+			return $this->data['action'];
 		}
 	}
 
@@ -250,7 +250,7 @@ class Ninja_Forms_Processing {
 		if ( empty($this->data) ){
 			return false;
 		}else{
-			return $this->data['action'] = $action;			
+			return $this->data['action'] = $action;
 		}
 	}
 
@@ -262,7 +262,7 @@ class Ninja_Forms_Processing {
 		if ( empty($this->data['fields']) ){
 			return false;
 		}else{
-			return $this->data['fields'];			
+			return $this->data['fields'];
 		}
 	}
 
@@ -275,7 +275,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data) OR $field_ID == '' OR !isset($this->data['fields'][$field_ID])){
 			return false;
 		}else{
-			return $this->data['fields'][$field_ID];			
+			return $this->data['fields'][$field_ID];
 		}
 	}
 
@@ -313,7 +313,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data) OR $field_ID == '' OR !isset($this->data['field_data'][$field_ID])){
 			return false;
 		}else{
-			return $this->data['field_data'][$field_ID];			
+			return $this->data['field_data'][$field_ID];
 		}
 	}
 
@@ -343,7 +343,7 @@ class Ninja_Forms_Processing {
 		if ( empty($this->data['extra']) ){
 			return false;
 		}else{
-			return $this->data['extra'];			
+			return $this->data['extra'];
 		}
 	}
 
@@ -356,7 +356,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data) OR $name == '' OR !isset($this->data['extra'][$name])){
 			return false;
 		}else{
-			return $this->data['extra'][$name];			
+			return $this->data['extra'][$name];
 		}
 	}
 
@@ -400,7 +400,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data['form']) OR !isset($this->data['form'])){
 			return false;
 		}else{
-			return $this->data['form'];			
+			return $this->data['form'];
 		}
 	}
 
@@ -412,7 +412,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data['form']) OR !isset($this->data['form'][$setting_ID])){
 			return false;
 		}else{
-			return $this->data['form'][$setting_ID];			
+			return $this->data['form'][$setting_ID];
 		}
 	}
 
@@ -424,7 +424,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data['form'])){
 			return false;
 		}else{
-			return $this->data['form'][$setting_ID] = $new_value;			
+			return $this->data['form'][$setting_ID] = $new_value;
 		}
 	}
 
@@ -456,7 +456,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data['errors']) OR !isset($this->data['errors'])){
 			return false;
 		}else{
-			return $this->data['errors'];			
+			return $this->data['errors'];
 		}
 	}
 
@@ -468,7 +468,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data['errors']) OR !isset($this->data['errors'][$error_ID]) OR $error_ID == ''){
 			return false;
 		}else{
-			return $this->data['errors'][$error_ID];			
+			return $this->data['errors'][$error_ID];
 		}
 	}
 
@@ -503,7 +503,7 @@ class Ninja_Forms_Processing {
 	function add_error($error_ID, $error_msg, $error_location = 'general') {
 		$this->data['errors'][$error_ID]['msg'] = $error_msg;
 		$this->data['errors'][$error_ID]['location'] = $error_location;
-		return true;	
+		return true;
 	}
 
 	/**
@@ -515,7 +515,7 @@ class Ninja_Forms_Processing {
 			return false;
 		}else{
 			unset($this->data['errors'][$error_ID]);
-			return true;			
+			return true;
 		}
 	}
 
@@ -525,11 +525,11 @@ class Ninja_Forms_Processing {
 	 */
 	function remove_all_errors() {
 		if(empty($this->data['errors']) OR !isset($this->data['errors'])){
-			return true;	
+			return true;
 		}else{
 			$this->data['errors'] = array();
 			return true;
-		}	
+		}
 	}
 
 	/**
@@ -545,7 +545,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data['success']) OR !isset($this->data['success'])){
 			return false;
 		}else{
-			return $this->data['success'];			
+			return $this->data['success'];
 		}
 	}
 
@@ -557,7 +557,7 @@ class Ninja_Forms_Processing {
 		if(empty($this->data['success']) OR !isset($this->data['success']) OR $success_ID == ''){
 			return array();
 		}else{
-			return $this->data['success'][$success_ID];			
+			return $this->data['success'][$success_ID];
 		}
 	}
 
@@ -567,7 +567,7 @@ class Ninja_Forms_Processing {
 	 */
 	function add_success_msg($success_ID, $success_msg) {
 		$this->data['success'][$success_ID] = $success_msg;
-		return true;	
+		return true;
 	}
 
 	/**
@@ -579,7 +579,7 @@ class Ninja_Forms_Processing {
 			return false;
 		}else{
 			unset($this->data['success'][$success_ID]);
-			return true;			
+			return true;
 		}
 	}
 

@@ -9,7 +9,7 @@
 
 	$args = array(
 		//name - Required - This is the name that will appear on the add field button.
-		'name' => 'My Custom Field', 
+		'name' => 'My Custom Field',
 		'edit_options' => array( //Optional - An array of options to show within the field edit <li>. Should be an array of arrays.
 			array(
 				'type' => 'text', //Required - What type of input should this be?
@@ -54,12 +54,12 @@ add_action('init', 'my_custom_field_register');
 
 function my_custom_field_register(){
 	$args = array(
-		'name' => 'File Upload', 
-		'edit_options' => array( 
+		'name' => 'File Upload',
+		'edit_options' => array(
 			array(
-				'type' => 'text', 
-				'name' => 'my_text', 
-				'label' => 'My Text Label', 
+				'type' => 'text',
+				'name' => 'my_text',
+				'label' => 'My Text Label',
 				'class' => 'widefat',
 			),
 			array(
@@ -68,9 +68,9 @@ function my_custom_field_register(){
 				'label' => 'My Select Label',
 			),
 		),
-		'display_function' => 'ninja_forms_field_upload_display', 
-		'sub_edit_function' => 'ninja_forms_field_upload_sub_edit',	
-		'group' => '', 
+		'display_function' => 'ninja_forms_field_upload_display',
+		'sub_edit_function' => 'ninja_forms_field_upload_sub_edit',
+		'group' => '',
 		'edit_label' => true,
 		'edit_label_pos' => true,
 		'edit_req' => true,
@@ -88,6 +88,6 @@ function my_custom_field_register(){
 		'process' => 'ninja_forms_field_upload_process',
 		'req_validation' => 'ninja_forms_field_upload_req_validation',
 	);
-	
+
 	ninja_forms_register_field('_upload', $args);
 }

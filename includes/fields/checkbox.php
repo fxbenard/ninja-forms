@@ -9,7 +9,7 @@ function ninja_forms_register_field_checkbox(){
 					array(
 						'name' => 'Unchecked',
 						'value' => 'unchecked',
-					),					
+					),
 					array(
 						'name' => 'Checked',
 						'value' => 'checked',
@@ -21,8 +21,8 @@ function ninja_forms_register_field_checkbox(){
 			),
 		),
 		//'edit_function' => 'ninja_forms_field_checkbox_edit',
-		'display_function' => 'ninja_forms_field_checkbox_display',		
-		'group' => 'standard_fields',	
+		'display_function' => 'ninja_forms_field_checkbox_display',
+		'group' => 'standard_fields',
 		'edit_label' => true,
 		'edit_label_pos' => true,
 		'edit_req' => true,
@@ -37,12 +37,12 @@ function ninja_forms_register_field_checkbox(){
 					'name' => 'Show This',
 					'js_function' => 'show',
 					'output' => 'show',
-				),				
+				),
 				'hide' => array(
 					'name' => 'Hide This',
 					'js_function' => 'hide',
 					'output' => 'hide',
-				),				
+				),
 				'change_value' => array(
 					'name' => 'Change Value',
 					'output' => 'select',
@@ -52,7 +52,7 @@ function ninja_forms_register_field_checkbox(){
 					),
 					'js_function' => 'change_value',
 
-				),				
+				),
 
 			),
 			'value' => array(
@@ -67,7 +67,7 @@ function ninja_forms_register_field_checkbox(){
 		//'edit_sub_pre_process' => 'ninja_forms_field_checkbox_pre_process',
 		'req_validation' => 'ninja_forms_field_checkbox_validation',
 	);
-	
+
 	ninja_forms_register_field('_checkbox', $args);
 }
 
@@ -98,7 +98,7 @@ function ninja_forms_field_checkbox_pre_process( $field_id, $user_value ){
 			$user_value = 'unchecked';
 		}
 	}
-	
+
 
 	if( $ninja_forms_processing->get_field_value( $field_id ) !== false ){
 		$ninja_forms_processing->update_field_value( $field_id, $user_value );

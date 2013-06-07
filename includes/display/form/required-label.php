@@ -5,7 +5,7 @@
 **/
 add_action('init', 'ninja_forms_register_display_req_items');
 function ninja_forms_register_display_req_items(){
-	add_action('ninja_forms_display_before_fields', 'ninja_forms_display_req_items');	
+	add_action('ninja_forms_display_before_fields', 'ninja_forms_display_req_items');
 }
 
 function ninja_forms_display_req_items( $form_id ){

@@ -9,13 +9,13 @@
 
 function ninja_forms_register_tab_ajax_settings(){
 	$args = array(
-		'name' => 'Ajax Settings', 
+		'name' => 'Ajax Settings',
 		'page' => 'ninja-forms-settings',
-		'display_function' => '', 
+		'display_function' => '',
 		'save_function' => 'ninja_forms_save_ajax_settings',
-	); 
+	);
 	ninja_forms_register_tab('ajax_settings', $args);
-	
+
 }
 
 add_action('init', 'ninja_forms_register_ajax_settings_metabox');
