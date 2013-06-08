@@ -1,5 +1,5 @@
 <?php
-add_action( 'ninja_forms_edit_field_li', 'ninja_forms_edit_field_output_li' );
+
 function ninja_forms_edit_field_output_li( $field_id ){
 	global $wpdb, $ninja_forms_fields;
 	$field_row = ninja_forms_get_field_by_id($field_id);
@@ -186,8 +186,8 @@ function ninja_forms_edit_field_output_li( $field_id ){
 		}
 	}
 }
+add_action( 'ninja_forms_edit_field_li', 'ninja_forms_edit_field_output_li' );
 
-add_action( 'ninja_forms_edit_field_after_li', 'ninja_forms_edit_field_close_li' );
 function ninja_forms_edit_field_close_li( $field_id ){
 	global $ninja_forms_fields;
 	$field_row = ninja_forms_get_field_by_id( $field_id );
@@ -203,3 +203,4 @@ function ninja_forms_edit_field_close_li( $field_id ){
 		<?php
 	}
 }
+add_action( 'ninja_forms_edit_field_after_li', 'ninja_forms_edit_field_close_li' );
