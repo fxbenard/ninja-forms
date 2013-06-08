@@ -25,13 +25,13 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 				ninja_forms_update_field( $args );
 				$fav_id = '';
 			}
-		}else {
+		} else {
 			$fav_id = '';
 		}
 
 		if ( isset( $field_row['def_id'] ) and $field_row['def_id'] != 0 ) {
 			$def_id = $field_row['def_id'];
-		}else {
+		} else {
 			$def_id = '';
 		}
 
@@ -46,7 +46,7 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 
 			if ( $reg_field['nesting'] ) {
 				$nesting_class = 'ninja-forms-nest';
-			}else {
+			} else {
 				$nesting_class = 'ninja-forms-no-nest';
 			}
 			$conditional = $reg_field['conditional'];
@@ -66,13 +66,13 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 					$fav_class = 'ninja-forms-field-remove-fav';
 					$type_name = $fav_row['name'];
 				}
-			}else {
+			} else {
 				$fav_class = 'ninja-forms-field-add-fav';
 			}
 
 			if ( isset( $field_data['label'] ) and $field_data['label'] != '' ) {
 				$li_label = $field_data['label'];
-			}else {
+			} else {
 				$li_label = $type_name;
 			}
 
@@ -80,7 +80,7 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 
 			if ( isset( $reg_field['conditional']['value']['type'] ) ) {
 				$conditional_value_type = $reg_field['conditional']['value']['type'];
-			}else {
+			} else {
 				$conditional_value_type = '';
 			}
 ?>
@@ -119,49 +119,49 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 
 					if ( isset( $opt['label'] ) ) {
 						$label = $opt['label'];
-					}else {
+					} else {
 						$label = '';
 					}
 
 					if ( isset( $opt['name'] ) ) {
 						$name = $opt['name'];
-					}else {
+					} else {
 						$name = '';
 					}
 
 					if ( isset( $opt['width'] ) ) {
 						$width = $opt['width'];
-					}else {
+					} else {
 						$width = '';
 					}
 
 					if ( isset( $opt['options'] ) ) {
 						$options = $opt['options'];
-					}else {
+					} else {
 						$options = '';
 					}
 
 					if ( isset( $opt['class'] ) ) {
 						$class = $opt['class'];
-					}else {
+					} else {
 						$class = '';
 					}
 
 					if ( isset( $opt['default'] ) ) {
 						$default = $opt['default'];
-					}else {
+					} else {
 						$default = '';
 					}
 
 					if ( isset( $opt['desc'] ) ) {
 						$desc = $opt['desc'];
-					}else {
+					} else {
 						$desc = '';
 					}
 
 					if ( isset( $field_data[$name] ) ) {
 						$value = $field_data[$name];
-					}else {
+					} else {
 						$value = $default;
 					}
 
@@ -171,7 +171,7 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 
 			do_action( 'ninja_forms_edit_field_after_registered', $field_id );
 		}
-	}else {
+	} else {
 		if ( isset( $ninja_forms_fields[$field_type] ) ) {
 			$reg_field = $ninja_forms_fields[$field_type];
 			$edit_function = $reg_field['edit_function'];
