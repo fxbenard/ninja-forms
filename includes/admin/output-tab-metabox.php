@@ -413,7 +413,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 					?>
 					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
 						<td colspan="2">
-							<input type="submit" name="<?php echo $name;?>" value="<?php echo $label;?>">
+							<input type="submit" name="<?php echo $name;?>" class="<?php echo $class; ?>" value="<?php echo $label;?>">
 						</td>
 					</tr>
 					<?php
