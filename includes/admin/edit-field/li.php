@@ -194,8 +194,7 @@ function ninja_forms_edit_field_close_li( $field_id ) {
 	$field_type = $field_row['type'];
 
 	if ( isset( $ninja_forms_fields[$field_type]['use_li'] ) and $ninja_forms_fields[$field_type]['use_li'] ) {
-?>
-			<?php
+
 		do_action( 'ninja_forms_edit_field_before_closing_li', $field_id );
 ?>
 			</div><!-- .menu-item-settings-->
