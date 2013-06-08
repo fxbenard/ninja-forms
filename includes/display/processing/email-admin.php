@@ -60,6 +60,8 @@ function ninja_forms_email_admin(){
 	}
 
 	if(is_array($admin_mailto) AND !empty($admin_mailto)){
-		$sent = wp_mail($admin_mailto, $subject, $message, $headers, $attachments);
+		foreach( $admin_mailto as $to ){
+			$sent = wp_mail($to, $subject, $message, $headers, $attachments);
+		}
 	}
 }
