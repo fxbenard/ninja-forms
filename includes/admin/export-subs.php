@@ -29,7 +29,7 @@ function ninja_forms_export_subs_to_csv( $sub_ids = '', $return = false ){
 	$label_array = array();
 	$value_array = array();
 	$sub_id_array = array();
-	
+
 	$label_array[0][] = "Date";
 	if(is_array($field_results) AND !empty($field_results)){
 		foreach($field_results as $field){
@@ -76,7 +76,7 @@ function ninja_forms_export_subs_to_csv( $sub_ids = '', $return = false ){
 					}
 				}
 			}
-			$x++;				
+			$x++;
 		}
 	}
 
@@ -98,17 +98,17 @@ function ninja_forms_export_subs_to_csv( $sub_ids = '', $return = false ){
 		header("Expires: 0");
 		echo str_putcsv($array);
 
-		die();		
+		die();
 	}
 
 
 }
 
-function implode_r ($glue, $pieces){ 
- $out = ""; 
- foreach ($pieces as $piece) 
-  if (is_array ($piece)) $out .= implode_r ($glue, $piece); // recurse 
-  else                  $out .= $glue.$piece; 
-   
- return $out; 
- } 
+function implode_r ($glue, $pieces){
+ $out = "";
+ foreach ($pieces as $piece)
+  if (is_array ($piece)) $out .= implode_r ($glue, $piece); // recurse
+  else                  $out .= $glue.$piece;
+
+ return $out;
+ }

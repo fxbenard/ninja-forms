@@ -1,11 +1,11 @@
 <?php
 function ninja_forms_activation(){
 	global $wpdb;
-	
+
 	wp_schedule_event( time(), 'daily', 'ninja_forms_daily_action' );
-	
+
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-	
+
 	$plugin_settings = get_option( 'ninja_forms_settings' );
 
 	if( isset( $plugin_settings['version'] ) ){
@@ -13,7 +13,7 @@ function ninja_forms_activation(){
 	}else{
 		$current_version = '';
 	}
-	
+
 	$forms = '';
 
 	if( ( $current_version != '' ) AND version_compare( $current_version, '2.0' , '<' ) ){
@@ -22,26 +22,26 @@ function ninja_forms_activation(){
 
 			if($wpdb->get_var("SHOW TABLES LIKE '".NINJA_FORMS_TABLE_NAME."'") == NINJA_FORMS_TABLE_NAME) {
 				$wpdb->query("DROP TABLE ".NINJA_FORMS_TABLE_NAME);
-			}	
-			
+			}
+
 			if($wpdb->get_var("SHOW TABLES LIKE '".NINJA_FORMS_FIELDS_TABLE_NAME."'") == NINJA_FORMS_FIELDS_TABLE_NAME) {
 				$wpdb->query("DROP TABLE ".NINJA_FORMS_FIELDS_TABLE_NAME);
-			}	
-			
+			}
+
 			if($wpdb->get_var("SHOW TABLES LIKE '".NINJA_FORMS_SUBS_TABLE_NAME."'") == NINJA_FORMS_SUBS_TABLE_NAME) {
 				$wpdb->query("DROP TABLE ".NINJA_FORMS_SUBS_TABLE_NAME);
 			}
 		}
 	}
 
-	
+
 	$sql = "CREATE TABLE IF NOT EXISTS ".NINJA_FORMS_TABLE_NAME." (
 	  `id` int(11) NOT NULL AUTO_INCREMENT,
 	  `data` longtext CHARACTER SET utf8 NOT NULL,
 	  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	  PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;";
-	
+
 	dbDelta($sql);
 
 	$sql = "CREATE TABLE IF NOT EXISTS ".NINJA_FORMS_FAV_FIELDS_TABLE_NAME." (
@@ -53,33 +53,33 @@ function ninja_forms_activation(){
 	`name` varchar(255) CHARACTER SET utf8 NOT NULL,
 	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
-	
+
 	dbDelta($sql);
-	
+
 	$email_address = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".NINJA_FORMS_FAV_FIELDS_TABLE_NAME." WHERE name = %s AND row_type = 0", 'Email Address' ), ARRAY_A );
 	if( !isset($email_address['id']) ){
-		$sql = 'INSERT INTO `'.NINJA_FORMS_FAV_FIELDS_TABLE_NAME.'` (`id`, `row_type`, `type`, `order`, `data`, `name`) VALUES 
+		$sql = 'INSERT INTO `'.NINJA_FORMS_FAV_FIELDS_TABLE_NAME.'` (`id`, `row_type`, `type`, `order`, `data`, `name`) VALUES
 		(1, 0, \'_text\', 0, \'a:11:{s:5:\"label\";s:13:\"Email Address\";s:9:\"label_pos\";s:4:\"left\";s:13:\"default_value\";s:0:\"\";s:4:\"mask\";s:0:\"\";s:10:\"datepicker\";s:1:\"0\";s:5:\"email\";s:1:\"1\";s:10:\"send_email\";s:1:\"1\";s:3:\"req\";s:1:\"0\";s:5:\"class\";s:0:\"\";s:9:\"show_help\";s:1:\"0\";s:9:\"help_text\";s:0:\"\";}\', \'Email Address\')';
 		$wpdb->query($sql);
-	}	
+	}
 
 	$state_dropdown = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".NINJA_FORMS_FAV_FIELDS_TABLE_NAME." WHERE name = %s AND row_type = 0", 'State Dropdown' ), ARRAY_A );
 	if( !isset($state_dropdown['id']) ){
-		$sql = 'INSERT INTO `'.NINJA_FORMS_FAV_FIELDS_TABLE_NAME.'` (`id`, `row_type`, `type`, `order`, `data`, `name`) VALUES 
+		$sql = 'INSERT INTO `'.NINJA_FORMS_FAV_FIELDS_TABLE_NAME.'` (`id`, `row_type`, `type`, `order`, `data`, `name`) VALUES
 		(2, 0, \'_list\', 0, \'a:10:{s:5:\"label\";s:14:\"State Dropdown\";s:9:\"label_pos\";s:4:\"left\";s:9:\"list_type\";s:8:\"dropdown\";s:10:\"multi_size\";s:1:\"5\";s:15:\"list_show_value\";s:1:\"1\";s:4:\"list\";a:1:{s:7:\"options\";a:51:{i:0;a:3:{s:5:\"label\";s:7:\"Alabama\";s:5:\"value\";s:2:\"AL\";s:8:\"selected\";s:1:\"0\";}i:1;a:3:{s:5:\"label\";s:6:\"Alaska\";s:5:\"value\";s:2:\"AK\";s:8:\"selected\";s:1:\"0\";}i:2;a:3:{s:5:\"label\";s:7:\"Arizona\";s:5:\"value\";s:2:\"AZ\";s:8:\"selected\";s:1:\"0\";}i:3;a:3:{s:5:\"label\";s:8:\"Arkansas\";s:5:\"value\";s:2:\"AR\";s:8:\"selected\";s:1:\"0\";}i:4;a:3:{s:5:\"label\";s:10:\"California\";s:5:\"value\";s:2:\"CA\";s:8:\"selected\";s:1:\"0\";}i:5;a:3:{s:5:\"label\";s:8:\"Colorado\";s:5:\"value\";s:2:\"CO\";s:8:\"selected\";s:1:\"0\";}i:6;a:3:{s:5:\"label\";s:11:\"Connecticut\";s:5:\"value\";s:2:\"CT\";s:8:\"selected\";s:1:\"0\";}i:7;a:3:{s:5:\"label\";s:8:\"Delaware\";s:5:\"value\";s:2:\"DE\";s:8:\"selected\";s:1:\"0\";}i:8;a:3:{s:5:\"label\";s:20:\"District of Columbia\";s:5:\"value\";s:2:\"DC\";s:8:\"selected\";s:1:\"0\";}i:9;a:3:{s:5:\"label\";s:7:\"Florida\";s:5:\"value\";s:2:\"FL\";s:8:\"selected\";s:1:\"0\";}i:10;a:3:{s:5:\"label\";s:7:\"Georgia\";s:5:\"value\";s:2:\"GA\";s:8:\"selected\";s:1:\"0\";}i:11;a:3:{s:5:\"label\";s:6:\"Hawaii\";s:5:\"value\";s:2:\"HI\";s:8:\"selected\";s:1:\"0\";}i:12;a:3:{s:5:\"label\";s:5:\"Idaho\";s:5:\"value\";s:2:\"ID\";s:8:\"selected\";s:1:\"0\";}i:13;a:3:{s:5:\"label\";s:8:\"Illinois\";s:5:\"value\";s:2:\"IL\";s:8:\"selected\";s:1:\"0\";}i:14;a:3:{s:5:\"label\";s:7:\"Indiana\";s:5:\"value\";s:2:\"IN\";s:8:\"selected\";s:1:\"0\";}i:15;a:3:{s:5:\"label\";s:4:\"Iowa\";s:5:\"value\";s:2:\"IA\";s:8:\"selected\";s:1:\"0\";}i:16;a:3:{s:5:\"label\";s:6:\"Kansas\";s:5:\"value\";s:2:\"KS\";s:8:\"selected\";s:1:\"0\";}i:17;a:3:{s:5:\"label\";s:8:\"Kentucky\";s:5:\"value\";s:2:\"KY\";s:8:\"selected\";s:1:\"0\";}i:18;a:3:{s:5:\"label\";s:9:\"Louisiana\";s:5:\"value\";s:2:\"LA\";s:8:\"selected\";s:1:\"0\";}i:19;a:3:{s:5:\"label\";s:5:\"Maine\";s:5:\"value\";s:2:\"ME\";s:8:\"selected\";s:1:\"0\";}i:20;a:3:{s:5:\"label\";s:8:\"Maryland\";s:5:\"value\";s:2:\"MD\";s:8:\"selected\";s:1:\"0\";}i:21;a:3:{s:5:\"label\";s:13:\"Massachusetts\";s:5:\"value\";s:2:\"MA\";s:8:\"selected\";s:1:\"0\";}i:22;a:3:{s:5:\"label\";s:8:\"Michigan\";s:5:\"value\";s:2:\"MI\";s:8:\"selected\";s:1:\"0\";}i:23;a:3:{s:5:\"label\";s:9:\"Minnesota\";s:5:\"value\";s:2:\"MN\";s:8:\"selected\";s:1:\"0\";}i:24;a:3:{s:5:\"label\";s:11:\"Mississippi\";s:5:\"value\";s:2:\"MS\";s:8:\"selected\";s:1:\"0\";}i:25;a:3:{s:5:\"label\";s:8:\"Missouri\";s:5:\"value\";s:2:\"MO\";s:8:\"selected\";s:1:\"0\";}i:26;a:3:{s:5:\"label\";s:7:\"Montana\";s:5:\"value\";s:2:\"MT\";s:8:\"selected\";s:1:\"0\";}i:27;a:3:{s:5:\"label\";s:8:\"Nebraska\";s:5:\"value\";s:2:\"NE\";s:8:\"selected\";s:1:\"0\";}i:28;a:3:{s:5:\"label\";s:6:\"Nevada\";s:5:\"value\";s:2:\"NV\";s:8:\"selected\";s:1:\"0\";}i:29;a:3:{s:5:\"label\";s:12:\"New Hampsire\";s:5:\"value\";s:2:\"NH\";s:8:\"selected\";s:1:\"0\";}i:30;a:3:{s:5:\"label\";s:10:\"New Jersey\";s:5:\"value\";s:2:\"NJ\";s:8:\"selected\";s:1:\"0\";}i:31;a:3:{s:5:\"label\";s:10:\"New Mexico\";s:5:\"value\";s:2:\"NM\";s:8:\"selected\";s:1:\"0\";}i:32;a:3:{s:5:\"label\";s:8:\"New York\";s:5:\"value\";s:2:\"NY\";s:8:\"selected\";s:1:\"0\";}i:33;a:3:{s:5:\"label\";s:14:\"North Carolina\";s:5:\"value\";s:2:\"NC\";s:8:\"selected\";s:1:\"0\";}i:34;a:3:{s:5:\"label\";s:12:\"North Dakota\";s:5:\"value\";s:2:\"ND\";s:8:\"selected\";s:1:\"0\";}i:35;a:3:{s:5:\"label\";s:4:\"Ohio\";s:5:\"value\";s:2:\"OH\";s:8:\"selected\";s:1:\"0\";}i:36;a:3:{s:5:\"label\";s:8:\"Oklahoma\";s:5:\"value\";s:2:\"OK\";s:8:\"selected\";s:1:\"0\";}i:37;a:3:{s:5:\"label\";s:6:\"Oregon\";s:5:\"value\";s:2:\"OR\";s:8:\"selected\";s:1:\"0\";}i:38;a:3:{s:5:\"label\";s:12:\"Pennsylvania\";s:5:\"value\";s:2:\"PA\";s:8:\"selected\";s:1:\"0\";}i:39;a:3:{s:5:\"label\";s:12:\"Rhode Island\";s:5:\"value\";s:2:\"RI\";s:8:\"selected\";s:1:\"0\";}i:40;a:3:{s:5:\"label\";s:14:\"South Carolina\";s:5:\"value\";s:2:\"SC\";s:8:\"selected\";s:1:\"0\";}i:41;a:3:{s:5:\"label\";s:12:\"South Dakota\";s:5:\"value\";s:2:\"SD\";s:8:\"selected\";s:1:\"0\";}i:42;a:3:{s:5:\"label\";s:9:\"Tennessee\";s:5:\"value\";s:2:\"TN\";s:8:\"selected\";s:1:\"0\";}i:43;a:3:{s:5:\"label\";s:5:\"Texas\";s:5:\"value\";s:2:\"TX\";s:8:\"selected\";s:1:\"0\";}i:44;a:3:{s:5:\"label\";s:4:\"Utah\";s:5:\"value\";s:2:\"UT\";s:8:\"selected\";s:1:\"0\";}i:45;a:3:{s:5:\"label\";s:7:\"Vermont\";s:5:\"value\";s:2:\"VT\";s:8:\"selected\";s:1:\"0\";}i:46;a:3:{s:5:\"label\";s:8:\"Virginia\";s:5:\"value\";s:2:\"VA\";s:8:\"selected\";s:1:\"0\";}i:47;a:3:{s:5:\"label\";s:10:\"Washington\";s:5:\"value\";s:2:\"WA\";s:8:\"selected\";s:1:\"0\";}i:48;a:3:{s:5:\"label\";s:13:\"West Virginia\";s:5:\"value\";s:2:\"WV\";s:8:\"selected\";s:1:\"0\";}i:49;a:3:{s:5:\"label\";s:9:\"Wisconsin\";s:5:\"value\";s:2:\"WI\";s:8:\"selected\";s:1:\"0\";}i:50;a:3:{s:5:\"label\";s:7:\"Wyoming\";s:5:\"value\";s:2:\"WY\";s:8:\"selected\";s:1:\"0\";}}}s:3:\"req\";s:1:\"0\";s:5:\"class\";s:0:\"\";s:9:\"show_help\";s:1:\"0\";s:9:\"help_text\";s:0:\"\";}\', \'State Dropdown\')';
 		$wpdb->query($sql);
-	}	
+	}
 
 	$anti_spam = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".NINJA_FORMS_FAV_FIELDS_TABLE_NAME." WHERE name = %s AND row_type = 0", 'Anti-Spam' ), ARRAY_A );
 	if( !isset($anti_spam['id']) ){
-		$sql = 'INSERT INTO `'.NINJA_FORMS_FAV_FIELDS_TABLE_NAME.'` (`id`, `row_type`, `type`, `order`, `data`, `name`) VALUES 
+		$sql = 'INSERT INTO `'.NINJA_FORMS_FAV_FIELDS_TABLE_NAME.'` (`id`, `row_type`, `type`, `order`, `data`, `name`) VALUES
 		(3, 0, \'_spam\', 0, \'a:6:{s:9:"label_pos";s:4:"left";s:5:"label";s:18:"Anti-Spam Question";s:6:"answer";s:16:"Anti-Spam Answer";s:5:"class";s:0:"";s:9:"show_help";s:1:"0";s:9:"help_text";s:0:"";}\', \'Anti-Spam\')';
 		$wpdb->query($sql);
-	}	
+	}
 
 	$submit = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".NINJA_FORMS_FAV_FIELDS_TABLE_NAME." WHERE name = %s AND row_type = 0", 'Submit' ), ARRAY_A );
 	if( !isset($submit['id']) ){
-		$sql = 'INSERT INTO `'.NINJA_FORMS_FAV_FIELDS_TABLE_NAME.'` (`id`, `row_type`, `type`, `order`, `data`, `name`) VALUES 
+		$sql = 'INSERT INTO `'.NINJA_FORMS_FAV_FIELDS_TABLE_NAME.'` (`id`, `row_type`, `type`, `order`, `data`, `name`) VALUES
 		(4, 0, \'_submit\', 0, \'a:4:{s:5:\"label\";s:6:\"Submit\";s:5:\"class\";s:0:\"\";s:9:\"show_help\";s:1:\"0\";s:9:\"help_text\";s:0:\"\";}\', \'Submit\');';
 		$wpdb->query($sql);
 	}
@@ -94,9 +94,9 @@ function ninja_forms_activation(){
 	  `def_id` int(11) DEFAULT NULL,
 	  PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;";
-	
+
 	dbDelta($sql);
-	
+
 	$sql = "CREATE TABLE IF NOT EXISTS ".NINJA_FORMS_SUBS_TABLE_NAME." (
 	  `id` int(11) NOT NULL AUTO_INCREMENT,
 	  `user_id` int(11) DEFAULT NULL,
@@ -107,9 +107,9 @@ function ninja_forms_activation(){
 	  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	  PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;";
-	
-	dbDelta($sql);	
-	
+
+	dbDelta($sql);
+
 	if( version_compare( $current_version, '2.0' , '<' ) ){
 		if( isset( $plugin_settings['upload_dir'] ) ){
 			$base_upload_dir = $plugin_settings['upload_dir'];
@@ -121,7 +121,7 @@ function ninja_forms_activation(){
 		}else{
 			$max_file_size = 2;
 		}
-		
+
 		$opt = array(
 			'license_key' => '',
 			'license_status' => 'inactive',
@@ -171,7 +171,7 @@ function ninja_forms_activation(){
 		);
 
 		// Insert the page into the database
-		$page_id = wp_insert_post( $preview_post ); 
+		$page_id = wp_insert_post( $preview_post );
  	}else{
  		$page_id = $preview_page->ID;
  	}
@@ -191,27 +191,27 @@ function ninja_forms_activation(){
 	 		}else{
 	 			$form_fields = '';
 	 		}
-	 		
+
 	 		if( isset( $form['subs'] ) ){
 	 			$form_subs = $form['subs'];
 	 		}else{
 	 			$form_subs = '';
 	 		}
-	 		
+
 	 		unset( $form['field'] );
 	 		unset( $form['subs'] );
 
 			$wpdb->insert(NINJA_FORMS_TABLE_NAME, $form);
 			$form_id = $wpdb->insert_id;
-						
+
 			if( is_array( $form_fields ) AND !empty( $form_fields ) ){
-				for( $x=0; $x < count( $form_fields ); $x++ ) { 
+				for( $x=0; $x < count( $form_fields ); $x++ ) {
 					$form_fields[$x]['form_id'] = $form_id;
 					$form_fields[$x]['data'] = serialize( $form_fields[$x]['data'] );
 					unset( $form_fields[$x]['id'] );
 					if( isset( $form_fields[$x]['old_id'] ) ){
 						$old_id = $form_fields[$x]['old_id'];
-						unset( $form_fields[$x]['old_id'] );						
+						unset( $form_fields[$x]['old_id'] );
 					}
 					$wpdb->insert( NINJA_FORMS_FIELDS_TABLE_NAME, $form_fields[$x] );
 					$new_id = $wpdb->insert_id;
@@ -223,7 +223,7 @@ function ninja_forms_activation(){
 									if( isset( $form_subs[$i]['data'][$y]['old_id'] ) AND $form_subs[$i]['data'][$y]['old_id'] == $old_id ){
 										unset( $form_subs[$i]['data'][$y]['old_id'] );
 										$form_subs[$i]['data'][$y]['field_id'] = $new_id;
-									} 
+									}
 								}
 							}
 						}
@@ -232,7 +232,7 @@ function ninja_forms_activation(){
 			}
 
 			if( is_array( $form_subs ) AND !empty( $form_subs ) ){
-				for ($i=0; $i < count( $form_subs ); $i++) { 
+				for ($i=0; $i < count( $form_subs ); $i++) {
 					$form_subs[$i]['data'] = serialize( $form_subs[$i]['data'] );
 					$wpdb->insert( NINJA_FORMS_SUBS_TABLE_NAME, $form_subs[$i] );
 				}
@@ -317,7 +317,7 @@ function ninja_forms_activation_old_forms_check(){
 					$form['save_status_options'] = unserialize( $form['save_status_options'] );
 					$forms[$x]['data']['clear_incomplete_saves'] = $form['save_status_options']['delete'];
 					$forms[$x]['data']['save_msg'] = $form['save_status_options']['msg'];
-					
+
 					$form_fields = $wpdb->get_results("SELECT * FROM ".NINJA_FORMS_FIELDS_TABLE_NAME." WHERE form_id = ".$form_id, ARRAY_A );
 					if( is_array( $form_fields ) AND !empty( $form_fields ) ){
 						$y = 0;
@@ -428,7 +428,7 @@ function ninja_forms_activation_old_forms_check(){
 							}else{
 								$forms[$x]['field'][$y]['data']['label_pos'] = 'left';
 							}
-					
+
 							if( isset( $field['extra']['extra']['show_help'] ) ){
 								if( $field['extra']['extra']['show_help'] == 'checked' ){
 									$show_help = 1;
@@ -443,7 +443,7 @@ function ninja_forms_activation_old_forms_check(){
 
 							if( isset( $field['extra']['extra']['meta_key'] ) ){
 								$forms[$x]['field'][$y]['data']['meta_value'] = $field['extra']['extra']['meta_key'];
-							}							
+							}
 							if( isset( $field['extra']['extra']['rte'] ) ){
 								if( $field['extra']['extra']['rte'] == 'checked' ){
 									$textarea_rte = 1;
@@ -463,7 +463,7 @@ function ninja_forms_activation_old_forms_check(){
 									$forms[$x]['field'][$y]['data']['list']['options'][$n]['value'] = $item;
 									$n++;
 								}
-							}	
+							}
 
 							if( $unset ){
 								unset( $forms[$x]['field'][$y] );
@@ -477,7 +477,7 @@ function ninja_forms_activation_old_forms_check(){
 					if( is_array( $sub_results ) AND !empty( $sub_results ) ){
 						$i = 0;
 						foreach( $sub_results as $sub ){
-							
+
 							if( $sub['sub_status'] == 'complete' ){
 								$status = 1;
 							}else{
@@ -511,11 +511,11 @@ function ninja_forms_activation_old_forms_check(){
 							}else{
 								$forms[$x]['subs'][$i]['action'] = 'submit';
 							}
-							
+
 
 							$forms[$x]['subs'][$i]['form_id'] = $sub['form_id'];
 							$forms[$x]['subs'][$i]['date_updated'] = $sub['date_updated'];
-	
+
 							$form_values = unserialize( $sub['form_values'] );
 							if( is_array( $form_values ) AND !empty( $form_values ) ){
 								$n = 0;

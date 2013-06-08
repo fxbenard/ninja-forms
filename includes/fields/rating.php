@@ -2,11 +2,11 @@
 function ninja_forms_register_field_rating(){
 	$args = array(
 		'name' => 'Star Rating',
-		'sidebar' => 'template_fields',		
+		'sidebar' => 'template_fields',
 		'display_function' => 'ninja_forms_field_rating_display',
 		'group' => 'standard_fields',
 		'edit_options' => array(
-			array( 
+			array(
 				'name' => 'rating_stars',
 				'type' => 'text',
 				'label' => __( 'Number of stars', 'ninja-forms' ),
@@ -22,7 +22,7 @@ function ninja_forms_register_field_rating(){
 		'edit_meta' => true,
 		'edit_conditional' => true,
 	);
-	
+
 	ninja_forms_register_field('_rating', $args);
 }
 

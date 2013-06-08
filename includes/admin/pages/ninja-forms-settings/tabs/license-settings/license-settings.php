@@ -4,11 +4,11 @@ add_action('init', 'ninja_forms_register_tab_license_settings');
 
 function ninja_forms_register_tab_license_settings(){
 	$args = array(
-		'name' => 'Licenses', 
+		'name' => 'Licenses',
 		'page' => 'ninja-forms-settings',
-		'display_function' => '', 
+		'display_function' => '',
 		'save_function' => 'ninja_forms_save_license_settings',
-	); 
+	);
 	ninja_forms_register_tab('license_settings', $args);
 }
 
@@ -29,7 +29,7 @@ function ninja_forms_register_license_settings_metabox(){
 			//),
 		),
 	);
-	ninja_forms_register_tab_metabox($args);	
+	ninja_forms_register_tab_metabox($args);
 }
 
 function ninja_forms_save_license_settings($data){

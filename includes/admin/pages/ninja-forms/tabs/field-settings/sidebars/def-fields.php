@@ -14,7 +14,7 @@ function ninja_forms_register_sidebar_def_fields(){
 function ninja_forms_sidebar_def_fields(){
 	global $wpdb, $ninja_forms_fields;
 	$field_results = ninja_forms_get_all_defs();
-	
+
 	if(is_array($field_results)){
 		foreach($field_results as $field){
 			$data = $field['data'];

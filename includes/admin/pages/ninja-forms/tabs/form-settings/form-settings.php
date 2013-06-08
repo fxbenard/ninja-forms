@@ -4,14 +4,14 @@ add_action('init', 'ninja_forms_register_tab_form_settings');
 function ninja_forms_register_tab_form_settings(){
 	$all_forms_link = esc_url(remove_query_arg(array('form_id', 'tab')));
 	$args = array(
-		'name' => 'Form Settings', 
+		'name' => 'Form Settings',
 		'page' => 'ninja-forms',
-		'display_function' => 'ninja_forms_display_form_settings', 
+		'display_function' => 'ninja_forms_display_form_settings',
 		'save_function' => 'ninja_forms_save_form_settings',
 		//'title' => '<h2>Forms <a href="'.$all_forms_link.'" class="add-new-h2">'.__('View All Forms', 'ninja-forms').'</a></h2>',
-	); 
+	);
 	ninja_forms_register_tab('form_settings', $args);
-	
+
 }
 
 function ninja_forms_display_form_settings($form_id, $data){
@@ -71,7 +71,7 @@ function ninja_forms_register_form_settings_basic_metabox(){
 				'display_function' => '',
 				'help' => __('', 'ninja-forms'),
 				'default_value' => 1,
-			),				
+			),
 			array(
 				'name' => 'ajax',
 				'type' => 'checkbox',
@@ -79,7 +79,7 @@ function ninja_forms_register_form_settings_basic_metabox(){
 				'label' => __('Submit via ajax?', 'ninja-forms'),
 				'display_function' => '',
 				'help' => __('', 'ninja-forms'),
-			),			
+			),
 			array(
 				'name' => 'logged_in',
 				'type' => 'checkbox',
@@ -96,7 +96,7 @@ function ninja_forms_register_form_settings_basic_metabox(){
 				'display_function' => '',
 				'help' => __('', 'ninja-forms'),
 				'options' => $pages_array,
-			),			
+			),
 			array(
 				'name' => 'append_page',
 				'type' => 'select',
@@ -150,7 +150,7 @@ function ninja_forms_register_form_settings_basic_email_metabox(){
 				//'type' => 'checkbox',
 				//'label' => __('Send email to user?', 'ninja-forms'),
 				//'desc' => __('Requires the use of an email field.', 'ninja-forms'),
-			//),				
+			//),
 			array(
 				'name' => 'email_from',
 				'type' => 'text',
@@ -165,7 +165,7 @@ function ninja_forms_register_form_settings_basic_email_metabox(){
 					array('name' => 'HTML', 'value' => 'html'),
 					array('name' => 'Plain Text', 'value' => 'plain'),
 				),
-			),			
+			),
 		),
 	);
 	ninja_forms_register_tab_metabox($args);
@@ -186,7 +186,7 @@ function ninja_forms_register_form_settings_user_email_metabox(){
 				'name' => 'user_subject',
 				'type' => 'text',
 				'label' => __('Subject for the user email', 'ninja-forms'),
-			),			
+			),
 			array(
 				'name' => 'user_email_msg',
 				'type' => 'rte',
@@ -197,7 +197,7 @@ function ninja_forms_register_form_settings_user_email_metabox(){
 				'name' => 'user_email_fields',
 				'type' => 'checkbox',
 				'label' => __('Include a list of fields?', 'ninja-forms'),
-			),	
+			),
 		),
 	);
 	ninja_forms_register_tab_metabox($args);
@@ -218,12 +218,12 @@ function ninja_forms_register_form_settings_admin_email_metabox(){
 				'type' => '',
 				'label' => __( 'Administrator Email Addresses', 'ninja-forms' ),
 				'display_function' => 'ninja_forms_admin_email',
-			),			
+			),
 			array(
 				'name' => 'admin_subject',
 				'type' => 'text',
 				'label' => __( 'Admin Subject', 'ninja-forms' ),
-			),			
+			),
 			array(
 				'name' => 'admin_email_msg',
 				'type' => 'rte',
@@ -244,7 +244,7 @@ function ninja_forms_register_form_settings_admin_email_metabox(){
 				'display_function' => '',
 				'help' => __('', 'ninja-forms'),
 				'default_value' => 0,
-			),		
+			),
 		),
 	);
 	ninja_forms_register_tab_metabox($args);
@@ -258,9 +258,9 @@ function ninja_forms_admin_email($form_id, $data){
 	}
 
 	?>
-	<label for="">					
+	<label for="">
 		<p>
-			<?php _e('Administrator Email Addresses', 'ninja-forms');?> &nbsp;&nbsp;<a href="#" id="ninja_forms_add_mailto_<?php echo $form_id;?>" name="" class="ninja-forms-add-mailto">Add New</a> 
+			<?php _e('Administrator Email Addresses', 'ninja-forms');?> &nbsp;&nbsp;<a href="#" id="ninja_forms_add_mailto_<?php echo $form_id;?>" name="" class="ninja-forms-add-mailto">Add New</a>
 			<a href="#" class="tooltip">
 			    <img id="" class='ninja-forms-help-text' src="<?php echo NINJA_FORMS_URL;?>/images/question-ico.gif" title="">
 			    <span>
@@ -306,7 +306,7 @@ function ninja_forms_save_form_settings($form_id, $data){
 		$wpdb->insert( NINJA_FORMS_TABLE_NAME, $data_array );
 		$redirect = add_query_arg( array('form_id' => $wpdb->insert_id, 'update_message' => __( 'Form Settings Saved', 'ninja-forms' ) ) );
 		do_action( 'ninja_forms_save_new_form_settings', $wpdb->insert_id, $data );
-		header( "Location: ".$redirect );		
+		header( "Location: ".$redirect );
 	}
 	$update_msg = __( 'Form Settings Saved', 'ninja-forms' );
 	return $update_msg;

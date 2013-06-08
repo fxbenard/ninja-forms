@@ -13,13 +13,13 @@ function ninja_forms_display_field_label( $field_id, $data ){
 	$plugin_settings = get_option("ninja_forms_settings");
 
 	if(isset($data['label'])){
-		$label = stripslashes($data['label']);				
+		$label = stripslashes($data['label']);
 	}else{
 		$label = '';
-	}	
+	}
 
 	if(isset($data['label_pos'])){
-		$label_pos = stripslashes($data['label_pos']);				
+		$label_pos = stripslashes($data['label_pos']);
 	}else{
 		$label_pos = '';
 	}

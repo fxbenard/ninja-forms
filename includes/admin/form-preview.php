@@ -33,7 +33,7 @@ function ninja_forms_preview_link( $form_id = '', $echo = true ) {
 	$form_data = ninja_forms_get_form_by_id( $form_id );
 
 	//if( '' == $form_data['data']['append_page'] ) {
-	if(!isset($form_data['data']['append_page']) OR empty($form_data['data']['append_page'])){ // See the comment above about this check. !empty will ensure that it's not either empty quotes or null.	
+	if(!isset($form_data['data']['append_page']) OR empty($form_data['data']['append_page'])){ // See the comment above about this check. !empty will ensure that it's not either empty quotes or null.
 		$opt =  get_option( 'ninja_forms_settings' );
 		$page_id = $opt['preview_id'];
 	} else {

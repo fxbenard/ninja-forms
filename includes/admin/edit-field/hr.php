@@ -7,6 +7,6 @@ function ninja_forms_edit_field_hr($field_id){
 	?>
 	<p class="description-wide">
 		<hr>
-	</p>	
+	</p>
 	<?php
 }

@@ -3,13 +3,13 @@ add_action( 'init', 'ninja_forms_register_tab_label_settings' );
 
 function ninja_forms_register_tab_label_settings(){
 	$args = array(
-		'name' => 'Labels', 
+		'name' => 'Labels',
 		'page' => 'ninja-forms-settings',
-		'display_function' => '', 
+		'display_function' => '',
 		'save_function' => 'ninja_forms_save_label_settings',
-	); 
+	);
 	ninja_forms_register_tab( 'label_settings', $args );
-	
+
 }
 
 add_action( 'init', 'ninja_forms_register_label_settings_metabox' );
@@ -66,7 +66,7 @@ function ninja_forms_register_label_settings_metabox(){
 		),
 	);
 	ninja_forms_register_tab_metabox($args);
-	
+
 }
 
 function ninja_forms_save_label_settings($data){

@@ -2,11 +2,11 @@
 function ninja_forms_register_field_hiddenbox(){
 	$args = array(
 		'name' => 'Hidden Field',
-		'sidebar' => 'template_fields',		
+		'sidebar' => 'template_fields',
 		'edit_function' => 'ninja_forms_field_hidden_edit',
 		'display_function' => 'ninja_forms_field_hidden_display',
 		'save_function' => 'ninja_forms_field_hidden_save',
-		'group' => 'standard_fields',	
+		'group' => 'standard_fields',
 		'edit_label' => true,
 		'edit_label_pos' => false,
 		'edit_req' => false,
@@ -24,7 +24,7 @@ function ninja_forms_register_field_hiddenbox(){
 		),
 		'display_label' => false,
 	);
-	
+
 	ninja_forms_register_field('_hidden', $args);
 }
 
@@ -39,7 +39,7 @@ function ninja_forms_field_hidden_edit($field_id, $data){
 	}else{
 		$default_value = '';
 	}
-	
+
 	?>
 	<p class="description description-thin">
 		<label for="">
@@ -59,15 +59,15 @@ function ninja_forms_field_hidden_edit($field_id, $data){
 			<input type="text" class="widefat code" name="ninja_forms_field_<?php echo $field_id;?>[default_value]" id="ninja_forms_field_<?php echo $field_id;?>_default_value" value="<?php echo $default_value;?>" />
 		</label>
 	</p>
-	
+
 	<?php
 	// Email Input Box ?
 	if(isset($data['email'])){
 		$email = $data['email'];
 	}else{
 		$email = '';
-	}	
-	
+	}
+
 	if(isset($data['send_email'])){
 		$send_email = $data['send_email'];
 	}else{
@@ -88,12 +88,12 @@ function ninja_forms_field_hidden_edit($field_id, $data){
 		    </span>
 		</a>
 	</p>
-	
+
 	<p class="description description-wide">
 			<label for="ninja_forms_field_<?php echo $field_id;?>_send_email" id="" style="">
 			<?php _e( 'Send a copy of the form to this address?' , 'ninja-forms'); ?>
 			<input type="hidden" value="0" name="ninja_forms_field_<?php echo $field_id;?>[send_email]">
-			<input type="checkbox" value="1" name="ninja_forms_field_<?php echo $field_id;?>[send_email]" id="ninja_forms_field_<?php echo $field_id;?>_send_email" class="ninja-forms-hidden-send-email" <?php if($send_email == 1){ echo "checked";}?>> 
+			<input type="checkbox" value="1" name="ninja_forms_field_<?php echo $field_id;?>[send_email]" id="ninja_forms_field_<?php echo $field_id;?>_send_email" class="ninja-forms-hidden-send-email" <?php if($send_email == 1){ echo "checked";}?>>
 			</label>
 			<a href="#" class="tooltip">
 			    <img id="" class='ninja-forms-help-text' src="<?php echo NINJA_FORMS_URL;?>/images/question-ico.gif" title="">
@@ -138,7 +138,7 @@ function ninja_forms_field_hidden_display($field_id, $data){
 			$default_value = $user_email;
 			break;
 	}
-	
+
 	if(isset($_POST['ninja_forms_field_'.$field_id])){
 		$default_value = $_POST['ninja_forms_field_'.$field_id];
 	}

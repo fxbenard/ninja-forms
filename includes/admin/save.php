@@ -7,7 +7,7 @@ function ninja_forms_admin_save(){
 		if(wp_verify_nonce($_POST['_ninja_forms_admin_submit'],'_ninja_forms_save') AND check_admin_referer('_ninja_forms_save','_ninja_forms_admin_submit')){
 			$current_page = $_REQUEST['page'];
 			$current_tab = ninja_forms_get_current_tab();
-			
+
 			$data_array = array();
 			if(isset($_REQUEST['form_id'])){
 				$form_id = $_REQUEST['_form_id'];
@@ -24,7 +24,7 @@ function ninja_forms_admin_save(){
 			//Call any save functions registered to metaboxes
 			if( isset( $ninja_forms_tabs_metaboxes[$current_page][$current_tab] ) AND is_array( $ninja_forms_tabs_metaboxes[$current_page][$current_tab] ) AND !empty( $ninja_forms_tabs_metaboxes[$current_page][$current_tab] ) ){
 				foreach( $ninja_forms_tabs_metaboxes[$current_page][$current_tab] as $slug => $opts ){
-					
+
 					// Get the save function of our options, if set, and call them, passing the data that has been posted.
 					if( isset( $opts['settings'] ) AND !empty( $opts['settings'] ) ){
 						foreach( $opts['settings'] as $setting ){
@@ -60,8 +60,8 @@ function ninja_forms_admin_save(){
 							do_action( 'ninja_forms_save_admin_metabox', $slug, $form_id, $data_array );
 						}
 					}
-					
-					
+
+
 				}
 			}
 

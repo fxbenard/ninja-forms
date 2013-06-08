@@ -7,7 +7,7 @@ add_action('save_post', 'ninja_forms_save_postdata');
 
 /* Adds a box to the main column on the Post and Page edit screens */
 function ninja_forms_add_custom_box() {
-	add_meta_box( 
+	add_meta_box(
 		'ninja_forms_selector',
 		__( 'Append A Ninja Form', 'ninja-forms'),
 		'ninja_forms_inner_custom_box',
@@ -17,7 +17,7 @@ function ninja_forms_add_custom_box() {
 	);
 	add_meta_box(
 		'ninja_forms_selector',
-		__( 'Append A Ninja Form', 'ninja-forms'), 
+		__( 'Append A Ninja Form', 'ninja-forms'),
 		'ninja_forms_inner_custom_box',
 		'page',
 		'side',
@@ -58,9 +58,9 @@ function ninja_forms_inner_custom_box() {
 function ninja_forms_save_postdata( $post_id ) {
 	global $wpdb;
 	if(isset($_POST['ninja_forms_nonce'])){
-		// verify if this is an auto save routine. 
+		// verify if this is an auto save routine.
 		// If it is our form has not been submitted, so we dont want to do anything
-		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
+		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
 		  return $post_id;
 
 		// verify this came from the our screen and with proper authorization,
@@ -71,7 +71,7 @@ function ninja_forms_save_postdata( $post_id ) {
 
 
 		// Check permissions
-		if ( 'page' == $_POST['post_type'] ) 
+		if ( 'page' == $_POST['post_type'] )
 		{
 		if ( !current_user_can( 'edit_page', $post_id ) )
 			return $post_id;
@@ -86,6 +86,6 @@ function ninja_forms_save_postdata( $post_id ) {
 		$post_id = $_POST['post_ID'];
 		$form_id = $_POST['ninja_form_select'];
 		update_post_meta( $post_id, 'ninja_forms_form', $form_id );
-		
+
 	}
 }

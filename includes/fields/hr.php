@@ -2,10 +2,10 @@
 function ninja_forms_register_field_hr(){
 	$args = array(
 		'name' => 'hr',
-		'sidebar' => 'layout_fields',		
+		'sidebar' => 'layout_fields',
 		'edit_function' => '',
 		'display_function' => 'ninja_forms_field_hr_display',
-		'group' => 'layout_elements',	
+		'group' => 'layout_elements',
 		'display_label' => false,
 		'display_wrap' => false,
 		'edit_label' => false,
@@ -17,7 +17,7 @@ function ninja_forms_register_field_hr(){
 		'edit_conditional' => true,
 		'process_field' => false,
 	);
-	
+
 	ninja_forms_register_field('_hr', $args);
 }
 

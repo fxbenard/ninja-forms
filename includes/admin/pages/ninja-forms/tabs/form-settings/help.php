@@ -7,7 +7,7 @@ function ninja_forms_register_form_settings_help(){
 		'title' => 'Basic Settings',
 		'display_function' => 'ninja_forms_help_form_settings',
 	);
-	ninja_forms_register_help_screen_tab('basic_settings', $args);	
+	ninja_forms_register_help_screen_tab('basic_settings', $args);
 }
 
 function ninja_forms_help_form_settings(){

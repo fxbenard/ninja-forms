@@ -22,6 +22,6 @@ function ninja_forms_attachment_test( $sub_id ){
 		rename( $dir.'/'.$basename, $dir.'/'.$new_name.'.csv' );
 		$file1 = $dir.'/'.$new_name.'.csv';
 		array_push( $files, $file1 );
-		$ninja_forms_processing->update_form_setting( 'admin_attachments', $files );		
+		$ninja_forms_processing->update_form_setting( 'admin_attachments', $files );
 	}
-}	
+}

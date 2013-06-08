@@ -4,14 +4,14 @@ add_action('init', 'ninja_forms_register_tab_impexp_fields');
 
 function ninja_forms_register_tab_impexp_fields(){
 	$args = array(
-		'name' => 'Favorite Fields', 
+		'name' => 'Favorite Fields',
 		'page' => 'ninja-forms-impexp',
-		'display_function' => '', 
+		'display_function' => '',
 		'save_function' => 'ninja_forms_save_impexp_fields',
 		'show_save' => false,
-	); 
+	);
 	ninja_forms_register_tab('impexp_fields', $args);
-	
+
 }
 
 add_action( 'init', 'ninja_forms_register_imp_fav_fields_metabox' );
@@ -81,23 +81,23 @@ function ninja_forms_register_exp_fav_fields_metabox(){
 function ninja_forms_save_impexp_fields( $data ){
 	global $wpdb, $ninja_forms_admin_update_message;
 	$plugin_settings = get_option( 'ninja_forms_settings' );
-	
+
 	if($_POST['submit'] == __( 'Export Fields', 'ninja-forms' ) ){
 		if(isset($_POST['ninja_forms_fav']) AND !empty($_POST['ninja_forms_fav'])){
 			$fav_ids = $_POST['ninja_forms_fav'];
-		
+
 			if(isset($plugin_settings['date_format'])){
 				$date_format = $plugin_settings['date_format'];
 			}else{
 				$date_format = 'm/d/Y';
 			}
-			
+
 			//$today = date($date_format);
 			$current_time = current_time( 'timestamp' );
 			$today = date( $date_format, $current_time );
-			
+
 			$favorites = array();
-			
+
 
 			if( is_array( $fav_ids ) AND !empty( $fav_ids ) ){
 				$x = 0;
@@ -108,14 +108,14 @@ function ninja_forms_save_impexp_fields( $data ){
 					$x++;
 				}
 			}
-			
+
 			$favorites = serialize($favorites);
-			
+
 			header("Content-type: application/csv");
 			header("Content-Disposition: attachment; filename=favorites-".$today.".nff");
 			header("Pragma: no-cache");
 			header("Expires: 0");
-			
+
 			echo $favorites;
 			die();
 		}else{
@@ -123,9 +123,9 @@ function ninja_forms_save_impexp_fields( $data ){
 		}
 	}elseif( $_POST['submit'] == __( 'Import Favorites', 'ninja-forms' ) ){
 		if( $_FILES['userfile']['error'] == UPLOAD_ERR_OK AND is_uploaded_file( $_FILES['userfile']['tmp_name'] ) ){
-			$file = file_get_contents($_FILES['userfile']['tmp_name']); 
+			$file = file_get_contents($_FILES['userfile']['tmp_name']);
 			$favorites = unserialize($file);
-			
+
 			if(is_array($favorites)){
 				foreach($favorites as $fav){
 					$fav['data'] = serialize( $fav['data'] );

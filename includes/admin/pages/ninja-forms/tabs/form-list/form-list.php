@@ -14,12 +14,12 @@ add_action('init', 'ninja_forms_register_tab_form_list');
 function ninja_forms_register_tab_form_list(){
 	$new_link = esc_url(add_query_arg(array('form_id' => 'new', 'tab' => 'form_settings')));
 	$args = array(
-		'name' => 'All Forms', 
+		'name' => 'All Forms',
 		'page' => 'ninja-forms',
 		'display_function' => 'ninja_forms_tab_form_list',
-		'save_function' => 'ninja_forms_save_form_list', 
-		'show_save' => false, 
-		'active_class' => 'form-list-active', 
+		'save_function' => 'ninja_forms_save_form_list',
+		'show_save' => false,
+		'active_class' => 'form-list-active',
 		'inactive_class' => 'form-list-inactive',
 		'show_tab_links' => false,
 		'show_this_tab_link' => false,
@@ -32,7 +32,7 @@ function ninja_forms_tab_form_list($form_id, $data){
 	global $wpdb;
 	$all_forms = ninja_forms_get_all_forms();
 	$form_count = count($all_forms);
-	
+
 	if( isset( $_REQUEST['limit'] ) ){
 		$saved_limit = $_REQUEST['limit'];
 		$limit = $_REQUEST['limit'];
@@ -73,7 +73,7 @@ function ninja_forms_tab_form_list($form_id, $data){
 		$start = 0;
 		$end = $limit;
 	}
-	
+
 	?>
 	<ul class="subsubsub">
 		<li class="all"><a href="" class="current">All <span class="count">(<?php echo $form_count;?>)</span></a>
@@ -120,7 +120,7 @@ function ninja_forms_tab_form_list($form_id, $data){
 					}else{
 						$next_page = $last_page;
 					}
-					
+
 			?>
 			<span class="pagination-links">
 				<a class="first-page disabled" title="Go to the first page" href="<?php echo $first_page;?>">«</a>
@@ -183,7 +183,7 @@ function ninja_forms_tab_form_list($form_id, $data){
 					<?php echo $date_updated;?>
 				</td>
 			</tr>
-			
+
 			<?php
 		}
 	}else{

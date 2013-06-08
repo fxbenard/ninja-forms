@@ -54,7 +54,7 @@ function ninja_forms_tab_addons(){
             'link' => 'http://wpninjas.com/downloads/front-end-posting/',
             'plugin' => 'ninja-forms-post-creation/post-creation.php',
             'docs' => '',
-        ),        
+        ),
         array (
             'title' => 'Front-End Editor',
             'image' => 'http://wpninjas.com/wp-content/uploads/edd/2013/03/front-end-editor.png',
@@ -78,7 +78,7 @@ function ninja_forms_tab_addons(){
             'link' => 'http://wpninjas.com/downloads/conditional-logic/',
             'plugin' => 'ninja-forms-conditionals/conditionals.php',
             'docs' => '',
-        ),        
+        ),
         array (
             'title' => 'MailChimp',
             'image' => 'http://wpninjas.com/wp-content/uploads/edd/2013/04/mailchimp-for-ninja-forms-300x121.png',
@@ -86,7 +86,7 @@ function ninja_forms_tab_addons(){
             'link' => 'http://wpninjas.com/downloads/mail-chimp/',
             'plugin' => 'ninja-forms-mailchimp/ninja-forms-mailchimp.php',
             'docs' => '',
-        ),        
+        ),
         array (
             'title' => 'Campaign Monitor',
             'image' => 'http://wpninjas.com/wp-content/uploads/edd/2013/05/campaign-monitor-header-300x121.png',
@@ -94,7 +94,7 @@ function ninja_forms_tab_addons(){
             'link' => 'http://wpninjas.com/downloads/mail-chimp/',
             'plugin' => 'ninja-forms-campaign-monitor/ninja-forms-campaign-monitor.php',
             'docs' => '',
-        ),        
+        ),
         array (
             'title' => 'User Analytics',
             'image' => 'http://wpninjas.com/wp-content/uploads/edd/2013/05/user-analytics-header-300x121.png',
@@ -128,7 +128,7 @@ function ninja_forms_tab_addons(){
             }else{
                 echo '<a href="' . $item['link'] . '" title="' . $item['title'] . '" class="button-primary nf-button">Learn More</a>';
             }
-  
+
         echo '</div>';
     }
 }

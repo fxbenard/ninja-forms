@@ -55,7 +55,7 @@ function ninja_forms_email_user(){
 	$headers .= "From: $email_from \r\n";
 	$headers .= "Content-Type: text/".$email_type."; charset=utf-8\r\n";
 
-	if($ninja_forms_processing->get_form_setting('user_attachments')){		
+	if($ninja_forms_processing->get_form_setting('user_attachments')){
 		$attachments = $ninja_forms_processing->get_form_setting('user_attachments');
 	}else{
 		$attachments = '';

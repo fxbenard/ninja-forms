@@ -16,8 +16,8 @@ function ninja_forms_edit_field_help($field_id){
 			$help_text = $field_data['help_text'];
 		}else{
 			$help_text = '';
-		}		
-		
+		}
+
 		if(isset($field_data['show_help'])){
 			$show_help = $field_data['show_help'];
 		}else{

@@ -2,7 +2,7 @@
 function ninja_forms_register_field_textarea(){
 	$args = array(
 		'name' => 'Textarea',
-		'sidebar' => 'template_fields',		
+		'sidebar' => 'template_fields',
 		'edit_function' => '',
 		'edit_options' => array(
 			array(
@@ -20,7 +20,7 @@ function ninja_forms_register_field_textarea(){
 		),
 		'display_function' => 'ninja_forms_field_textarea_display',
 		'save_function' => '',
-		'group' => 'standard_fields',	
+		'group' => 'standard_fields',
 		'edit_label' => true,
 		'edit_label_pos' => true,
 		'edit_req' => true,
@@ -34,7 +34,7 @@ function ninja_forms_register_field_textarea(){
 			),
 		),
 	);
-	
+
 	ninja_forms_register_field('_textarea', $args);
 }
 

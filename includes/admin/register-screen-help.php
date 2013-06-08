@@ -1,5 +1,5 @@
 <?php
-$args = array( 
+$args = array(
 	'title' => 'Test Help',
 	'display_function' => 'ninja_forms_help_screen_test',
 );

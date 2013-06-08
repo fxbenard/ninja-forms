@@ -102,7 +102,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 				$max_file_size = $s['max_file_size'];
 			}else{
 				$max_file_size = '';
-			}			
+			}
 			if(isset($s['select_all'])){
 				$select_all = $s['select_all'];
 			}else{
@@ -112,7 +112,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 				$default_value = $s['default_value'];
 			}else{
 				$default_value = '';
-			}			
+			}
 			if(isset($s['size'])){
 				$size = $s['size'];
 			}else{
@@ -278,13 +278,13 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 								- <?php _e( 'Select All', 'ninja-forms' );?>
 								</label>
 							</td>
-						<?php							
+						<?php
 						}else{
 							if( is_array( $s['options'] ) AND isset( $s['options'][0] ) ){
-								
+
 								$option_name = $s['options'][0]['name'];
 								$option_value = $s['options'][0]['value'];
-								
+
 								?>
 								<td>
 									<label>
@@ -307,7 +307,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 								?>
 								<tr>
 									<th>
-										
+
 									</th>
 									<td>
 										<label>
@@ -348,7 +348,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 								} ?>
 							</td>
 						</tr>
-					<?php 
+					<?php
 					}
 					break;
 				case 'textarea':
@@ -371,9 +371,9 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 							<?php echo $label; ?>
 						</th>
 						<td>
-							<?php 
+							<?php
 							$args = apply_filters( 'ninja_forms_admin_metabox_rte', array() );
-							wp_editor( $value, $name, $args ); 
+							wp_editor( $value, $name, $args );
 							?>
 						</td>
 					</tr>
@@ -424,8 +424,8 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 						if( $s_display_function != '' ){
 							$arguments['form_id'] = $form_id;
 							$arguments['data'] = $current_settings;
-							call_user_func_array( $s_display_function, $arguments );						
-						}						
+							call_user_func_array( $s_display_function, $arguments );
+						}
 					}
 					break;
 			}
@@ -434,7 +434,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 				?>
 				<tr class="<?php echo $tr_class;?>">
 					<th>
-						
+
 					</th>
 					<td class="howto">
 						<?php echo $desc;?>
