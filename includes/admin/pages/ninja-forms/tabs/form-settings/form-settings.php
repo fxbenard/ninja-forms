@@ -34,12 +34,6 @@ function ninja_forms_display_form_settings($form_id, $data){
 			<label class="<?php echo $prompt_text;?>" id="title-prompt-text" for="title">Enter form title here </label>
 			<input type="text" name="form_title" size="30" value="<?php echo $form_title;?>" id="title" autocomplete="off">
 		</div>
-		<div class="inside">
-			<div id="edit-slug-box">
-				<input type="hidden" name="show_title" value="0">
-				<label for="show_title"><input type="checkbox" name="show_title" id="show_title" value="1" <?php checked($show_title, 1);?>> <?php _e('Display Form Title', 'ninja-forms');?></label>
-			</div>
-		</div>
 	</div>
 <?php
 }
@@ -63,6 +57,11 @@ function ninja_forms_register_form_settings_basic_metabox(){
 		'title' => __('Basic Settings', 'ninja-forms'),
 		//'display_function' => 'ninja_forms_form_settings_basic_metabox',
 		'settings' => array(
+			array(
+				'name' => 'show_title',
+				'type' => 'checkbox',
+				'label' => __('Display Form Title', 'ninja-forms'),
+			),
 			array(
 				'name' => 'save_subs',
 				'type' => 'checkbox',
