@@ -139,10 +139,6 @@ function ninja_forms_field_hidden_display($field_id, $data){
 			break;
 	}
 
-	if(isset($_POST['ninja_forms_field_'.$field_id])){
-		$default_value = $_POST['ninja_forms_field_'.$field_id];
-	}
-
 	?>
 	<input id="ninja_forms_field_<?php echo $field_id;?>" name="ninja_forms_field_<?php echo $field_id;?>" type="hidden" class="<?php echo $field_class;?>" value="<?php echo $default_value;?>" rel="<?php echo $field_id;?>" />
 	<?php
