@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.12
+Stable tag: 2.2.13
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -73,21 +73,31 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.12 =
+= 2.2.13 =
 
-*Bugs:*
+* Changes:*
 
-* Fixed a bug that could cause administrator emails to not send properly.
-
-*Changes:*
-
-* Moved some options around in the Form Settings tab to make them more usable.
+* Added a filter to the individual user-submitted values that are emailed when "Include a list of fields?" is checked - ninja_forms_email_user_value.
+* Added a filter to the label of the default field list that is sent if the "Include a list of fields?" is checked - ninja_forms_email_field_label.
+* Added a filter to the table of defalut fields that is ssent if the "Include a list of fields?" is checked - ninja_forms_email_field_list.
+* Added the option to hide a setting using the admin metabox registration.
+* Cleaned up the Basic Settings metabox to make it more inuitive.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.13 =
+
+* Changes:*
+
+* Added a filter to the individual user-submitted values that are emailed when "Include a list of fields?" is checked - ninja_forms_email_user_value.
+* Added a filter to the label of the default field list that is sent if the "Include a list of fields?" is checked - ninja_forms_email_field_label.
+* Added a filter to the table of defalut fields that is ssent if the "Include a list of fields?" is checked - ninja_forms_email_field_list.
+* Added the option to hide a setting using the admin metabox registration.
+* Cleaned up the Basic Settings metabox to make it more inuitive.
 
 = 2.2.12 =
 
