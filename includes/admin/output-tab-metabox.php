@@ -113,6 +113,11 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 			}else{
 				$default_value = '';
 			}
+			if( isset( $s['style'] ) ){
+				$style = $s['style'];
+			}else{
+				$style = '';
+			}
 			if(isset($s['size'])){
 				$size = $s['size'];
 			}else{
@@ -153,7 +158,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 				case 'text':
 					$value = ninja_forms_esc_html_deep( $value );
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<?php echo $label; ?>
 						</th>
@@ -174,7 +179,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 					break;
 				case 'select':
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>  <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<?php echo $label; ?>
 						</th>
@@ -207,7 +212,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 						$value = array();
 					}
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<?php echo $label; ?>
 						</th>
@@ -238,7 +243,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 					break;
 				case 'checkbox':
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<label for="<?php echo $name;?>"><?php echo $label;?></label>
 						</th>
@@ -265,7 +270,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 
 					?>
 					<input type="hidden" name="<?php echo $name;?>" value="">
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<?php echo $label;?>
 						</th>
@@ -305,7 +310,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 								$option_name = $option['name'];
 								$option_value = $option['value'];
 								?>
-								<tr>
+								<tr <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 									<th>
 
 									</th>
@@ -325,7 +330,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 				case 'radio':
 					if( is_array( $s['options'] ) AND !empty( $s['options'] ) ){
 						$x = 0; ?>
-						<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+						<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 							<th>
 								<?php echo $label;?>
 							</th>
@@ -354,7 +359,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 				case 'textarea':
 					$value = ninja_forms_esc_html_deep( $value );
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<?php echo $label; ?>
 						</th>
@@ -366,7 +371,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 					break;
 				case 'rte':
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<?php echo $label; ?>
 						</th>
@@ -381,7 +386,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 					break;
 				case 'file':
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<?php echo $label; ?>
 						</th>
@@ -394,7 +399,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 					break;
 				case 'desc':
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<th>
 							<?php echo $label; ?>
 						</th>
@@ -411,7 +416,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 					break;
 				case 'submit':
 					?>
-					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?>>
+					<tr <?php if( $tr_class != '' ){ ?>class="<?php echo $tr_class;?>"<?php } ?> <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 						<td colspan="2">
 							<input type="submit" name="<?php echo $name;?>" class="<?php echo $class; ?>" value="<?php echo $label;?>">
 						</td>
@@ -432,7 +437,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 
 			if( $desc != '' AND $s['type'] != 'desc' ){
 				?>
-				<tr class="<?php echo $tr_class;?>">
+				<tr class="<?php echo $tr_class;?>" <?php if( $style != '' ){ ?> style="<?php echo $style;?>"<?php }?>>
 					<th>
 
 					</th>

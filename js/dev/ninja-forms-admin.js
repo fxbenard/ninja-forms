@@ -99,6 +99,17 @@ jQuery(document).ready(function($) {
 		$("." + tmp_class).prop("checked", checked);
 	});
 
+	//Hide the Success Page option if ajax is selected.
+	$("#ajax").change( function(e){
+		if( this.checked ){
+			$(".ajax-hide").hide();
+			$(".no-ajax-hide").show();
+		}else{
+			$(".ajax-hide").show();
+			$(".no-ajax-hide").hide();
+		}
+	});
+
 	//Sidebar Toggle
 	$('.item-edit').live("click", function(event){
 		event.preventDefault();
