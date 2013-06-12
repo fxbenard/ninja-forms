@@ -33,7 +33,7 @@ function ninja_forms_inside_label_hidden( $field_id, $data ){
 			$req_span = '';
 		}
 
-		echo $req_span
+		echo $req_span;
 		?>
 		<input type="hidden" id="ninja_forms_field_<?php echo $field_id;?>_label_hidden" value="<?php echo $label;?>">
 		<?php
