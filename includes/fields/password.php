@@ -108,7 +108,7 @@ function ninja_forms_field_profile_pass_display( $field_id, $data ){
 		<?php
 		if( $label_pos == 'left' OR $label_pos == 'above' ){
 			?>
-			<label><?php echo $re_pass;?>
+			<label><?php echo $re_pass;?></label>
 			<?php
 		}
 		?>
@@ -116,12 +116,7 @@ function ninja_forms_field_profile_pass_display( $field_id, $data ){
 		<?php
 		if( $label_pos == 'right' OR $label_pos == 'below' ){
 			?>
-			<label><?php echo $re_pass;?>
-			<?php
-		}
-		if( $label_pos != 'inside' ){
-			?>
-			</label>
+			<label><?php echo $re_pass;?></label>
 			<?php
 		}
 		if( $adv_pass == 1 ){
