@@ -9,7 +9,7 @@ License: GPLv2 or later
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
 
 == Description ==
-Ninja Forms is a full-featured form creation framework for WordPress. It allows you to easily and quickly design complex forms through a drag and drop interface and absolutely no code. But for you developers it has a ton of hooks and filters so you can do absolutely anything with this powerful form building framework.
+Ninja Forms is the ultimate FREE form creation solution for WordPress. Build WordPress Forms within minutes using Ninja Forms powerful forms creation page. It allows you to easily and quickly design complex forms through a drag and drop interface and absolutely no code. But for you developers it has a ton of hooks and filters so you can do absolutely anything with this powerful form building framework.
 
 The Ninja Forms framework is now on [GitHub](https://github.com/wpninjas/ninja-forms)! If you're a developer and want to help make Ninja Forms better, check out our [GitHub repo](https://github.com/wpninjas/ninja-forms). It's also a great resource for developers who are interested in creating premium extensions for our online store.
 
@@ -88,6 +88,16 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.14 =
+
+* Changes:*
+
+* Added additional default styling rules to improve general form output includng inline list items when selecting left or right labels.
+
+*Bugs:*
+
+* Fixed the label and field output for the password field to make styling easier.
 
 = 2.2.13 =
 
@@ -173,7 +183,7 @@ If you have any feature requests, please feel free to visit [wpninjas.com](http:
 = 2.2.4 =
 
 *Changes:*
-	
+
 * Added an admin metabox option type of "multi_select."
 
 *Bugs:*
