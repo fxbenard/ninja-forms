@@ -126,6 +126,9 @@ a.tooltip span
     margin-bottom: 5px;
 }
 
+.ninja-forms-form-wrap .ninja-forms-form .MultiFile-wrap {
+    display: inline-block;
+}
 
 /* ---------------------------------
 TEXT FIELDS & TEXTAREAS
