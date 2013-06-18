@@ -12,7 +12,7 @@ function ninja_forms_admin_css(){
 
 function ninja_forms_add_class($classes) {
 	// add 'class-name' to the $classes array
-	$classes .= 'nav-menus-php';
+	$classes .= ' nav-menus-php';
 	// return the $classes array
 	return $classes;
 }

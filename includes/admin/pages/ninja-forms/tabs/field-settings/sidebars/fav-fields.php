@@ -21,7 +21,7 @@ function ninja_forms_sidebar_fav_fields(){
 			$field_id = $field['id'];
 			?>
 			<p class="button-controls" id="ninja_forms_insert_fav_field_<?php echo $field_id;?>_p">
-				<a class="button add-new-h2 ninja-forms-insert-fav-field" id="ninja_forms_insert_fav_field_<?php echo $field_id;?>" name=""  href="#"><?php _e($name, 'ninja-forms');?></a>
+				<a class="button-secondary ninja-forms-insert-fav-field" id="ninja_forms_insert_fav_field_<?php echo $field_id;?>" name=""  href="#"><?php _e($name, 'ninja-forms');?></a>
 			</p>
 			<?php
 		}

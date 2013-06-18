@@ -11,7 +11,7 @@ function ninja_forms_sidebar_display_fields($slug){
 				}
 				?>
 				<p class="button-controls">
-					<a class="button add-new-h2 ninja-forms-new-field" id="<?php _e($field_slug, 'ninja-forms');?>" name="_<?php echo $limit;?>"  href="#"><?php _e($field['name'], 'ninja-forms');?></a>
+					<a class="button-secondary ninja-forms-new-field" id="<?php _e($field_slug, 'ninja-forms');?>" name="_<?php echo $limit;?>"  href="#"><?php _e($field['name'], 'ninja-forms');?></a>
 				</p>
 				<?php
 			}

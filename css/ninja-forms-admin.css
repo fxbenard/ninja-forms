@@ -10,6 +10,12 @@ div.field-wrap.list-wrap {
 	clear: both;
 	float: none;
 }
+#nav-menus-frame .ninja-forms-new-field,
+#nav-menus-frame .ninja-forms-insert-def-field,
+#nav-menus-frame .ninja-forms-insert-fav-field {
+	display: block;
+	text-align: center;
+}
 a.ninja-forms-field-add-fav {
 	display: block;
 	width:16px;
@@ -77,10 +83,10 @@ margin: 0;
 }
 
 #menu-settings-column .button-controls a.button {
-	border: 1px solid #999;
+	/*border: 1px solid #999;
 	display: block;
 	margin: 0;
-	padding: 0;
+	padding: 0;*/
 	text-align: center;
 	width: 96%;
 }
@@ -148,6 +154,12 @@ margin: 0;
 
 .nav-menus-php .item-edit {
 border-bottom-color: transparent;
+}
+#side-sortables .item-edit {
+	top: -4px;
+}
+#ninja_forms_admin_metaboxes .item-edit {
+	top: -4px;
 }
 
 .menu-item-settings.list li {
