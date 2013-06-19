@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.14
+Stable tag: 2.2.15
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -73,15 +73,15 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.14 =
+= 2.2.15 =
 
-* Changes:*
+*Changes:*
 
-* Added additional default styling rules to improve general form output includng inline list items when selecting left or right labels.
+* Added a filter to the submission data table within the wp-admin.
 
 *Bugs:*
 
-* Fixed the label and field output for the password field to make styling easier.
+* Fixed a bug that was causing some user's success pages to display incorrectly.
 
 == Requested Features ==
 
@@ -89,9 +89,19 @@ If you have any feature requests, please feel free to visit [wpninjas.com](http:
 
 == Changelog ==
 
+= 2.2.15 =
+
+*Changes:*
+
+* Added a filter to the submission data table within the wp-admin.
+
+*Bugs:*
+
+* Fixed a bug that was causing some user's success pages to display incorrectly.
+
 = 2.2.14 =
 
-* Changes:*
+*Changes:*
 
 * Added additional default styling rules to improve general form output includng inline list items when selecting left or right labels.
 
@@ -101,7 +111,7 @@ If you have any feature requests, please feel free to visit [wpninjas.com](http:
 
 = 2.2.13 =
 
-* Changes:*
+*Changes:*
 
 * Added a filter to the individual user-submitted values that are emailed when "Include a list of fields?" is checked - ninja_forms_email_user_value.
 * Added a filter to the label of the default field list that is sent if the "Include a list of fields?" is checked - ninja_forms_email_field_label.
