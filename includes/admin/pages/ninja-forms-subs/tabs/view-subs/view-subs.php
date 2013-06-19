@@ -256,8 +256,7 @@ function ninja_forms_tab_view_subs(){
 
 			for ($i = $start; $i < $end; $i++) {
 				$sub = $sub_results[$i];
-				$data = $sub['data'];
-				
+				$data = apply_filters( 'ninja_forms_view_sub_data', $sub['data'], $sub['id'] );
 				$download_link = add_query_arg(array('ninja_forms_export_subs_to_csv' => 1, 'sub_id' => $sub['id'], 'form_id' => $form_id));
 				$edit_link = add_query_arg(array('edit_sub_form' => 1, 'sub_id' => $sub['id'], 'form_id' => $form_id));
 				?>
@@ -292,7 +291,7 @@ function ninja_forms_tab_view_subs(){
 								if($field_id == $d['field_id']){
 									$user_value = ninja_forms_stripslashes_deep($d['user_value']);
 									$user_value = ninja_forms_strip_tags_deep($user_value);
-									$user_value = apply_filters('ninja_forms_view_sub_td', $user_value, $d['field_id']);
+									$user_value = apply_filters('ninja_forms_view_sub_td', $user_value, $d['field_id'], $sub['id'] );
 									if(is_array($user_value) AND !empty($user_value)){
 										$y = 1;
 										foreach($user_value as $val){
