@@ -145,7 +145,7 @@ function ninja_forms_field_list_edit($field_id, $data){
 	<span id="ninja_forms_field_<?php echo $field_id;?>_list_span" class="ninja-forms-list-span" style="display: none;">
 		<p class="description description-wide">
 			<?php _e( 'Options', 'ninja-forms' );?>: <a href="#" id="ninja_forms_field_<?php echo $field_id;?>_list_add_option" class="ninja-forms-field-add-list-option button-secondary"><?php _e( 'Add New', 'ninja-forms' );?></a>
-			<a href="#TB_inline?height=750&width=200&height=400&inlineId=ninja_forms_field_style_div&modal=true" class="thickbox button-secondary" id=""><?php _e( 'Import Options', 'ninja-forms' );?></a>
+			<a href="#TB_inline?height=750&width=400&height=400&inlineId=ninja_forms_field_style_div&modal=true" class="thickbox button-secondary" id=""><?php _e( 'Import Options', 'ninja-forms' );?></a>
 		</p>
 
 		<p class="description description-wide">
@@ -171,6 +171,25 @@ function ninja_forms_field_list_edit($field_id, $data){
 		<div id="ninja_forms_field_style_div" style="display:none;">
 			<textarea id="test"></textarea>
 			<br />
+			<p>
+				<?php _e( 'To use this feature, you can paste your CSV into the textarea above.', 'ninja-forms' );?>
+			</p>
+			<p>
+				<?php _e( 'The format should look like the following:', 'ninja-forms' );?>
+<pre>
+Label,Value
+Label,Value
+Label,Value
+</pre>				
+			</p>
+			<p>
+				<?php _e( "If you want to send an empty value, you can use '' for the value.", 'ninja-forms' );?>
+<pre>
+Label,''
+Label,''
+Label,''
+</pre>
+			</p>
 			<input type="button" class="save-list-import button-secondary" value="<?php _e( 'Import', 'ninja-forms-style' );?>" rel="<?php echo $field_id;?>">
 			<input type="button" class="cancel-list-import button-secondary" value="<?php _e( 'Cancel', 'ninja-forms-style' );?>">
 		</div>
