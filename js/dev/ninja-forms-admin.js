@@ -643,6 +643,25 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	// Close the import popup when "cancel" is clicked.
+
+	$(".cancel-list-import").click(function(e){
+		e.preventDefault();
+		tb_remove();
+	});
+
+	// Handle the importing of textarea data when the user clicks: "done"
+
+	$(".save-list-import").click(function(e){
+		e.preventDefault();
+		var options = $(this).parent().find("textarea").val();
+		var field_id = $(this).attr("rel");
+		$.post(ajaxurl, { options: options, field_id: field_id, action:"ninja_forms_import_list_options"}, function(response){
+			$("#ninja_forms_field_" + field_id + "_list_options").append( response );
+			tb_remove();
+		});
+	});
+
 	/* Password Field JS */
 
 	$(".ninja-forms-_profile_pass-reg_password").live("change", function(){

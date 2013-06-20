@@ -137,20 +137,21 @@ function ninja_forms_field_list_edit($field_id, $data){
 	?>
 
 	<p id="ninja_forms_field_<?php echo $field_id;?>_multi_size_p" class="description description-wide" style="<?php if($list_type != 'multi'){ echo 'display:none;';}?>">
-		Multi-Select Box Size: <input type="text" id="" name="ninja_forms_field_<?php echo $field_id;?>[multi_size]" value="<?php echo $multi_size;?>">
+		<?php _e( 'Multi-Select Box Size', 'ninja-forms' );?>: <input type="text" id="" name="ninja_forms_field_<?php echo $field_id;?>[multi_size]" value="<?php echo $multi_size;?>">
 	</p>
 	<p class="description description-wide">
-		<a href="#" id="ninja_forms_field_<?php echo $field_id;?>_collapse_options" name="" class="ninja-forms-field-collapse-options">Expand / Collapse Options</a>
+		<a href="#" id="ninja_forms_field_<?php echo $field_id;?>_collapse_options" name="" class="ninja-forms-field-collapse-options"><?php _e( 'Expand / Collapse Options', 'ninja-forms' );?></a>
 	</p>
 	<span id="ninja_forms_field_<?php echo $field_id;?>_list_span" class="ninja-forms-list-span" style="display: none;">
 		<p class="description description-wide">
-			Options: <a href="#" id="ninja_forms_field_<?php echo $field_id;?>_list_add_option" class="ninja-forms-field-add-list-option">Add New</a>
+			<?php _e( 'Options', 'ninja-forms' );?>: <a href="#" id="ninja_forms_field_<?php echo $field_id;?>_list_add_option" class="ninja-forms-field-add-list-option button-secondary"><?php _e( 'Add New', 'ninja-forms' );?></a>
+			<a href="#TB_inline?height=750&width=200&height=400&inlineId=ninja_forms_field_style_div&modal=true" class="thickbox button-secondary" id=""><?php _e( 'Import Options', 'ninja-forms' );?></a>
 		</p>
 
 		<p class="description description-wide">
 			<input type="hidden" id="" name="ninja_forms_field_<?php echo $field_id;?>[list_show_value]" value="0">
 			<label for="ninja_forms_field_<?php echo $field_id;?>_list_show_value"><input type="checkbox" value="1" id="ninja_forms_field_<?php echo $field_id;?>_list_show_value" name="ninja_forms_field_<?php echo $field_id;?>[list_show_value]" class="ninja-forms-field-list-show-value" <?php if(isset($data['list_show_value']) AND $data['list_show_value'] == 1){ echo "checked='checked'";}?>>
-			Show option values </label>
+			<?php _e( 'Show option values', 'ninja-forms' );?> </label>
 		</p>
 		<div id="ninja_forms_field_<?php echo $field_id;?>_list_options" class="ninja-forms-field-list-options description description-wide">
 			<input type="hidden" name="ninja_forms_field_<?php echo $field_id;?>[list][options]" value="">
@@ -166,7 +167,13 @@ function ninja_forms_field_list_edit($field_id, $data){
 
 		</div>
 	</span>
-
+	<?php add_thickbox(); ?>
+		<div id="ninja_forms_field_style_div" style="display:none;">
+			<textarea id="test"></textarea>
+			<br />
+			<input type="button" class="save-list-import button-secondary" value="<?php _e( 'Import', 'ninja-forms-style' );?>" rel="<?php echo $field_id;?>">
+			<input type="button" class="cancel-list-import button-secondary" value="<?php _e( 'Cancel', 'ninja-forms-style' );?>">
+		</div>
 	<?php
 }
 

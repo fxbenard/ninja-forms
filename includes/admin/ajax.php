@@ -515,3 +515,96 @@ function ninja_forms_array_merge_recursive() {
 
 	return $base;
 }
+
+function ninja_forms_import_list_options(){
+	$options = $_REQUEST['options'];
+	$field_id = $_REQUEST['field_id'];
+
+	$options = csv_explode( $options );
+
+	if( is_array( $options ) ){
+		$tmp_array = array();
+		$x = 0;
+		foreach( $options as $option ){
+			$label = stripslashes( $option[0] );
+			$value = stripslashes( $option[1] );
+			$label = str_replace( "''", "", $label );
+			$value = str_replace( "''", "", $value );
+			$tmp_array[$x]['label'] = $label;
+			$tmp_array[$x]['value'] = $value;
+			$x++;
+		}
+		$x = 0;
+		foreach( $tmp_array as $option ){
+			$hidden = 0;
+			ninja_forms_field_list_option_output($field_id, $x, $option, $hidden);
+			$x++;
+		}
+	}
+
+	die();
+}
+
+add_action( 'wp_ajax_ninja_forms_import_list_options', 'ninja_forms_import_list_options' );
+
+/**
+ * 
+ * Covert a multi-line CSV string into a 2d array. Follows RFC 4180, allows
+ * "cells with ""escaped delimiters""" and multi-line enclosed cells
+ * It assumes the CSV file is properly formatted, and doesn't check for errors
+ * in CSV format.
+ * @param string $str The CSV string
+ * @param string $d The delimiter between values
+ * @param string $e The enclosing character
+ * @param bool $crlf Set to true if your CSV file should return carriage return
+ * 						and line feed (CRLF should be returned according to RFC 4180
+ * @return array 
+ */
+function csv_explode( $str, $d=',', $e='"', $crlf=TRUE ) {
+	// Convert CRLF to LF, easier to work with in regex
+	if( $crlf ) $str = str_replace("\r\n","\n",$str);
+	// Get rid of trailing linebreaks that RFC4180 allows
+	$str = trim($str);
+	// Do the dirty work
+	if ( preg_match_all(
+		'/(?:
+			'.$e.'((?:[^'.$e.']|'.$e.$e.')*+)'.$e.'(?:'.$d.'|\n|$)
+				# match enclose, then match either non-enclose or double-enclose
+				# zero to infinity times (possesive), then match another enclose,
+				# followed by a comma, linebreak, or string end
+			|	####### OR #######
+			([^'.$d.'\n]*+)(?:['.$d.'\n]|$)
+				# match anything thats not a comma or linebreak zero to infinity
+				# times (possesive), then match either a comma or a linebreak or
+				# string end
+		)/x', 
+		$str, $ms, PREG_SET_ORDER
+	) === FALSE ) return FALSE;
+	// Initialize vars, $r will hold our return data, $i will track which line we're on
+	$r = array(); $i = 0;
+	// Loop through results
+	foreach( $ms as $m ) {
+		// If the first group of matches is empty, the cell has no quotes
+		if( empty($m[1]) )
+			// Put the CRLF back in if needed
+			$r[$i][] = ($crlf == TRUE) ? str_replace("\n","\r\n",$m[2]) : $m[2];
+		else {
+			// The cell was quoted, so we want to convert any "" back to " and
+			// any LF back to CRLF, if needed
+			$r[$i][] = ($crlf == TRUE) ?
+				str_replace(
+					array("\n",$e.$e),
+					array("\r\n",$e),
+					$m[1]) :
+				str_replace($e.$e, $e, $m[1]);
+		}
+		// If the raw match doesn't have a delimiter, it must be the last in the
+		// row, so we increment our line count.
+		if( substr($m[0],-1) != $d )
+			$i++;
+	}
+	// An empty array will exist due to $ being a zero-length match, so remove it
+	array_pop( $r );
+	return $r;
+
+}
