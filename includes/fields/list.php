@@ -145,7 +145,7 @@ function ninja_forms_field_list_edit($field_id, $data){
 	<span id="ninja_forms_field_<?php echo $field_id;?>_list_span" class="ninja-forms-list-span" style="display: none;">
 		<p class="description description-wide">
 			<?php _e( 'Options', 'ninja-forms' );?>: <a href="#" id="ninja_forms_field_<?php echo $field_id;?>_list_add_option" class="ninja-forms-field-add-list-option button-secondary"><?php _e( 'Add New', 'ninja-forms' );?></a>
-			<a href="#TB_inline?width=640&height=530&inlineId=ninja_forms_field_style_div" class="thickbox button-secondary" title="Import List Items" id=""><?php _e( 'Import Options', 'ninja-forms' );?></a>
+			<a href="#TB_inline?width=640&height=530&inlineId=ninja_forms_field_<?php echo $field_id;?>_import_options_div" class="thickbox button-secondary" title="Import List Items" id=""><?php _e( 'Import Options', 'ninja-forms' );?></a>
 		</p>
 
 		<p class="description description-wide">
@@ -168,7 +168,7 @@ function ninja_forms_field_list_edit($field_id, $data){
 		</div>
 	</span>
 	<?php add_thickbox(); ?>
-		<div id="ninja_forms_field_style_div" style="display:none;">
+		<div id="ninja_forms_field_<?php echo $field_id;?>_import_options_div" style="display:none;">
 			<textarea id="test" class="list-import-textarea"></textarea>
 			<input type="button" class="save-list-import button-secondary" value="<?php _e( 'Import', 'ninja-forms-style' );?>" rel="<?php echo $field_id;?>">
 			<input type="button" class="cancel-list-import button-secondary" value="<?php _e( 'Cancel', 'ninja-forms-style' );?>">
