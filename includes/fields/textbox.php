@@ -245,7 +245,7 @@ function ninja_forms_field_text_pre_process( $field_id, $user_value ){
 	}
 	$field_row = $ninja_forms_processing->get_field_settings( $field_id );
 	$data = $field_row['data'];
-	if( isset( $data['email'] ) AND $data['email'] == 1 AND isset( $data['req'] ) AND $data['req'] == 1 ){
+	if( isset( $data['email'] ) AND $data['email'] == 1 AND isset( $data['req'] ) AND $data['req'] == 1 AND $user_value != '' ){
 		if ( !filter_var($user_value, FILTER_VALIDATE_EMAIL) ) {
     		$ninja_forms_processing->add_error( 'email-'.$field_id, $invalid_email, $field_id );
 		}
