@@ -37,8 +37,12 @@ function ninja_forms_filter_msgs(){
 		foreach($ninja_forms_processing->get_all_fields() as $key => $val){
 			$field_row = ninja_forms_get_field_by_id($key);
 			$data = $field_row['data'];
-			$label = $data['label'];
-
+			if( isset( $data['label'] ) ){
+				$label = $data['label'];
+			}else{
+				$label = '';
+			}
+			
 			$user_value = '';
 			if(is_array($val) AND !empty($val)){
 				$x = 0;
