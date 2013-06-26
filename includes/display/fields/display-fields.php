@@ -72,10 +72,14 @@ function ninja_forms_display_fields($form_id){
 					$display_style = '';
 				}
 
-				if($display_function != '' AND $show_field){
-					if($type['edit_label_pos']){
-						$label_pos = $data['label_pos'];
-					}else{
+				if ( $display_function != '' AND $show_field ) {
+					if ( $type['edit_label_pos'] ) {
+						if ( isset( $data['label_pos'] ) ) {
+							$label_pos = $data['label_pos'];
+						}else{
+							$label_pos = '';
+						}
+					} else {
 						$label_pos = '';
 					}
 

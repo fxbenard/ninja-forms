@@ -1,12 +1,8 @@
 <?php
-/**
+/*
  * Outputs the HTML for displaying success messages or error messages set to display at location 'general'
  *
-**/
-add_action( 'init', 'ninja_forms_register_before_form_wrap' );
-function ninja_forms_register_before_form_wrap(){
-	add_action( 'ninja_forms_display_before_form', 'ninja_forms_display_response_message', 10 );
-}
+ */
 
 function ninja_forms_display_response_message( $form_id ){
 	global $ninja_forms_processing;
@@ -54,3 +50,5 @@ function ninja_forms_display_response_message( $form_id ){
 	}
 	echo '</div>';
 }
+
+add_action( 'ninja_forms_display_before_form', 'ninja_forms_display_response_message', 10 );

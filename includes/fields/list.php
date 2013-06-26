@@ -74,7 +74,12 @@ function ninja_forms_display_list_type( $field_id, $data ){
 	$field_row = ninja_forms_get_field_by_id( $field_id );
 	$field_type = $field_row['type'];
 	if( $field_type == '_list' ){
-		$list_type = $data['list_type'];
+		if ( isset( $data['list_type'] ) ){
+			$list_type = $data['list_type'];
+		} else{ 
+			$list_type = '';
+		}
+		
 		?>
 		<input type="hidden" id="ninja_forms_field_<?php echo $field_id;?>_list_type" value="<?php echo $list_type;?>">
 		<?php
@@ -207,7 +212,12 @@ function ninja_forms_field_list_display( $field_id, $data ){
 	$type = $field_row['type'];
 	$type_name = $ninja_forms_fields[$type]['name'];
 
-	$list_type = $data['list_type'];
+	if ( isset( $data['list_type'] ) ) {
+		$list_type = $data['list_type'];
+	} else { 
+		$list_type = '';
+	}
+
 
 	if(isset($data['list_show_value'])){
 		$list_show_value = $data['list_show_value'];
@@ -233,7 +243,7 @@ function ninja_forms_field_list_display( $field_id, $data ){
 		$label = $type_name;
 	}
 
-	if(isset($data['multi_size']) OR $data['multi_size'] == ''){
+	if( isset( $data['multi_size'] ) ){
 		$multi_size = $data['multi_size'];
 	}else{
 		$multi_size = 5;
@@ -580,7 +590,12 @@ function ninja_forms_field_filter_list_wrap_class( $field_wrap_class, $field_id 
 	$field_type = $field_row['type'];
 	if( $field_type == '_list' ){
 		$field_data = $field_row['data'];
-		$list_type = $field_data['list_type'];
+		if( isset( $field_data['list_type'] ) ){
+			$list_type = $field_data['list_type'];
+		}else{
+			$list_type = '';
+		}
+		
 		$field_wrap_class = str_replace( 'list-wrap', 'list-'.$list_type.'-wrap', $field_wrap_class );
 	}
 
