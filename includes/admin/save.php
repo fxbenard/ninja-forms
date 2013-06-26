@@ -96,6 +96,9 @@ function ninja_forms_admin_save(){
 			}
 			$arguments['data'] = $data_array;
 			if($save_function != ''){
+				if( !isset( $form_id ) ){
+					$form_id = '';
+				}
 				$ninja_forms_admin_update_message = call_user_func_array($save_function, $arguments);
 				do_action( 'ninja_forms_save_admin_tab', $current_tab, $form_id, $data_array );
 			}
