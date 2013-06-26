@@ -48,23 +48,25 @@ a.ninja-forms-field-remove-fav:hover{
 border-color: #DFDFDF;
 margin: 0;
 }
-
+.nav-menus-php #post-body-content {
+	float: left;
+}
 #post-body-content .description{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
 #post-body-content .description-wide{
-	width: 700px;
+	width: 500px;
 }
 #post-body-content .description-thin{
-	width: 340px;
+	width: 240px;
 }
 #post-body-content .menu-item-handle{
-	width: 710px;
+	width: 510px;
 }
 #post-body-content .menu-item-settings{
-	width: 700px;
+	width: 500px;
 	padding: 10px;
 }
 #post-body-content .checkbox {
@@ -213,7 +215,6 @@ border-bottom-color: transparent;
 
 #poststuff {
 	padding: 10px;
-	overflow: hidden;
 }
 
 #poststuff .inside {
