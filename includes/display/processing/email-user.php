@@ -33,7 +33,6 @@ function ninja_forms_email_user(){
 	$email_type = $ninja_forms_processing->get_form_setting('email_type');
 	$subject = $ninja_forms_processing->get_form_setting('user_subject');
 	$message = $ninja_forms_processing->get_form_setting('user_email_msg');
-	$message = wpautop( $message );
 
 	if(!$subject){
 		$subject = $form_title;
@@ -46,6 +45,10 @@ function ninja_forms_email_user(){
 	}
 	if(!$email_type){
 		$email_type = '';
+	}
+
+	if( $email_type !== 'plain' ){
+		$message = wpautop( $message );
 	}
 
 	$email_from = htmlspecialchars_decode($email_from);
