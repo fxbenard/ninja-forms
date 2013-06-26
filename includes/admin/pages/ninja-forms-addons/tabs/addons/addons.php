@@ -68,7 +68,7 @@ function ninja_forms_tab_addons(){
             'image' => 'http://wpninjas.com/wp-content/uploads/edd/2012/10/multi-part-forms-300x121.png',
             'content' => 'The Multi-Part Forms extension allows you to break long forms into sections, creating a natural flow for your visitors. You can add a breadcrumb trail through the various sections of the form and a progress bar so that your users …',
             'link' => 'http://wpninjas.com/downloads/multi-part-forms/',
-            'plugin' => 'ninja-forms-multi-part/mutli-part.php',
+            'plugin' => 'ninja-forms-multi-part/multi-part.php',
             'docs' => '',
         ),
         array (
