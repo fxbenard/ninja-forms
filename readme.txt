@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.19
+Stable tag: 2.2.20
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -73,17 +73,23 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.19 =
+= 2.2.20 =
 
 *Bugs:*
 
-* Fixed a bug that was causing wpautop() to be applied to non-HTML emails. (Special thanks to Just-Ghali via GitHub)
+* Fixed a bug with required fields.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.20 =
+
+*Bugs:*
+
+* Fixed a bug with required fields.
 
 = 2.2.19 =
 
