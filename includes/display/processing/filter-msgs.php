@@ -33,6 +33,8 @@ function ninja_forms_filter_msgs(){
 
 	//This method has been deprecated in favor of the shortcode [ninja_forms_field id=3] where 3 is the ID of the field. It will be removed in a future version of the plugin.
 	//Loop through each submitted form field and replace any instances of [label] within Success Message, Admin email message, and user email message with the value.
+	
+	/*
 	if($ninja_forms_processing->get_all_fields()){
 		foreach($ninja_forms_processing->get_all_fields() as $key => $val){
 			$field_row = ninja_forms_get_field_by_id($key);
@@ -68,6 +70,7 @@ function ninja_forms_filter_msgs(){
 
 		}
 	}
+	*/
 
 	//Call any functions which may be attached to the filter for our message fields
 	$ninja_forms_processing->update_form_setting('admin_subject', apply_filters('ninja_forms_admin_subject', $admin_subject));

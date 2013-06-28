@@ -29,7 +29,7 @@ function ninja_forms_save_sub(){
 					ninja_forms_remove_from_array($sub_data, "field_id", $field_id, TRUE);
 					$user_value = apply_filters( 'ninja_forms_save_sub', $user_value, $field_id );
 					if( is_array( $user_value ) ){
-						$user_value = array_map( 'esc_html', $user_value );
+						$user_value = ninja_forms_esc_html_deep( $user_value );
 					}else{
 						$user_value = esc_html( $user_value );
 					}

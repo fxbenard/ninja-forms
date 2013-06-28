@@ -27,7 +27,11 @@ function ninja_forms_filter_restore_progress( $data, $field_id ){
 		$process_complete = $ninja_forms_processing->get_form_setting( 'processing_complete' );
 		if ( $process_complete != 1 OR ( $process_complete == 1 AND $clear_form != 1 ) ) {
 			if ( $ninja_forms_processing->get_field_value( $field_id ) !== false ) {
-				$data['default_value'] = esc_html( $ninja_forms_processing->get_field_value( $field_id ) );
+				if( is_array( $ninja_forms_processing->get_field_value( $field_id ) ) ){
+					$data['default_value'] = ninja_forms_esc_html_deep( $ninja_forms_processing->get_field_value( $field_id ) );
+				}else{
+					$data['default_value'] = esc_html( $ninja_forms_processing->get_field_value( $field_id ) );
+				}	
 			}
 		}
 	}
