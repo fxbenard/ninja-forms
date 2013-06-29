@@ -16,15 +16,19 @@ function ninja_forms_email_admin(){
 	$email_type = $ninja_forms_processing->get_form_setting('email_type');
 	$subject = $ninja_forms_processing->get_form_setting('admin_subject');
 	$message = $ninja_forms_processing->get_form_setting('admin_email_msg');
-	
+	$default_email = get_option( 'admin_email' );
+
 	if(!$subject){
 		$subject = $form_title;
 	}
 	if(!$message){
 		$message = '';
 	}
+	if(!$admin_mailto){
+		$admin_mailto = array( $default_email );
+	}
 	if(!$email_from){
-		$email_from = '';
+		$email_from = $default_email;
 	}
 	if(!$email_type){
 		$email_type = '';

@@ -46,8 +46,10 @@ function ninja_forms_field_hidden_edit($field_id, $data){
 			<?php _e( 'Default Value' , 'ninja-forms'); ?><br />
 			<select id="default_value_<?php echo $field_id;?>" name="" class="widefat ninja-forms-hidden-default-value" rel="<?php echo $field_id;?>">
 				<option value="" <?php if($default_value == 'none' OR $default_value == ''){ echo 'selected'; $custom = 'no';}?>><?php _e('None', 'ninja-forms'); ?></option>
+				<option value="_user_id" <?php if($default_value == '_user_id'){ echo 'selected'; $custom = 'no';}?>><?php _e('User ID (If logged in)', 'ninja-forms'); ?></option>
 				<option value="user_firstname" <?php if($default_value == 'user_firstname'){ echo 'selected'; $custom = 'no';}?>><?php _e('User Firstname (If logged in)', 'ninja-forms'); ?></option>
 				<option value="user_lastname" <?php if($default_value == 'user_lastname'){ echo 'selected'; $custom = 'no';}?>><?php _e('User Lastname (If logged in)', 'ninja-forms'); ?></option>
+				<option value="_user_display_name" <?php if($default_value == '_user_display_name'){ echo 'selected'; $custom = 'no';}?>><?php _e('User Display Name (If logged in)', 'ninja-forms'); ?></option>
 				<option value="user_email" <?php if($default_value == 'user_email'){ echo 'selected'; $custom = 'no';}?>><?php _e('User Email (If logged in)', 'ninja-forms'); ?></option>
 				<option value="custom" <?php if($custom != 'no'){ echo 'selected';}?>><?php _e('Custom', 'ninja-forms'); ?> -></option>
 			</select>
@@ -125,14 +127,21 @@ function ninja_forms_field_hidden_display($field_id, $data){
 	$user_ID = $current_user->ID;
 	$user_firstname = $current_user->user_firstname;
     $user_lastname = $current_user->user_lastname;
+    $user_display_name = $current_user->display_name;
     $user_email = $current_user->user_email;
 
 	switch( $default_value ){
+		case '_user_id':
+			$default_value = $user_ID;
+			break;
 		case 'user_firstname':
 			$default_value = $user_firstname;
 			break;
 		case 'user_lastname':
 			$default_value = $user_lastname;
+			break;
+		case '_user_display_name':
+			$default_value = $user_display_name;
 			break;
 		case 'user_email':
 			$default_value = $user_email;

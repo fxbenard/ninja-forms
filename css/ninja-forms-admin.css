@@ -227,6 +227,9 @@ border-bottom-color: transparent;
 #poststuff h2 {
 	margin-top: 0;
 }
+.forms_page_ninja-forms-subs #poststuff {
+	float: left;
+}
 .menu {
 	padding-top: 0;
 }

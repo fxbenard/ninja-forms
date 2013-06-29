@@ -33,6 +33,7 @@ function ninja_forms_email_user(){
 	$email_type = $ninja_forms_processing->get_form_setting('email_type');
 	$subject = $ninja_forms_processing->get_form_setting('user_subject');
 	$message = $ninja_forms_processing->get_form_setting('user_email_msg');
+	$default_email = get_option( 'admin_email' );
 
 	if(!$subject){
 		$subject = $form_title;
@@ -41,7 +42,7 @@ function ninja_forms_email_user(){
 		$message = __('Thank you for filling out this form.', 'ninja-forms');
 	}
 	if(!$email_from){
-		$email_from = '';
+		$email_from = $default_email;
 	}
 	if(!$email_type){
 		$email_type = '';
