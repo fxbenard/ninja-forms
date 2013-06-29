@@ -49,7 +49,6 @@ function ninja_forms_req_fields_process(){
 				$req_error_label = __( 'Please check required fields.', 'ninja-forms' );
 			}
 
-
 			if($req == 1){
 				if($req_validation != ''){
 					$arguments['field_id'] = $field_id;
