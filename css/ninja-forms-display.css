@@ -114,11 +114,11 @@ a.tooltip span
 }
 
 .ninja-forms-form-wrap .ninja-forms-form .field-wrap.label-left .ninja-forms-field,
-.ninja-forms-form-wrap .ninja-forms-form .field-wrap.label-left .star-rating-control {
+.ninja-forms-form-wrap .ninja-forms-form .field-wrap.label-left .ninja-forms-star-rating-control {
     margin-left: 8px;
 }
 .ninja-forms-form-wrap .ninja-forms-form .field-wrap.label-right .ninja-forms-field,
-.ninja-forms-form-wrap .ninja-forms-form .field-wrap.label-right .star-rating-control {
+.ninja-forms-form-wrap .ninja-forms-form .field-wrap.label-right .ninja-forms-star-rating-control {
     margin-right: 8px;
 }
 

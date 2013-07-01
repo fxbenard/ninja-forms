@@ -44,7 +44,7 @@ function ninja_forms_field_rating_display( $field_id, $data ){
 	$x = 1;
 	while( $x <= $rating_stars ){
 		?>
-		<input name="ninja_forms_field_<?php echo $field_id;?>" type="radio" class="star" value="<?php echo $x;?>" <?php checked( $default_value, $x );?>/>
+		<input name="ninja_forms_field_<?php echo $field_id;?>" type="radio" class="ninja-forms-star" value="<?php echo $x;?>" <?php checked( $default_value, $x );?>/>
 		<?php
 		$x++;
 	}
