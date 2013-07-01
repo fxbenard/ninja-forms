@@ -4,7 +4,6 @@
  *
 **/
 
-add_action('ninja_forms_display_before_form_wrap', 'ninja_forms_display_process_message');
 function ninja_forms_display_process_message($form_id){
 	global $ninja_forms_processing_error, $ninja_forms_processing_response;
 	$plugin_settings = get_option("ninja_forms_settings");
@@ -25,3 +24,5 @@ function ninja_forms_display_process_message($form_id){
 	<?php
 	}
 }
+
+add_action('ninja_forms_display_before_form_wrap', 'ninja_forms_display_process_message');
