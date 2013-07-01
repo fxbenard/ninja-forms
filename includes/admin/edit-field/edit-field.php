@@ -10,6 +10,7 @@ function ninja_forms_edit_field($field_id){
 
 function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name = '', $value = '', $width = 'wide', $options = '', $class = '', $desc = ''){
 	global $ninja_forms_fields;
+	$value = ninja_forms_esc_html_deep( $value );
 	$field_row = ninja_forms_get_field_by_id($field_id);
 	$field_type = $field_row['type'];
 	$reg_field = $ninja_forms_fields[$field_type];

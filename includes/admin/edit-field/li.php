@@ -77,6 +77,7 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 			}
 
 			$li_label = stripslashes( $li_label );
+			$li_label = ninja_forms_esc_html_deep( $li_label );
 
 			if ( isset( $reg_field['conditional']['value']['type'] ) ) {
 				$conditional_value_type = $reg_field['conditional']['value']['type'];
