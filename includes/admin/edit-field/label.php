@@ -34,6 +34,19 @@ function ninja_forms_edit_field_label_pos($field_id){
 	$field_data = $field_row['data'];
 	$reg_field = $ninja_forms_fields[$field_type];
 	$edit_label_pos = $reg_field['edit_label_pos'];
+	$label_pos_options = $reg_field['label_pos_options'];
+
+	if( !$label_pos_options OR $label_pos_options == '' ){
+		$options = array(
+			array('name' => 'Left of Element', 'value' => 'left'),
+			array('name' => 'Above Element', 'value' => 'above'),
+			array('name' => 'Below Element', 'value' => 'below'),
+			array('name' => 'Right of Element', 'value' => 'right'),
+			array('name' => 'Inside Element', 'value' => 'inside'),
+		);		
+	}else{
+		$options = $label_pos_options;
+	}
 
 	if($edit_label_pos){
 		if(isset($field_data['label_pos'])){
@@ -41,13 +54,7 @@ function ninja_forms_edit_field_label_pos($field_id){
 		}else{
 			$label_pos = '';
 		}
-		$options = array(
-			array('name' => 'Left of Element', 'value' => 'left'),
-			array('name' => 'Above Element', 'value' => 'above'),
-			array('name' => 'Below Element', 'value' => 'below'),
-			array('name' => 'Right of Element', 'value' => 'right'),
-			array('name' => 'Inside Element', 'value' => 'inside'),
-		);
+
 		ninja_forms_edit_field_el_output($field_id, 'select', 'Label Position', 'label_pos', $label_pos, 'wide', $options, 'widefat');
 	}
 

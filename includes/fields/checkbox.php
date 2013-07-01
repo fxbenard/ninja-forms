@@ -25,6 +25,12 @@ function ninja_forms_register_field_checkbox(){
 		'group' => 'standard_fields',
 		'edit_label' => true,
 		'edit_label_pos' => true,
+		'label_pos_options' => array(
+			array('name' => 'Left of Element', 'value' => 'left'),
+			array('name' => 'Above Element', 'value' => 'above'),
+			array('name' => 'Below Element', 'value' => 'below'),
+			array('name' => 'Right of Element', 'value' => 'right'),
+		),
 		'edit_req' => true,
 		'edit_custom_class' => true,
 		'edit_help' => true,

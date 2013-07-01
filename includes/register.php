@@ -25,6 +25,7 @@ function ninja_forms_register_field($slug, $args = array()){
  		'edit_sub_process' => '',
 		'group' => '',
 		'interact' => true,
+		'label_pos_options' => '',
  		'limit' => '',
  		'name' => $slug,
 		'nesting' => false,
