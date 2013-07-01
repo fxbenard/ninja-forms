@@ -280,8 +280,9 @@ jQuery(document).ready(function($) {
 		field_id = field_id.replace("_label", "");
 		
 		var label = this.value;
+		label = ninja_forms_escape_html( label );
 		if ( $.trim( label ) == '' ){
-			label = $(this).parent().parent().parent().parent().parent().find('.item-type:first').prop("innerHTML");
+			label = $(this).parent().parent().parent().prev().find('.item-type:first').prop("innerHTML");
 		}
 
 		$("#ninja_forms_field_" + field_id + "_title").prop("innerHTML", label);
@@ -500,13 +501,19 @@ jQuery(document).ready(function($) {
 	});
 	
 	//Listen to the "List Type" Select box and show the multi-size input box if "Multi-Select" is selected.
-	$(".ninja-forms-field-list-type").live("change", function(){
+	$(".ninja-forms-_list-list_type").live("change", function(){
 		var field_id = this.id.replace("ninja_forms_field_", "");
 		field_id = field_id.replace("_list_type", "");
 		if(this.value == 'multi'){
 			$("#ninja_forms_field_" + field_id+ "_multi_size_p").show();
 		}else{
 			$("#ninja_forms_field_" + field_id+ "_multi_size_p").hide();			
+		}
+		if(this.value == 'radio' || this.value == 'checkbox'){
+			$("#ninja_forms_field_" + field_id + "_label_pos").val('left');
+			$("#ninja_forms_field_" + field_id + "_label_pos option[value='inside']").attr('disabled', true);
+		}else{
+			$("#ninja_forms_field_" + field_id + "_label_pos option[value='inside']").attr('disabled', false);
 		}
 	});
 	
@@ -865,4 +872,10 @@ function ninja_forms_new_field_response( response ){
 	
 	jQuery("#ninja_forms_field_" + response.new_id + "_label").focus();
 
+}
+
+function ninja_forms_escape_html(html) {
+	var escape = document.createElement('textarea');	
+    escape.innerHTML = html;
+    return escape.innerHTML;
 }
