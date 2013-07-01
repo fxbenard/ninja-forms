@@ -110,6 +110,15 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	//Hide the Ajax button, the Success Message, and the clear and hide form options if a landing page is selected.
+	$(".landing-page-select").change(function(e){
+		if( this.value == '' ){
+			$(".landing-page-hide").show();
+		}else{
+			$(".landing-page-hide").hide();
+		}
+	});
+
 	//Sidebar Toggle
 	$('.item-edit').live("click", function(event){
 		event.preventDefault();
