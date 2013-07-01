@@ -5,7 +5,7 @@ function ninja_forms_register_field_profile_pass(){
 		'display_function' => 'ninja_forms_field_profile_pass_display',
 		'group' => 'standard_fields',
 		'edit_label' => true,
-		'edit_label_pos' => true,
+		'edit_label_pos' => false,
 		'edit_req' => true,
 		'edit_custom_class' => true,
 		'edit_help' => true,
