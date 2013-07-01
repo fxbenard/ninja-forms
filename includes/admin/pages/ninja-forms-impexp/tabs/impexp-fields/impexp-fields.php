@@ -46,12 +46,15 @@ function ninja_forms_register_exp_fav_fields_metabox(){
 	$fav_results = ninja_forms_get_all_favs();
 	$fav_options = array();
 
-	if( is_array( $fav_results ) AND !empty( $fav_results ) ){
-		foreach( $fav_results as $fav ){
+	if ( is_array( $fav_results ) AND !empty( $fav_results ) ) {
+		foreach ( $fav_results as $fav ) {
 			$data = $fav['data'];
 			$label = $data['label'];
 			array_push($fav_options, array('name' => $label, 'value' => $fav['id']));
 		}
+		$empty = '';
+	} else {
+		$empty = __( 'No Favorite Fields Found', 'ninja-forms' );
 	}
 	$args = array(
 		'page' => 'ninja-forms-impexp',
@@ -66,6 +69,11 @@ function ninja_forms_register_exp_fav_fields_metabox(){
 				'desc' => '',
 				'options' => $fav_options,
 				'help_text' => '',
+			),
+			array(
+				'name' => '',
+				'type' => 'desc',
+				'label' => $empty,
 			),
 			array(
 				'name' => 'submit',
