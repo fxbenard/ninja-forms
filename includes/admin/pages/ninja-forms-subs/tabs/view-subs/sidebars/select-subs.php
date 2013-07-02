@@ -58,7 +58,6 @@ function ninja_forms_sidebar_select_subs(){
 		<h4><?php _e('Select A Form', 'ninja-forms');?></h4>	
 		<p class="description">
 			<select name="form_id" id="" class="">
-				<option value="">-- </option>
 			<?php
 			foreach($form_results as $form){
 				$data = $form['data'];

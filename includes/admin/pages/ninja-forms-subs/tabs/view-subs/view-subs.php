@@ -21,16 +21,23 @@ function ninja_forms_tab_view_subs(){
 		$date_format = 'm/d/Y';
 	}
 
+	$all_forms = ninja_forms_get_all_forms();
+	if ( is_array( $all_forms ) AND isset( $all_forms[0] ) ) {
+		$first_form_id = $all_forms[0]['id'];
+	} else {
+		$first_form_id = '';
+	}
+
 	if( isset( $_REQUEST['form_id'] ) AND $_REQUEST['form_id'] == '' ){
 		unset($_SESSION['ninja_forms_form_id']);
-		$form_id = '';
+		$form_id = $first_form_id;
 	}else if( isset( $_REQUEST['form_id'] ) AND $_REQUEST['form_id'] != '' ){
 		$_SESSION['ninja_forms_form_id'] = $_REQUEST['form_id'];
 		$form_id = $_REQUEST['form_id'];
 	}else if( isset( $_SESSION['ninja_forms_form_id']) AND $_SESSION['ninja_forms_form_id'] != 'all' ){
 		$form_id = $_SESSION['ninja_forms_form_id'];
 	}else{
-		$form_id = '';
+		$form_id = $first_form_id;
 	}
 
 	if( isset( $_REQUEST['sub_id'] ) AND !empty( $_REQUEST['sub_id'] ) ){
