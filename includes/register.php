@@ -8,6 +8,7 @@ function ninja_forms_register_field($slug, $args = array()){
 
 	$defaults = array(
 		'conditional' => '',
+		'default_label_pos' => '',
  		'display_function' => '',
  		'display_label' => true,
  		'display_wrap' => true,

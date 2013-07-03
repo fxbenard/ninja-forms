@@ -35,6 +35,7 @@ function ninja_forms_display_fields($form_id){
 					$req = '';
 				}
 
+				$default_label_pos = $type['default_label_pos'];
 				$display_wrap = $type['display_wrap'];
 				$display_label = $type['display_label'];
 				$sub_edit_function = $type['sub_edit_function'];
@@ -80,7 +81,7 @@ function ninja_forms_display_fields($form_id){
 							$label_pos = '';
 						}
 					} else {
-						$label_pos = '';
+						$label_pos = $default_label_pos;
 					}
 
 					do_action( 'ninja_forms_display_before_field', $field_id, $data );
