@@ -15,6 +15,7 @@ function ninja_forms_register_tab_field_settings(){
 		'save_function' => 'ninja_forms_save_field_settings',
 		'disable_no_form_id' => true,
 		'show_save' => false,
+		'tab_reload' => true,
 	);
 	ninja_forms_register_tab('field_settings', $args);
 }

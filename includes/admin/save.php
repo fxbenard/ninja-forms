@@ -9,11 +9,13 @@ function ninja_forms_admin_save(){
 			$current_tab = ninja_forms_get_current_tab();
 
 			$data_array = array();
-			if(isset($_REQUEST['form_id'])){
-				$form_id = $_REQUEST['_form_id'];
+			if ( isset( $_REQUEST['form_id'] ) ) {
+				$form_id = $_REQUEST['form_id'];
+			} else {
+				$form_id = '';
 			}
-			foreach($_POST as $key => $val){
-				if(substr($key, 0, 1) != '_'){
+			foreach ( $_POST as $key => $val ) {
+				if ( substr($key, 0, 1) != '_') {
 					$data_array[$key] = $val;
 				}
 			}
@@ -89,6 +91,7 @@ function ninja_forms_admin_save(){
 
 			// Get the save function of our current tab and call it, passing the data that has been posted.
 			$save_function = $ninja_forms_tabs[$current_page][$current_tab]['save_function'];
+			$tab_reload = $ninja_forms_tabs[$current_page][$current_tab]['tab_reload'];
 			$arguments = func_get_args();
 			array_shift($arguments); // We need to remove the first arg ($function_name)
 			if(isset($form_id)){
@@ -102,8 +105,11 @@ function ninja_forms_admin_save(){
 				$ninja_forms_admin_update_message = call_user_func_array($save_function, $arguments);
 				do_action( 'ninja_forms_save_admin_tab', $current_tab, $form_id, $data_array );
 			}
+			if ( $tab_reload ) {
+				$redirect_array = array( 'update_message' => urlencode( $ninja_forms_admin_update_message ) );
+				$url = add_query_arg( $redirect_array );
+				wp_redirect( $url );
+			}		
 		}
-		$url = add_query_arg( array( 'update_message' => urlencode( $ninja_forms_admin_update_message ) ) );
-		wp_redirect( $url );
 	}
 }

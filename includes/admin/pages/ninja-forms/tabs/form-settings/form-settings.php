@@ -8,6 +8,7 @@ function ninja_forms_register_tab_form_settings(){
 		'page' => 'ninja-forms',
 		'display_function' => 'ninja_forms_display_form_settings',
 		'save_function' => 'ninja_forms_save_form_settings',
+		'tab_reload' => true,
 		//'title' => '<h2>Forms <a href="'.$all_forms_link.'" class="add-new-h2">'.__('View All Forms', 'ninja-forms').'</a></h2>',
 	);
 	ninja_forms_register_tab('form_settings', $args);
