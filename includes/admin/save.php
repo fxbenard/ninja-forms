@@ -31,7 +31,7 @@ function ninja_forms_admin_save(){
 					if( isset( $opts['settings'] ) AND !empty( $opts['settings'] ) ){
 						foreach( $opts['settings'] as $setting ){
 							if( isset( $setting['save_function'] ) ){
-								if(isset($form_id)){
+								if( isset( $form_id ) AND $form_id != '' ){
 									$arguments['form_id'] = $form_id;
 								}
 								$arguments['data'] = $data_array;
@@ -50,7 +50,7 @@ function ninja_forms_admin_save(){
 						$save_function = $opts['save_function'];
 						$arguments = func_get_args();
 						array_shift($arguments); // We need to remove the first arg ($function_name)
-						if(isset($form_id)){
+						if ( isset( $form_id ) AND $form_id != '' ) {
 							$arguments['form_id'] = $form_id;
 						}
 						$arguments['data'] = $data_array;
@@ -74,7 +74,7 @@ function ninja_forms_admin_save(){
 						$save_function = $sidebar['save_function'];
 						$arguments = func_get_args();
 						array_shift($arguments); // We need to remove the first arg ($function_name)
-						if( isset( $form_id ) ){
+						if ( isset( $form_id ) AND $form_id != '' ){
 							$arguments['form_id'] = $form_id;
 						}
 						$arguments['data'] = $data_array;
@@ -94,14 +94,16 @@ function ninja_forms_admin_save(){
 			$tab_reload = $ninja_forms_tabs[$current_page][$current_tab]['tab_reload'];
 			$arguments = func_get_args();
 			array_shift($arguments); // We need to remove the first arg ($function_name)
-			if(isset($form_id)){
+			if ( isset( $form_id ) AND $form_id != '' ) {
 				$arguments['form_id'] = $form_id;
 			}
 			$arguments['data'] = $data_array;
+
 			if($save_function != ''){
 				if( !isset( $form_id ) ){
 					$form_id = '';
 				}
+
 				$ninja_forms_admin_update_message = call_user_func_array($save_function, $arguments);
 				do_action( 'ninja_forms_save_admin_tab', $current_tab, $form_id, $data_array );
 			}
