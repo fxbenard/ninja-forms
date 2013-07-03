@@ -353,7 +353,8 @@ function ninja_forms_save_form_settings($form_id, $data){
 		$wpdb->insert( NINJA_FORMS_TABLE_NAME, $data_array );
 		$redirect = add_query_arg( array('form_id' => $wpdb->insert_id, 'update_message' => __( 'Form Settings Saved', 'ninja-forms' ) ) );
 		do_action( 'ninja_forms_save_new_form_settings', $wpdb->insert_id, $data );
-		header( "Location: ".$redirect );
+		wp_redirect( $redirect );
+		exit();
 	}
 	$update_msg = __( 'Form Settings Saved', 'ninja-forms' );
 	return $update_msg;
