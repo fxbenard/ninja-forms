@@ -24,9 +24,6 @@ function ninja_forms_email_admin(){
 	if(!$message){
 		$message = '';
 	}
-	if(!$admin_mailto){
-		$admin_mailto = array( $default_email );
-	}
 	if(!$email_from){
 		$email_from = $default_email;
 	}

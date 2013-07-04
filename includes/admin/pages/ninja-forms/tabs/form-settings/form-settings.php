@@ -345,11 +345,19 @@ function ninja_forms_save_form_settings($form_id, $data){
 	foreach( $data as $key => $val ){
 		$form_data[$key] = $val;
 	}
-
-	$data_array = array('data' => serialize($form_data));
+	
 	if($form_id != 'new'){
+		$data_array = array('data' => serialize($form_data));
 		$wpdb->update( NINJA_FORMS_TABLE_NAME, $data_array, array( 'id' => $form_id ));
 	}else{
+		if ( !isset( $form_data['admin_mailto'] ) ) {
+			$form_data['admin_mailto'] = array( get_option( 'admin_email' ) );
+		}
+		if ( !isset( $form_data['email_from'] ) ) {
+			$form_data['email_from'] = get_option( 'admin_email' );
+		}
+		$data_array = array('data' => serialize($form_data));
+		
 		$wpdb->insert( NINJA_FORMS_TABLE_NAME, $data_array );
 		$redirect = add_query_arg( array('form_id' => $wpdb->insert_id, 'update_message' => __( 'Form Settings Saved', 'ninja-forms' ) ) );
 		do_action( 'ninja_forms_save_new_form_settings', $wpdb->insert_id, $data );
