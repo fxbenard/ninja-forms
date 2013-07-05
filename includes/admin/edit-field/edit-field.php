@@ -10,7 +10,7 @@ function ninja_forms_edit_field($field_id){
 
 function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name = '', $value = '', $width = 'wide', $options = '', $class = '', $desc = ''){
 	global $ninja_forms_fields;
-	$value = ninja_forms_esc_html_deep( $value );
+
 	$field_row = ninja_forms_get_field_by_id($field_id);
 	$field_type = $field_row['type'];
 	$reg_field = $ninja_forms_fields[$field_type];
@@ -20,17 +20,18 @@ function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name =
 	$name = 'ninja_forms_field_'.$field_id.'['.$name.']';
 
 	if($type != 'rte'){
+		$value = ninja_forms_esc_html_deep( $value );
 	?>
 	<div class="description description-<?php echo $width;?> <?php echo $type;?>" id="<?php echo $name;?>_p">
 		<span class="field-option">
 			<?php
 	}
-			if($type != 'checkbox' AND $type != 'desc'){
-			?>
-			<label for="<?php echo $id;?>" id="<?php echo $id;?>_label">
-				<?php _e( $label , 'ninja-forms'); ?></label><br/>
-	<?php
-			}
+	if($type != 'checkbox' AND $type != 'desc'){
+		?>
+		<label for="<?php echo $id;?>" id="<?php echo $id;?>_label">
+			<?php _e( $label , 'ninja-forms'); ?></label><br/>
+		<?php
+	}
 	switch($type){
 		case 'text':
 		?>
