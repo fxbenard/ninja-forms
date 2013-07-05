@@ -52,12 +52,12 @@ function ninja_forms_filter_email_add_fields( $message ){
 			$field_row = ninja_forms_get_field_by_id( $field_id );
 			$field_label = $field_row['data']['label'];
 			$field_label = apply_filters( 'ninja_forms_email_field_label', $field_label, $field_id );
+			$user_value = apply_filters( 'ninja_forms_email_user_value', $user_value, $field_id );
 			$field_type = $field_row['type'];
 			if( $ninja_forms_fields[$field_type]['process_field'] ){
 				if( is_array( $user_value ) AND !empty( $user_value ) ){
 					$x = 0;
 					foreach($user_value as $val){
-						$val = apply_filters( 'ninja_forms_email_user_value', $val, $field_id );						
 						if(!is_array($val)){
 							if($x > 0){
 								$field_label = '----';
