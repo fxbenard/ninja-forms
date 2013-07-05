@@ -93,6 +93,20 @@ If you have any feature requests, please feel free to visit [wpninjas.com](http:
 
 == Changelog ==
 
+= 2.2.25 =
+
+* If you are having issues with your Text fields displaying HTML code, please update to this version.
+
+*Bugs:*
+
+* Fixed a widespread bug that caused the fields using Rich Text Editors to save encoded HTML rather than HTML.
+* Fixed a bug that prevented Multiselect and Checkbox list fields from re-populating properly when the page reloaded.
+
+*Changes:*
+
+* Added two new filters that are ran when a submission is exported to CSV. ninja_forms_export_sub_label and ninja_forms_export_sub_value.
+* Moved the location of the ninja_forms_email_user_value filter to be more effective.
+
 = 2.2.24 =
 
 *Bugs:*
