@@ -247,6 +247,17 @@ function ninja_forms_load_lang() {
 	load_plugin_textdomain( 'ninja-forms', false, $lang_dir );
 }
 add_action('init', 'ninja_forms_load_lang');
+
+function ninja_forms_update_version_number(){
+	$plugin_settings = get_option( 'ninja_forms_settings' );
+	if ( NINJA_FORMS_VERSION != $plugin_settings['version'] ) {
+		$plugin_settings['version'] = NINJA_FORMS_VERSION;
+		update_option( 'ninja_forms_settings', $plugin_settings );
+	}
+}
+
+add_action( 'admin_init', 'ninja_forms_update_version_number' );
+
 /*
 $plugin_settings = get_option( 'ninja_forms_settings' );
 
