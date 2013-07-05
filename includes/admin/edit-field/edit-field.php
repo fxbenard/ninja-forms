@@ -93,6 +93,7 @@ function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name =
 		<?php
 		break;
 		case 'rte':
+			$value = html_entity_decode( $value );
 			$args = apply_filters( 'ninja_forms_edit_field_rte', array() );
 			wp_editor( $value, $name, $args );
 		break;
