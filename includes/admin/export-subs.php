@@ -42,7 +42,7 @@ function ninja_forms_export_subs_to_csv( $sub_ids = '', $return = false ){
 				$label = '';
 			}
 			if($process_field){
-				$label_array[0][$field_id] = $label;
+				$label_array[0][$field_id] = apply_filters( 'ninja_forms_export_sub_label', $label, $field_id );
 			}
 		}
 	}
@@ -72,7 +72,7 @@ function ninja_forms_export_subs_to_csv( $sub_ids = '', $return = false ){
 						if( !$found ){
 							$user_value = '';
 						}
-						$value_array[$x][] = $user_value;
+						$value_array[$x][] = apply_filters( 'ninja_forms_export_sub_value', $user_value, $field_id );
 					}
 				}
 			}
