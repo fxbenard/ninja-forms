@@ -93,7 +93,13 @@ function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name =
 		<?php
 		break;
 		case 'rte':
-			$value = html_entity_decode( $value );
+			$plugin_settings = get_option( 'ninja_forms_settings' );
+			if ( !isset( $plugin_settings['version_2_2_25_rte_fix'] ) OR $plugin_settings['version_2_2_25_rte_fix'] == '' ) {
+				$value = html_entity_decode( $value );
+				$plugin_settings['version_2_2_25_rte_fix'] = 1;
+				update_option( 'ninja_forms_settings', $plugin_settings );
+			}
+			
 			$args = apply_filters( 'ninja_forms_edit_field_rte', array() );
 			wp_editor( $value, $name, $args );
 		break;
