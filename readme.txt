@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.24
+Stable tag: 2.2.25
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -73,11 +73,19 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.24 =
+= 2.2.25 =
+
+* If you are having issues with your Text fields displaying HTML code, please update to this version.
 
 *Bugs:*
 
-* Fixed a bug that caused the form settings tab to reload when a new form is created.
+* Fixed a widespread bug that caused the fields using Rich Text Editors to save encoded HTML rather than HTML.
+* Fixed a bug that prevented Multiselect and Checkbox list fields from re-populating properly when the page reloaded.
+
+*Changes:*
+
+* Added two new filters that are ran when a submission is exported to CSV. ninja_forms_export_sub_label and ninja_forms_export_sub_value.
+* Moved the location of the ninja_forms_email_user_value filter to be more effective.
 
 == Requested Features ==
 
