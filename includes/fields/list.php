@@ -248,7 +248,7 @@ function ninja_forms_field_list_display( $field_id, $data ){
 		$multi_size = 5;
 	}
 
-	if( isset( $data['default_value'] ) AND !is_array( $data['default_value'] ) ){
+	if( isset( $data['default_value'] ) AND !empty( $data['default_value'] ) ){
 		$selected_value = $data['default_value'];
 	}else{
 		$selected_value = '';
