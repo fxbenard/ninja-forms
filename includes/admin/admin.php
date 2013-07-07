@@ -68,8 +68,8 @@ function ninja_forms_admin(){
 		<input type="hidden" name="_fields_order" id="_fields_order" value="same">
 		<?php wp_nonce_field('_ninja_forms_save','_ninja_forms_admin_submit'); ?>
 		<div class="wrap">
-			<div id="icon-ninja-custom-forms" class="icon32"><img src="<?php echo NINJA_FORMS_URL;?>/images/wpnj-ninja-head.png"></div>
 			<?php
+				screen_icon( 'ninja-custom-forms' );
 				if(isset($ninja_forms_tabs[$current_page][$current_tab]['title'])){
 					echo $ninja_forms_tabs[$current_page][$current_tab]['title'];
 				}

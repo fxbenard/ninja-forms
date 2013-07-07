@@ -210,7 +210,8 @@ border-bottom-color: transparent;
 #plugin_settings_upload_size {
 	text-align:right;
 }
-.icon-ninja-custom-forms {
+#icon-ninja-custom-forms {
+	background-image: url('../images/wpnj-ninja-head.png') !important;
 }
 
 #poststuff {
