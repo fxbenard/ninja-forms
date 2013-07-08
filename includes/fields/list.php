@@ -290,13 +290,14 @@ function ninja_forms_field_list_display( $field_id, $data ){
 						$value = $label;
 					}
 
-					if($selected_value == $value){
+					if ( $selected_value == $value OR ( is_array( $selected_value ) AND in_array( $value, $selected_value ) ) ) {
 						$selected = 'selected';
 					}else if( $selected_value == '' AND isset( $option['selected'] ) AND $option['selected'] == 1 ){
 						$selected = 'selected';
 					}else{
 						$selected = '';
 					}
+					
 					?>
 					<option value="<?php echo $value;?>" <?php echo $selected;?> style="<?php echo $display_style;?>"><?php echo $label;?></option>
 				<?php
@@ -338,7 +339,7 @@ function ninja_forms_field_list_display( $field_id, $data ){
 					$value = $label;
 				}
 
-				if($selected_value == $value){
+				if ( $selected_value == $value OR ( is_array( $selected_value ) AND in_array( $value, $selected_value ) ) ) {
 					$selected = 'checked';
 				}else if( $selected_value == '' AND isset( $option['selected'] ) AND $option['selected'] == 1 ){
 					$selected = 'checked';
