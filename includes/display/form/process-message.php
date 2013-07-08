@@ -25,4 +25,4 @@ function ninja_forms_display_process_message($form_id){
 	}
 }
 
-add_action('ninja_forms_display_before_form_wrap', 'ninja_forms_display_process_message');
+add_action( 'ninja_forms_display_before_form_wrap', 'ninja_forms_display_process_message' );
