@@ -3,7 +3,7 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://wpninjas.com/ninja-forms/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 2.2.25
+Version: 2.2.26
 Author: The WP Ninjas
 Author URI: http://wpninjas.net
 */
@@ -48,9 +48,9 @@ Ninja Forms also uses the following jQuery plugins. Their licenses can be found 
 */
 global $wpdb, $wp_version;
 
-define("NINJA_FORMS_DIR", WP_PLUGIN_DIR."/ninja-forms");
-define("NINJA_FORMS_URL", plugins_url()."/ninja-forms");
-define("NINJA_FORMS_VERSION", "2.2.25");
+define("NINJA_FORMS_DIR", WP_PLUGIN_DIR."/".basename( dirname( __FILE__ ) ) );
+define("NINJA_FORMS_URL", plugins_url()."/".basename( dirname( __FILE__ ) ) );
+define("NINJA_FORMS_VERSION", "2.2.26");
 define("NINJA_FORMS_TABLE_NAME", $wpdb->prefix . "ninja_forms");
 define("NINJA_FORMS_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fields");
 define("NINJA_FORMS_FAV_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fav_fields");
@@ -115,6 +115,7 @@ require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/help.php" );
 require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/li.php" );
 require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/remove-button.php" );
 require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/save-button.php" );
+//require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/calc.php" );
 
 //Display Form Functions
 require_once( NINJA_FORMS_DIR . "/includes/display/form/display-form.php" );
@@ -232,6 +233,7 @@ require_once( NINJA_FORMS_DIR . "/includes/fields/desc.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/textarea.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/password.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/rating.php" );
+//require_once( NINJA_FORMS_DIR . "/includes/fields/calc.php" );
 
 require_once( NINJA_FORMS_DIR . "/includes/admin/save.php" );
 
@@ -258,27 +260,6 @@ function ninja_forms_update_version_number(){
 
 add_action( 'admin_init', 'ninja_forms_update_version_number' );
 
-/*
-$plugin_settings = get_option( 'ninja_forms_settings' );
-
-// retrieve our license key from the DB
-if( isset( $plugin_settings['license_key'] ) ){
-	$license_key = $plugin_settings['license_key'];
-}else{
-	$license_key = '';
-}
-
-
-// setup the updater
-$edd_updater = new EDD_SL_Plugin_Updater( NINJA_FORMS_EDD_SL_STORE_URL, __FILE__, array(
-		'version' 	=> NINJA_FORMS_VERSION, 		// current version number
-		'license' 	=> $license_key, 	// license key (used get_option above to retrieve from DB)
-		'item_name'     => NINJA_FORMS_EDD_SL_ITEM_NAME, 	// name of this plugin
-		'author' 	=> 'WP Ninjas'  // author of this plugin
-	)
-);
-*/
-
 register_activation_hook( __FILE__, 'ninja_forms_activation' );
 
 function ninja_forms_return_echo($function_name){
@@ -288,34 +269,6 @@ function ninja_forms_return_echo($function_name){
     call_user_func_array($function_name, $arguments);
 	$return = ob_get_clean();
 	return $return;
-}
-
-function ninja_forms_activate_license() {
-	$plugin_settings = get_option('ninja_forms_settings');
-	$license = trim($plugin_settings['license_key']);
-
-	if($license != ''){
-		// data to send in our API request
-		$api_params = array(
-			'edd_action'=> 'activate_license',
-			'license' 	=> $license,
-			'item_name' => urlencode( NINJA_FORMS_EDD_SL_ITEM_NAME ) // the name of our product in EDD
-		);
-
-		// Call the custom API.
-		$response = wp_remote_get( add_query_arg( $api_params, NINJA_FORMS_EDD_SL_STORE_URL ) );
-
-		// make sure the response came back okay
-		if ( is_wp_error( $response ) )
-			return false;
-
-		// decode the license data
-		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
-
-		// $license_data->license will be either "active" or "inactive"
-
-		return $license_data->license;
-	}
 }
 
 function ninja_forms_random_string($length = 10){
