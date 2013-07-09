@@ -105,7 +105,8 @@ function ninja_forms_field_profile_pass_display( $field_id, $data ){
 	if( $reg_password == 1 ){
 		?>
 		<input id="pass1_<?php echo $field_id;?>" title="" name="ninja_forms_field_<?php echo $field_id;?>" type="password" class="<?php echo $field_class;?> pass1" value="<?php echo $default_value;?>" rel="<?php echo $field_id;?>" />
-		<br />
+		</div>
+		<div class="ninja-forms-pass2">
 		<?php
 		if( $label_pos == 'left' OR $label_pos == 'above' ){
 			?>
@@ -120,9 +121,9 @@ function ninja_forms_field_profile_pass_display( $field_id, $data ){
 			<label><?php echo $re_pass;?></label>
 			<?php
 		}
+		echo '</div>';
 		if( $adv_pass == 1 ){
 			?>
-			<br />
 			<div id="pass-strength-result"><?php _e('Strength indicator'); ?></div>
 				<p class="description indicator-hint"><?php _e('Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! " ? $ % ^ &amp; ).'); ?></p>
 			<?php
@@ -130,7 +131,7 @@ function ninja_forms_field_profile_pass_display( $field_id, $data ){
 
 	}else{
 		?>
-		<input id="ninja_forms_field_<?php echo $field_id;?>" title="" name="ninja_forms_field_<?php echo $field_id;?>" type="password" class="<?php echo $field_class;?>" value="<?php echo $default_value;?>" rel="<?php echo $field_id;?>" />
+		<input id="ninja_forms_field_<?php echo $field_id;?>" title="" name="ninja_forms_field_<?php echo $field_id;?>" type="password" class="<?php echo $field_class;?>" value="<?php echo $default_value;?>" rel="<?php echo $field_id;?>" /></div>
 		<?php
 	}
 }
@@ -148,3 +149,19 @@ function ninja_forms_field_profile_pass_pre_process( $field_id, $user_value ){
 		}
 	}
 }
+
+function ninja_forms_field_profile_add_open_wrapper( $field_id, $data ) {
+	$field_row = ninja_forms_get_field_by_id( $field_id );
+	if ( '_profile_pass' == $field_row['type'] ) {
+		echo '<div class="ninja-forms-pass1">';
+	}
+}
+add_action( 'ninja_forms_display_after_opening_field_wrap', 'ninja_forms_field_profile_add_open_wrapper', 10, 2 );
+
+function ninja_forms_field_profile_add_close_wrapper( $field_id, $data ) {
+	$field_row = ninja_forms_get_field_by_id( $field_id );
+	if ( '_profile_pass' == $field_row['type'] ) {
+		//echo '</div>';
+	}
+}
+add_action( 'ninja_forms_display_before_closing_field_wrap', 'ninja_forms_field_profile_add_close_wrapper', 10, 2 );
