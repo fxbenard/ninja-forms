@@ -1,0 +1,989 @@
+# Copyright (C) 2013 Ninja Forms
+# This file is distributed under the same license as the Ninja Forms package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ninja Forms 2.2.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/ninja-forms\n"
+"POT-Creation-Date: 2013-07-09 09:07+0100\n"
+"PO-Revision-Date: 2013-07-09 09:10+0100\n"
+"Last-Translator: Florian Simeth <florian.simeth@online.de>\n"
+"Language-Team: WP-Buddy.com <info@wp-buddy.com>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/activation.php:132
+msgid "Fields marked with a * are required"
+msgstr "Felder mit * sind Pflichtfelder"
+
+#: ../includes/activation.php:135
+msgid "This is a required field"
+msgstr "Dies ist ein Pflichtfeld"
+
+#: ../includes/activation.php:136 ../includes/activation.php:153
+msgid "Please answer the anti-spam question correctly."
+msgstr "Bitte beantworte die Antispam-Frage richtig."
+
+#: ../includes/activation.php:137
+msgid "Processing"
+msgstr "Verarbeite"
+
+#: ../includes/activation.php:138 ../includes/activation.php:144
+msgid "Login"
+msgstr "Einloggen"
+
+#: ../includes/activation.php:139
+msgid "Username"
+msgstr "Benutzername"
+
+#: ../includes/activation.php:140
+msgid "Reset Password (Opens in a new window)"
+msgstr "Passwort zurücksetzen (Öffnet in neuem Fenster)"
+
+#: ../includes/activation.php:141
+msgid "Password"
+msgstr "Passwort"
+
+#: ../includes/activation.php:142 ../includes/fields/password.php:38
+msgid "Re-enter Password"
+msgstr "Passwort erneut eingeben"
+
+#: ../includes/activation.php:143
+msgid "Passwords do not match."
+msgstr "Passwörter stimmen nicht überein."
+
+#: ../includes/activation.php:145 ../includes/fields/list.php:178
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../includes/activation.php:146
+msgid "Login failed, please try again."
+msgstr "Login schlug fehl. Bitte versuche es später noch einmal."
+
+#: ../includes/activation.php:147 ../includes/activation.php:149
+msgid "Register"
+msgstr "Registrieren"
+
+#: ../includes/activation.php:148
+msgid "Email Address"
+msgstr "E-Mail Adresse"
+
+#: ../includes/activation.php:150
+msgid "There was an error registering you for this site."
+msgstr "Ein Fehler trat während der Registrierung auf."
+
+#: ../includes/activation.php:151
+msgid "4 + 9 = "
+msgstr ""
+
+#: ../includes/activation.php:152
+msgid "13"
+msgstr ""
+
+#: ../includes/activation.php:506
+msgid "Ninja Forms Password"
+msgstr "Ninja Forms Passwort"
+
+#: ../includes/activation.php:507
+msgid ""
+"You are receiving this email because you have an incomplete form. Your "
+"username is now your email address and your password has been reset. It is "
+"now "
+msgstr ""
+"Du erhältst diese E-Mail weil ein Formular noch nicht vollständig ist. Dein "
+"Benutzername ist jetzt deine E-Mail Adresse und Dein Passwort wurde "
+"zurückgesetzt."
+
+#: ../includes/widget.php:14
+msgid "Ninja Forms Widget"
+msgstr "Ninja Forms Widget"
+
+#: ../includes/widget.php:84
+msgid "Display Title"
+msgstr "Titel anzeigen"
+
+#: ../includes/widget.php:91 ../includes/admin/post-metabox.php:39
+#: ../includes/fields/hidden.php:48 ../includes/fields/textbox.php:99
+#: ../includes/fields/textbox.php:136
+msgid "None"
+msgstr "Keine"
+
+#: ../includes/admin/admin.php:142
+msgid "Save Form Settings"
+msgstr "Formular-Einstellungen speichern"
+
+#: ../includes/admin/output-tab-metabox.php:283
+msgid "Select All"
+msgstr "Alle auswählen"
+
+#: ../includes/admin/post-metabox.php:12 ../includes/admin/post-metabox.php:20
+msgid "Append A Ninja Form"
+msgstr "Ein Ninja-Formular anfügen"
+
+#: ../includes/admin/sidebar.php:47 ../includes/admin/edit-field/li.php:97
+msgid "Edit Menu Item"
+msgstr "Menüpunkt bearbeiten"
+
+#: ../includes/admin/sidebar.php:148
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:569
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/sidebars/select-subs.php:101
+msgid "View Submissions"
+msgstr "Einsendungen ansehen"
+
+#: ../includes/admin/edit-field/help.php:33
+#, php-format
+msgid ""
+"If \"help text\" is enabled, there will be a question mark %s placed next to "
+"the input field. Hovering over this question mark will show the help text."
+msgstr ""
+"Wenn der \"Hilfetext\" aktiviert ist werden Fragezeichen %s neben den Felder "
+"angezeigt. Wenn man mit der Maus über das Fragezeichen fährt wird ein "
+"Hilfetext angezeigt werden."
+
+#: ../includes/admin/edit-field/remove-button.php:6
+msgid "Remove"
+msgstr "Entfernen"
+
+#: ../includes/admin/edit-field/req.php:25
+msgid "Required"
+msgstr "Pflichtfeld"
+
+#: ../includes/admin/edit-field/save-button.php:5
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/edit-field-ul.php:7
+msgid "Save Field Settings"
+msgstr "Feld-Einstellungen speichern"
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/field-settings.php:83
+msgid "Field Settings Saved"
+msgstr "Feld-Einstellungen gespeichert"
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:15
+msgid ""
+"Any character you place in the \"custom mask\" box that is not in the list "
+"below will be automatically entered for the user as they type and will not "
+"be removeable"
+msgstr ""
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:16
+msgid "These are the predefined masking characters"
+msgstr "Dies sind die voreingestellten Maskierungszeichen"
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:18
+msgid ""
+"a - Represents an alpha character (A-Z,a-z) - Only allows letters to be "
+"entered"
+msgstr ""
+"a - Repräsentiert alphanumerische Zeichen (A-Z,a-z) - Erlaubt nur die "
+"Eingabe von Buchstaben"
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:19
+msgid ""
+"9 - Represents a numeric character (0-9) - Only allows numbers to be entered"
+msgstr ""
+"9 - Repräsentiert numerische Zeichen (0-9) - Erlaubt nur die Eingabe von "
+"Nummern"
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:20
+msgid ""
+"* - Represents an alphanumeric character (A-Z,a-z,0-9) - This allows both "
+"numbers and letters to be entered"
+msgstr ""
+"* - Repräsentiert ein alphanumerisches Zeichen (A-Z,a-z,0-9) - Dies erlaubt "
+"die Eingabe von Nummern und Buchstaben."
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:24
+msgid ""
+"So, if you wanted to a mask for an an American Social Security Number, you'd "
+"put 999-99-9999 into the box"
+msgstr ""
+"Wenn Du eine Maske für eine American Social Security Number erstellen "
+"möchtest, musst du folgendes eingeben: 99-99-9999"
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:24
+msgid ""
+"The 9s would represent any number, and the -s would be automatically added"
+msgstr ""
+"Die 9'er repräsentieren eine Zahl. Die Bindestriche würden automatisch "
+"hinzugefügt."
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:24
+msgid "This would prevent the user from putting in anything other than numbers"
+msgstr ""
+"Dies verhindert, dass die User etwas anderes als Zahlen in das Formular "
+"eingibt."
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:27
+msgid "You can also combine these for specific applications"
+msgstr "Du kannst das mit verschiedenen Anwendungen kombinieren."
+
+#: ../includes/admin/pages/ninja-forms/tabs/field-settings/help.php:27
+msgid ""
+"For instance, if you had a product key that was in the form of A4B51.989."
+"B.43C, you could mask it with: a9a99.999.a.99a, which would force all the "
+"a's to be letters and the 9s to be numbers"
+msgstr ""
+"Wenn Du beispielsweise einen Produkt-Schlüssel hast der so aussieht: "
+"A4B51.989.B.43C kannst Du das Feld mit a9a99.999.a.99a maskieren. Das "
+"bedeutet, dass alle a's nur Buchstaben zulässt und alle 9'er nur Zahlen."
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:26
+msgid "Add New Form"
+msgstr "Neues Formular"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:84
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:148
+msgid "Bulk Actions"
+msgstr "Massenaktion"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:85
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:149
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:283
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:86
+msgid "Export Forms"
+msgstr "Formulare exportieren"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:96
+msgid "Forms Per Page"
+msgstr "Formulare pro Seite"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:103
+msgid "Form"
+msgstr "Formular"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:103
+msgid "Forms"
+msgstr "Formulare"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:141
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:198
+msgid "Form Title"
+msgstr "Formulartitel"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:142
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:199
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:143
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:200
+msgid "Template Function"
+msgstr "Template-Funktion"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:144
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:201
+msgid "Date Updated"
+msgstr "Datum geändert"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:217
+msgid "Forms Deleted"
+msgstr "Formulare gelöscht"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-list/form-list.php:219
+msgid "Form Deleted"
+msgstr "Formular gelöscht"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:98
+msgid "Basic Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:104
+msgid "Display Form Title"
+msgstr "Formulartitel anzeigen"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:110
+msgid "Save form submissions?"
+msgstr "Abgeschicktes Formular speichern?"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:120
+msgid "Require Logged-in?"
+msgstr "Login voraussetzen?"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:128
+msgid "Append to a page"
+msgstr "Zu einer Seite hinzufügen"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:137
+msgid "Submit via ajax?"
+msgstr "Via AJAX abschicken?"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:146
+msgid "Success Page"
+msgstr "Erfolgsseite"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:157
+msgid "Clear successfully completed form?"
+msgstr "Erfolgreich komplettiertes Formular leeren?"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:159
+msgid ""
+"If this box is checked, Ninja Forms will clear the form after it has been "
+"successfully submitted."
+msgstr ""
+"Aktiviere diese Box wenn das Formular komplett geleert werden soll wenn das "
+"Formular erfolgreich abgeschickt wurde."
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:167
+msgid "Hide successfully completed form?"
+msgstr "Fertiggestellte Formulare verstecken?"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:169
+msgid ""
+"If this box is checked, Ninja Forms will hide the form after it has been "
+"successfully submitted."
+msgstr ""
+"Aktiviere diese Checkbox wenn das Formular ausgeblendet werden soll wenn es "
+"erfolgreich abgeschickt wurde."
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:176
+msgid "Success Message"
+msgstr "Erfolgsmeldung"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:177
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:241
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:278
+msgid ""
+"If you want to include field data entered by the user, for instance a name, "
+"you can use the following shortcode: [ninja_forms_field id=23] where 23 is "
+"the ID of the field you want to insert. This will tell Ninja Forms to "
+"replace the bracketed text with whatever input the user placed in that "
+"field. You can find the field ID when you expand the field for editing."
+msgstr ""
+"Wenn Du Felddaten, die vom User eingegeben wurden, hinzufügen willst, "
+"benutze bite folgenden Shortcode: [ninja_forms_field id=23]. Wobei 23 die ID "
+"des Feldes ist, die Du integrieren willst. Das zwingt das Formular dazu, den "
+"Text in Klammern mit dem Inhalt den der User eingegeben hat zu ersetzen. Du "
+"kannst die Feld-ID finden wenn Du das Editieren-Feld aufklappst."
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:191
+msgid "Email Settings"
+msgstr "E-Mail Einstellungen"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:204
+msgid "Email From Address"
+msgstr "E-Mail Von-Adresse"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:205
+msgid "Steve Jones <steve@myurl.com>"
+msgstr ""
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:210
+msgid "Email Type"
+msgstr "E-Mail Typ"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:228
+msgid "User Email"
+msgstr "Empfänger E-Mail Adresse"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:235
+msgid "Subject for the user email"
+msgstr "Betreff für die Empfänger-E-Mail"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:240
+msgid "Email message sent to the user"
+msgstr "E-Mail Nachricht die zum Empfänger gesendet wird"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:246
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:283
+msgid "Include a list of fields?"
+msgstr "Eine Liste der Felder erfassen?"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:259
+msgid "Administrator Email"
+msgstr "Administrator E-Mail"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:266
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:310
+msgid "Administrator Email Addresses"
+msgstr "Administrator E-Mail Adressen"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:272
+msgid "Admin Subject"
+msgstr "Administrator Betreff"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:277
+msgid "Admin Email Message"
+msgstr "Administrator E-Mail Nachricht"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:290
+msgid "Attach CSV of submission?"
+msgstr "CSV der abgeschickten Formulare anhängen?"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:315
+msgid "Please enter all the addresses this form should be sent to."
+msgstr ""
+"Bitte gebe alle E-Mail Adresse zu der dieses Formular geschickt werden soll."
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:362
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/form-settings.php:367
+msgid "Form Settings Saved"
+msgstr "Formulareinstellungen gespeichert"
+
+#: ../includes/admin/pages/ninja-forms/tabs/form-settings/help.php:15
+msgid "Ninja Forms basic help goes here."
+msgstr "Ninja Formulare Standard-Hilfe"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-backup/impexp-backup.php:20
+msgid "Backup / Restore"
+msgstr "Backup / Wiederherstellen"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-backup/impexp-backup.php:22
+msgid "Backup Ninja Forms"
+msgstr "Backup Ninja Formulare"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-backup/impexp-backup.php:28
+msgid "Restore Ninja Forms"
+msgstr "Ninja Formulare wiederherstellen"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:23
+msgid "Import Favorite Fields"
+msgstr "Favoriten-Felder importieren "
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:28
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:27
+msgid "Select a file"
+msgstr "Eine Datei auswählen"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:36
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:132
+msgid "Import Favorites"
+msgstr "Favoriten importieren"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:57
+msgid "No Favorite Fields Found"
+msgstr "Keine Favoriten-Felder gefunden"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:63
+msgid "Export Favorite Fields"
+msgstr "Favouriten-Felder exportieren"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:81
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:93
+msgid "Export Fields"
+msgstr "Felder exportieren"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:130
+msgid "Please select favorite fields to export."
+msgstr "Bitte wähle eine gültige Felder-Exportdatei aus."
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:143
+msgid "Favorites imported successfully."
+msgstr "Favoriten wurden erfolgreich importiert."
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-fields/impexp-fields.php:145
+msgid "Please select a valid favorite fields file."
+msgstr "Bitte wähle eine gültige Favoriten-Felder-Datei aus."
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:22
+msgid "Import a form"
+msgstr "Ein Formular importieren"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:35
+msgid "Import Form"
+msgstr "Formular importieren"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:60
+msgid "Export a form"
+msgstr "Ein Formular exportieren"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:65
+msgid "Select a form"
+msgstr "Ein Formular auswählen"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:73
+msgid "Export Form"
+msgstr "Formular exportieren"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:126
+msgid "Please select a form."
+msgstr "Bitte wähle ein Formular aus."
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:155
+msgid "Form Imported Successfully."
+msgstr "Formular wurde erfolgreich importiert."
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-forms/impexp-forms.php:158
+msgid "Please select a valid exported form file."
+msgstr "Bitte wähle eine gültige Formulardatei aus."
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-subs/impexp-subs.php:18
+msgid "Import / Export Submissions"
+msgstr "Einsendungen importieren / exportieren"
+
+#: ../includes/admin/pages/ninja-forms-impexp/tabs/impexp-subs/impexp-subs.php:20
+#: ../includes/admin/pages/ninja-forms-settings/tabs/favorite-fields/favorite-fields.php:19
+msgid "Date Settings"
+msgstr "Datumseinstellungen"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/ajax-settings/ajax-settings.php:28
+msgid "Ajax Message Settings"
+msgstr "Ajax Nachrichten-Einstellungen"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/ajax-settings/ajax-settings.php:33
+msgid "Ajax Message Format"
+msgstr "Ajax Nachrichtenformat"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/ajax-settings/ajax-settings.php:34
+msgid ""
+"(Advanced setting: Ninja Forms will require you to create two javascript "
+"functions: one to handle the beforeSubmit call and one to handle the server "
+"response. These should be named ninja_forms_custom_ajax_before_submit and "
+"ninja_forms_custom_ajax_response.)"
+msgstr ""
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/ajax-settings/ajax-settings.php:40
+msgid "Ninja Forms Test"
+msgstr "Ninja Forms Test"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/ajax-settings/ajax-settings.php:63
+msgid "Ajax Loading Gif"
+msgstr ""
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/ajax-settings/ajax-settings.php:68
+msgid "Default"
+msgstr "Standard"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/ajax-settings/ajax-settings.php:73
+#: ../includes/fields/hidden.php:54 ../includes/fields/textbox.php:105
+#: ../includes/fields/textbox.php:140
+msgid "Custom"
+msgstr "Benutzerdefiniert"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/ajax-settings/ajax-settings.php:92
+#: ../includes/admin/pages/ninja-forms-settings/tabs/general-settings/general-settings.php:58
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:78
+msgid "Settings Saved"
+msgstr "Einstellungen gespeichert"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/favorite-fields/favorite-fields.php:17
+msgid "Favorite Field Settings"
+msgstr "Favouriten-Felder Einstellungen"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/general-settings/general-settings.php:24
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/general-settings/general-settings.php:29
+msgid "Version"
+msgstr "Version"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/general-settings/general-settings.php:35
+msgid "Date Format"
+msgstr "Datumsformat"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/general-settings/general-settings.php:36
+msgid ""
+"e.g. m/d/Y, d/m/Y - Tries to follow the <a href=\"http://www.php.net/manual/"
+"en/function.date.php\" target=\"_blank\">PHP date() function</a> "
+"specifications, but not every format is supported."
+msgstr ""
+"z.B. d.m.Y, d/m/Y - Folgt zum größten TEil den <a href=\"http://www.php.net/"
+"manual/en/function.date.php\" target=\"_blank\">PHP date-Spzifikationen </"
+"a>. Aber nicht alle Formate werden unterstützt."
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/general-settings/general-settings.php:41
+msgid "Currency Symbol"
+msgstr "Währungssymbol"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/general-settings/general-settings.php:42
+msgid "e.g. $, &pound;, &euro;"
+msgstr "z.B. $, &pound;, &euro;"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:23
+msgid "Message Labels"
+msgstr "Beschriftung der Nachricht"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:28
+msgid "Required Field Label"
+msgstr "Pflichtfeld-Beschriftung"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:35
+msgid "Required field symbol"
+msgstr "Pflichtfeld-Symbol"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:40
+msgid "Error message given if all required fields are not completed"
+msgstr ""
+"Fehlermeldung die angezeigt wird, wenn erforderliche Felder nicht ausgefüllt "
+"wurden"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:45
+msgid "Required Field Error"
+msgstr "Pflichtfeld-Fehler"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:51
+msgid "Anti-spam error message"
+msgstr "Anti-Spam Fehlermeldung"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:57
+msgid "Please enter a valid email address"
+msgstr "Bitte gebe eine gültige E-Mail Adresse ein"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:63
+msgid "Ajax submitting message"
+msgstr "Ajax Absende-Nachricht"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/label-settings/label-settings.php:64
+msgid ""
+"If your form is submitted via ajax, what message should appear to let users "
+"know it is being processed?"
+msgstr ""
+"Gebe die Nachricht an, die angezeigt werden soll, wenn das Formular "
+"erfolgreich per Ajax versendet worden ist."
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/license-settings/license-settings.php:22
+msgid "Licenses"
+msgstr "Lizenzen"
+
+#: ../includes/admin/pages/ninja-forms-settings/tabs/license-settings/license-settings.php:43
+msgid "Licenses Saved"
+msgstr "Lizenzen gespeichert"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:73
+msgid "View Form Submissions"
+msgstr "Formular Einsendungen ansehen"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:150
+msgid "Export"
+msgstr "Exportieren"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:160
+msgid "Submissions Per Page"
+msgstr "Abgeschickte Formulare pro Seite"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:164
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:526
+msgid "Download All Submissions"
+msgstr "Alle Einsendungen herunterladen"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:170
+msgid "Submission"
+msgstr "Abgeschickte Formulare"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:170
+msgid "Submissions"
+msgstr "Abgeschickte Formulare"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:242
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:390
+#: ../includes/fields/textbox.php:138
+msgid "Date"
+msgstr "Datum"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:282
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:284
+msgid "Export to CSV"
+msgstr "Nach CSV exportieren"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:358
+msgid "No submissions found"
+msgstr "Keine abgeschickten Formulare gefunden"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:409
+msgid "Back"
+msgstr "Zurück"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:503
+msgid "Apply"
+msgstr "Anwenden"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:514
+msgid "Submissions Deleted"
+msgstr "Abgeschicktes Formular gelöscht"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:516
+msgid "Submission Deleted"
+msgstr "Abgeschicktes Formular gelöscht"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/view-subs.php:567
+msgid "Save Sub"
+msgstr "Speichern"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/sidebars/select-subs.php:58
+msgid "Select A Form"
+msgstr "Ein Formular auswählen"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/sidebars/select-subs.php:72
+msgid "Date Range"
+msgstr "Datumsbereich"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/sidebars/select-subs.php:72
+msgid "Optional"
+msgstr "Optional"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/sidebars/select-subs.php:75
+msgid "Begin Date"
+msgstr "Start-Datum"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/sidebars/select-subs.php:81
+msgid "End Date"
+msgstr "Enddatum"
+
+#: ../includes/admin/pages/ninja-forms-subs/tabs/view-subs/sidebars/select-subs.php:87
+msgid ""
+"If both Begin Date and End Date are left blank, all submissions will be "
+"displayed."
+msgstr ""
+"Wenn das Startdatum und das Enddatum leer gelassen werden, werden alle "
+"abgeschickten Formulare angezeigt."
+
+#: ../includes/display/scripts.php:113 ../includes/fields/password.php:126
+msgid "Strength indicator"
+msgstr "Stärkeindikator"
+
+#: ../includes/display/scripts.php:114
+msgid "Very weak"
+msgstr "Sehr schwach"
+
+#: ../includes/display/scripts.php:115
+msgid "Weak"
+msgstr "Schwach"
+
+#: ../includes/display/scripts.php:118
+msgid "Strong"
+msgstr "Stärke"
+
+#: ../includes/display/scripts.php:119
+msgid "Mismatch"
+msgstr "Nichtübereinstimmung"
+
+#: ../includes/display/form/required-label.php:16
+msgid "Fields marked with a * are required."
+msgstr "Felder mit einem * sind Pflichtfelder."
+
+#: ../includes/display/processing/email-add-fields.php:39
+#: ../includes/display/processing/email-add-fields.php:48
+msgid "User Submitted Values:"
+msgstr "Benutzer abgeschickte Daten:"
+
+#: ../includes/display/processing/email-user.php:42
+msgid "Thank you for filling out this form."
+msgstr ""
+"Vielen Dank, dass Du dir Zeit genommen hast, dieses Formular auszufüllen."
+
+#: ../includes/display/processing/req-fields-pre-process.php:49
+msgid "Please check required fields."
+msgstr "Bitte überprüfe alle Pflichtfelder."
+
+#: ../includes/fields/checkbox.php:19 ../includes/fields/desc.php:11
+#: ../includes/fields/hidden.php:46 ../includes/fields/textarea.php:11
+#: ../includes/fields/textbox.php:96 ../includes/fields/textbox.php:113
+msgid "Default Value"
+msgstr "Standartwert"
+
+#: ../includes/fields/desc.php:18
+msgid "Text Element"
+msgstr "Textelement"
+
+#: ../includes/fields/hidden.php:49 ../includes/fields/textbox.php:100
+msgid "User ID (If logged in)"
+msgstr "Benutzer-ID (falls eingeloggt)"
+
+#: ../includes/fields/hidden.php:50 ../includes/fields/textbox.php:101
+msgid "User Firstname (If logged in)"
+msgstr "Benutzer Vorname (falls eingeloggt)"
+
+#: ../includes/fields/hidden.php:51 ../includes/fields/textbox.php:102
+msgid "User Lastname (If logged in)"
+msgstr "Benutzer Nachname (falls eingeloggt)"
+
+#: ../includes/fields/hidden.php:52 ../includes/fields/textbox.php:103
+msgid "User Display Name (If logged in)"
+msgstr "Benutzername (falls eingeloggt)"
+
+#: ../includes/fields/hidden.php:53 ../includes/fields/textbox.php:104
+msgid "User Email (If logged in)"
+msgstr "Empfänger E-Mail Adresse (falls eingeloggt)"
+
+#: ../includes/fields/hidden.php:60
+msgid "Custom Default Value"
+msgstr "Benutzerdefinierter Standardwert"
+
+#: ../includes/fields/hidden.php:81 ../includes/fields/textbox.php:16
+msgid "Is this an email address?"
+msgstr "Ist dies eine E-Mail Adresse?"
+
+#: ../includes/fields/hidden.php:89
+msgid ""
+"If this box is checked, Ninja Forms will validate this input as an email "
+"address."
+msgstr ""
+"Aktiviere diese Checkbox wenn dieses Feld auf die Gültigkeit der E-Mail "
+"Adresse hin überprüft werden soll."
+
+#: ../includes/fields/hidden.php:96 ../includes/fields/textbox.php:21
+msgid "Send a copy of the form to this address?"
+msgstr "Sende eine Kopie des Formulars zu dieser E-Mail Adresse?"
+
+#: ../includes/fields/hidden.php:104
+msgid ""
+"If this box is checked, Ninja Forms will send a copy of this form (and any "
+"messages attached) to this address."
+msgstr ""
+"Aktiviere diese Checkbox wenn nach dem Absenden des Formulars eine Kopie des "
+"Formularinhalts zu dieser E-Mail Adresse geschickt werden soll."
+
+#: ../includes/fields/list.php:144
+msgid "Multi-Select Box Size"
+msgstr "Multi-Selekt-Box Größe"
+
+#: ../includes/fields/list.php:147
+msgid "Expand / Collapse Options"
+msgstr "Optionen anzeigen / verstecken"
+
+#: ../includes/fields/list.php:151
+msgid "Options"
+msgstr "Optionen"
+
+#: ../includes/fields/list.php:151
+msgid "Add New"
+msgstr "Hinzufügen"
+
+#: ../includes/fields/list.php:152
+msgid "Import Options"
+msgstr "Import-Optionen"
+
+#: ../includes/fields/list.php:158
+msgid "Show option values"
+msgstr "Optionswerte zeigen"
+
+#: ../includes/fields/list.php:177
+msgid "Import"
+msgstr "Importieren"
+
+#: ../includes/fields/list.php:179
+msgid "To use this feature, you can paste your CSV into the textarea above."
+msgstr ""
+
+#: ../includes/fields/list.php:180
+msgid "The format should look like the following:"
+msgstr ""
+
+#: ../includes/fields/list.php:187
+msgid "If you want to send an empty value, you can use '' for the value."
+msgstr ""
+"Wenn Du einen leeren Wert senden möchtest kannst Du '' für die Eingabe "
+"benutzen."
+
+#: ../includes/fields/password.php:28
+msgid "Use this as a registration password field"
+msgstr "Benutze dies als das Registrierungs-Passwort-Feld"
+
+#: ../includes/fields/password.php:30
+msgid ""
+"If this box is checked, both password and re-password textboxes will be "
+"output."
+msgstr ""
+"Wenn diese Box aktiviert wird, wir das Passwortfeld zweimal ausgegeben (ein "
+"normales und eines zur Wiedereingabe). "
+
+#: ../includes/fields/password.php:36
+msgid "Re-enter Password Label"
+msgstr "Beschriftung des \"Passwort erneut eingeben\"-Feldes"
+
+#: ../includes/fields/password.php:44
+msgid "Show Password Strength Indicator"
+msgstr "Zeige Passwortstärke-Anzeige"
+
+#: ../includes/fields/password.php:127
+msgid ""
+"Hint: The password should be at least seven characters long. To make it "
+"stronger, use upper and lower case letters, numbers and symbols like ! \" ? "
+"$ % ^ &amp; )."
+msgstr ""
+"Hinweis: Das Passwort sollte zumindest sieben Zeichen lang sein. Um es noch "
+"effektiver zu machen solltest Du Groß- und Kleinbuchstaben, Zahlen und "
+"Symbole wie z.B. ! \" ? $ % ^ &amp; ) verwenden."
+
+#: ../includes/fields/password.php:145
+msgid "Passwords do not match"
+msgstr "Passwörter stimmen nicht überein"
+
+#: ../includes/fields/rating.php:12
+msgid "Number of stars"
+msgstr "Anzahl der Sterne"
+
+#: ../includes/fields/spam.php:29 ../includes/fields/spam.php:65
+msgid "Spam Question"
+msgstr "Spam-Frage"
+
+#: ../includes/fields/spam.php:36 ../includes/fields/spam.php:71
+msgid "Spam Answer"
+msgstr "Spam-Antwort"
+
+#: ../includes/fields/textarea.php:18
+msgid "Show Rich Text Editor?"
+msgstr "Zeige Rich-Text-Editor?"
+
+#: ../includes/fields/textbox.php:11
+msgid "Datepicker"
+msgstr ""
+
+#: ../includes/fields/textbox.php:26
+msgid ""
+"Use this as the \"From\" email address for Administrative recepients of this "
+"form?"
+msgstr ""
+"Benutze dies als die \"Von\"-E-Mail-Adresse für administrative Empfänger "
+"dieses Formulars?"
+
+#: ../includes/fields/textbox.php:31
+msgid "Is this a first name?"
+msgstr "Ist das der Vorname?"
+
+#: ../includes/fields/textbox.php:36
+msgid "Is this a last name?"
+msgstr "Ist dies der Nachname?"
+
+#: ../includes/fields/textbox.php:41
+msgid ""
+"Use this as the \"From\" email name for Administrative recepients of this "
+"form?"
+msgstr ""
+"Benutze dies als die \"Von\"-E-Mail-Adresse für administrative Empfänger "
+"dieses Formulars?"
+
+#: ../includes/fields/textbox.php:133
+msgid "Input Mask"
+msgstr "Eingabemaske"
+
+#: ../includes/fields/textbox.php:137
+msgid "Phone - (555) 555-5555"
+msgstr "Telefon - (555) 555-5555"
+
+#: ../includes/fields/textbox.php:139
+msgid "Currency"
+msgstr "Währung"
+
+#: ../includes/fields/textbox.php:148
+msgid "Custom Mask Definition"
+msgstr "Benutzerdefinierte Makendefinition"
+
+#: ../includes/fields/textbox.php:248
+msgid "Please enter a valid email address."
+msgstr "Bitte gebe eine gültige E-Mail Adresse ein."
+
+#~ msgctxt "password strength"
+#~ msgid "Medium"
+#~ msgstr "Mittel"
+
+#~ msgid ""
+#~ "Ninja Forms is a webform builder with unparalleled ease of use and "
+#~ "features."
+#~ msgstr ""
+#~ "Ninja Forms ist ein Webformular-Gestalter mit beispielloser "
+#~ "Benutzerfreundlichkeit und Funktionen."
+
+#~ msgid "The WP Ninjas"
+#~ msgstr "Die WP Ninjas"
