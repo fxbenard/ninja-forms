@@ -1,5 +1,5 @@
 === Ninja Forms ===
-Contributors: kstover, jameslaws, wp-buddy
+Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
