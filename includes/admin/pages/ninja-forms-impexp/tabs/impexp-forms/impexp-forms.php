@@ -119,13 +119,13 @@ function ninja_forms_save_impexp_forms($data){
 	$plugin_settings = get_option("ninja_forms_settings");
 	$form_id = $_REQUEST['form_id'];
 	$update_msg = '';
-	if( $_REQUEST['submit'] == 'Export Form' OR ( isset( $_REQUEST['export_form'] ) AND $_REQUEST['export_form'] == 1 ) ){
+	if( $_REQUEST['submit'] == __('Export Form', 'ninja-forms') OR ( isset( $_REQUEST['export_form'] ) AND $_REQUEST['export_form'] == 1 ) ){
 		if($form_id != ''){
 			ninja_forms_export_form( $form_id );
 		}else{
 			$ninja_forms_admin_update_message = __( 'Please select a form.', 'ninja-forms' );
 		}
-	}elseif($_REQUEST['submit'] == 'Import Form'){
+	}elseif($_REQUEST['submit'] == __('Import Form', 'ninja-forms')){
 		if ($_FILES['userfile']['error'] == UPLOAD_ERR_OK AND is_uploaded_file($_FILES['userfile']['tmp_name'])){
 			$file = file_get_contents($_FILES['userfile']['tmp_name']);
 			$form = unserialize( $file );
