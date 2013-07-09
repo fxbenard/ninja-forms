@@ -163,7 +163,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 							<?php echo $label; ?>
 						</th>
 						<td>
-							<input type="text" class="code widefat <?php echo $class;?>" name="<?php echo $name;?>" id="" value="<?php echo $value;?>" />
+							<input type="text" class="code widefat <?php echo $class;?>" name="<?php echo $name;?>" id="<?php echo $name;?>" value="<?php echo $value;?>" />
 							<?php if( $help_text != ''){ ?>
 							<a href="#" class="tooltip">
 							    <img id="" class='ninja-forms-help-text' src="<?php echo NINJA_FORMS_URL;?>/images/question-ico.gif" title="">
@@ -184,7 +184,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 							<?php echo $label; ?>
 						</th>
 						<td>
-							<select name="<?php echo $name;?>" class="<?php echo $class;?>">
+							<select name="<?php echo $name;?>" id="<?php echo $name;?>" class="<?php echo $class;?>">
 								<?php
 								if( is_array( $s['options']) AND !empty( $s['options'] ) ){
 									foreach( $s['options'] as $option ){
@@ -218,7 +218,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 						</th>
 						<td>
 							<input type="hidden" name="<?php echo $name;?>" value="">
-							<select name="<?php echo $name;?>[]" class="<?php echo $class;?>" multiple="multiple" size="<?php echo $size;?>">
+							<select name="<?php echo $name;?>[]" id="<?php echo $name;?>" class="<?php echo $class;?>" multiple="multiple" size="<?php echo $size;?>">
 								<?php
 								if( is_array( $s['options']) AND !empty( $s['options'] ) ){
 									foreach( $s['options'] as $option ){
@@ -364,7 +364,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 							<?php echo $label; ?>
 						</th>
 						<td>
-							<textarea name="<?php echo $name;?>" class="<?php echo $class;?>"><?php echo $value;?></textarea>
+							<textarea name="<?php echo $name;?>" id="<?php echo $name;?>" class="<?php echo $class;?>"><?php echo $value;?></textarea>
 						</td>
 					</tr>
 					<?php
@@ -411,7 +411,7 @@ function ninja_forms_output_tab_metabox($form_id = '', $slug, $metabox){
 					break;
 				case 'hidden':
 					?>
-					<input type="hidden" name="<?php echo $name;?>" value="<?php echo $value;?>">
+					<input type="hidden" name="<?php echo $name;?>" id="<?php echo $name;?>" value="<?php echo $value;?>">
 					<?php
 					break;
 				case 'submit':
