@@ -45,7 +45,7 @@ function ninja_forms_new_field(){
 		$new_id = ninja_forms_insert_field( $form_id, $args );
 		$new_html = ninja_forms_return_echo('ninja_forms_edit_field', $new_id);
 		header("Content-type: application/json");
-		$array = array ('new_id' => $new_id, 'new_type' => $type_name, 'new_html' => $new_html, 'edit_options' => $edit_options);
+		$array = array ('new_id' => $new_id, 'new_type' => $type_name, 'new_html' => $new_html, 'edit_options' => $edit_options, 'new_type_slug' => $type );
 		echo json_encode($array);
 		die();
 	}
@@ -546,6 +546,25 @@ function ninja_forms_import_list_options(){
 }
 
 add_action( 'wp_ajax_ninja_forms_import_list_options', 'ninja_forms_import_list_options' );
+
+/*
+ *
+ * Function that outputs a calculation row
+ *
+ * @since 2.2.28
+ * @returns void
+ */
+
+function ninja_forms_add_calc_row(){
+	$field_id = $_REQUEST['field_id'];
+	$c = array( 'calc' => '', 'operator' => 'add', 'value' => '', 'when' => '' );
+	$x = $_REQUEST['x'];
+
+	ninja_forms_output_field_calc_row( $field_id, $c, $x );
+	die();
+}
+
+add_action( 'wp_ajax_ninja_forms_add_calc_row', 'ninja_forms_add_calc_row' );
 
 /**
  * 
