@@ -60,6 +60,7 @@ function ninja_forms_export_subs_to_csv( $sub_ids = '', $return = false ){
 						$found = false;
 						foreach( $sub_row['data'] as $data ){
 							$data['user_value'] = ninja_forms_stripslashes_deep( $data['user_value'] );
+							$data['user_value'] = ninja_forms_html_entity_decode_deep( $data['user_value'], ENT_QUOTES );
 							if( $data['field_id'] == $field_id ){
 								if( is_array( $data['user_value'] ) ){
 									$user_value = implode_r( ',', $data['user_value'] );
