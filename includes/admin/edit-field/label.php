@@ -38,11 +38,11 @@ function ninja_forms_edit_field_label_pos($field_id){
 
 	if( !$label_pos_options OR $label_pos_options == '' ){
 		$options = array(
-			array('name' => 'Left of Element', 'value' => 'left'),
-			array('name' => 'Above Element', 'value' => 'above'),
-			array('name' => 'Below Element', 'value' => 'below'),
-			array('name' => 'Right of Element', 'value' => 'right'),
-			array('name' => 'Inside Element', 'value' => 'inside'),
+			array('name' => __( 'Left of Element', 'ninja-forms' ), 'value' => 'left'),
+			array('name' => __( 'Above Element', 'ninja-forms' ), 'value' => 'above'),
+			array('name' => __( 'Below Element', 'ninja-forms' ), 'value' => 'below'),
+			array('name' => __( 'Right of Element', 'ninja-forms' ), 'value' => 'right'),
+			array('name' => __( 'Inside Element', 'ninja-forms' ), 'value' => 'inside'),
 		);		
 	}else{
 		$options = $label_pos_options;
@@ -55,7 +55,7 @@ function ninja_forms_edit_field_label_pos($field_id){
 			$label_pos = '';
 		}
 
-		ninja_forms_edit_field_el_output($field_id, 'select', 'Label Position', 'label_pos', $label_pos, 'wide', $options, 'widefat');
+		ninja_forms_edit_field_el_output($field_id, 'select', __( 'Label Position', 'ninja-forms' ), 'label_pos', $label_pos, 'wide', $options, 'widefat');
 	}
 
 }
