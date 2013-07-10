@@ -19,10 +19,12 @@ function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name =
 	$id = 'ninja_forms_field_'.$field_id.'_'.$name;
 	$name = 'ninja_forms_field_'.$field_id.'['.$name.']';
 
-	if($type != 'rte'){
-		$value = ninja_forms_esc_html_deep( $value );
 	?>
 	<div class="description description-<?php echo $width;?> <?php echo $type;?>" id="<?php echo $name;?>_p">
+	<?php
+	if($type != 'rte'){
+		$value = ninja_forms_esc_html_deep( $value );
+	?>	
 		<span class="field-option">
 			<?php
 	}
@@ -104,18 +106,20 @@ function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name =
 			wp_editor( $value, $name, $args );
 		break;
 	}
-		if($type != 'rte'){
-			if($desc != ''){
-		?>
-			<span class="description">
-				<?php _e($desc, 'ninja-forms'); ?>
-			</span>
-		<?php
-			}
+		
+	if($desc != ''){
+	?>
+		<span class="description">
+			<?php _e($desc, 'ninja-forms'); ?>
+		</span>
+	<?php
+		}
+	if($type != 'rte'){
 		?>
 		</span>
-
+		<?php
+	}
+	?>
 	</div>
 	<?php
-	}
 }
