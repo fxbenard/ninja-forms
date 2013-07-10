@@ -248,7 +248,7 @@ function ninja_forms_load_lang() {
 	$lang_dir = $plugin_dir.'/lang/';
 	load_plugin_textdomain( 'ninja-forms', false, $lang_dir );
 }
-add_action('init', 'ninja_forms_load_lang');
+add_action('plugins_loaded', 'ninja_forms_load_lang');
 
 function ninja_forms_update_version_number(){
 	$plugin_settings = get_option( 'ninja_forms_settings' );
