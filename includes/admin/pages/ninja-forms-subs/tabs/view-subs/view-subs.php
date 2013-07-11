@@ -302,7 +302,7 @@ function ninja_forms_tab_view_subs(){
 									if(is_array($user_value) AND !empty($user_value)){
 										$y = 1;
 										foreach($user_value as $val){
-											echo stripslashes($val);
+											echo ninja_forms_stripslashes_deep($val);
 											if($y != count($user_value)){
 												echo ",";
 											}
