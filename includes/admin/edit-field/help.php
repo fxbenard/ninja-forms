@@ -31,11 +31,11 @@ function ninja_forms_edit_field_help($field_id){
 		}
 
 		$help_desc = sprintf(__('If "help text" is enabled, there will be a question mark %s placed next to the input field. Hovering over this question mark will show the help text.', 'ninja-forms'), '<img src="'.NINJA_FORMS_URL.'/images/question-ico.gif">');
-		ninja_forms_edit_field_el_output($field_id, 'checkbox', 'Show Help Text', 'show_help', $show_help, 'wide', '', 'ninja-forms-show-help');
+		ninja_forms_edit_field_el_output($field_id, 'checkbox', __( 'Show Help Text', 'ninja-forms' ), 'show_help', $show_help, 'wide', '', 'ninja-forms-show-help');
 		?>
 		<span id="ninja_forms_field_<?php echo $field_id;?>_help_span" style="<?php echo $display_span;?>">
 			<?php
-			ninja_forms_edit_field_el_output($field_id, 'textarea', 'Help Text', 'help_text', $help_text, 'wide', '', 'widefat');
+			ninja_forms_edit_field_el_output($field_id, 'textarea', __( 'Help Text', 'ninja-forms' ), 'help_text', $help_text, 'wide', '', 'widefat');
 			ninja_forms_edit_field_el_output($field_id, 'desc', $help_desc, 'help_desc');
 			?>
 		</span>
