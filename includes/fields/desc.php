@@ -35,7 +35,7 @@ function ninja_forms_register_field_desc(){
 		'group' => 'layout_elements',
 		'display_label' => false,
 		'display_wrap' => false,
-		'edit_label' => false,
+		'edit_label' => true,
 		'edit_label_pos' => false,
 		'edit_req' => false,
 		'edit_custom_class' => true,
