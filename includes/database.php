@@ -405,7 +405,7 @@ function ninja_forms_str_replace_deep($search, $replace, $subject){
     }
 }
 
-function ninja_forms_html_entity_decode_deep( $value, $flag ){
+function ninja_forms_html_entity_decode_deep( $value, $flag = '' ){
     $value = is_array($value) ?
         array_map('ninja_forms_html_entity_decode_deep', $value) :
         html_entity_decode( $value, $flag );
