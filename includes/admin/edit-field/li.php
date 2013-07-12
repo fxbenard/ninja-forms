@@ -76,6 +76,8 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 				$li_label = $type_name;
 			}
 
+			$li_label = apply_filters( 'ninja_forms_edit_field_li_label', $li_label, $field_id );
+
 			$li_label = stripslashes( $li_label );
 			$li_label = ninja_forms_esc_html_deep( $li_label );
 
@@ -86,7 +88,6 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 			}
 ?>
 			<li id="ninja_forms_field_<?php echo $field_id;?>" class="<?php echo $nesting_class;?> <?php echo $type_class;?>">
-				<!-- <input type="hidden" id="ninja_forms_field_<?php echo $field_id;?>_type" name="ninja_forms_field_<?php echo $field_id;?>_type" value="<?php echo $field_type;?>"> -->
 				<input type="hidden" id="ninja_forms_field_<?php echo $field_id;?>_conditional_value_type" value="<?php echo $conditional_value_type;?>">
 				<input type="hidden" id="ninja_forms_field_<?php echo $field_id;?>_fav_id" name="" class="ninja-forms-field-fav-id" value="<?php echo $fav_id;?>">
 				<dl class="menu-item-bar">
