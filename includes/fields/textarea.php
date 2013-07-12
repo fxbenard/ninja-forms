@@ -17,6 +17,11 @@ function ninja_forms_register_field_textarea(){
 				'name' => 'textarea_rte',
 				'label' => __('Show Rich Text Editor?', 'ninja-forms'),
 			),
+			array(
+				'type' => 'checkbox',
+				'name' => 'disable_rte_mobile',
+				'label' => __('Disable Rich Text Editor on Mobile', 'ninja-forms'),
+			),
 		),
 		'display_function' => 'ninja_forms_field_textarea_display',
 		'save_function' => '',
@@ -50,6 +55,10 @@ function ninja_forms_field_textarea_display($field_id, $data){
 	if(isset($data['textarea_rte'])){
 		$textarea_rte = $data['textarea_rte'];
 	}else{
+		$textarea_rte = 0;
+	}
+
+	if ( isset( $data['disable_rte_mobile'] ) AND 1 == $data['disable_rte_mobile'] AND wp_is_mobile() ) {
 		$textarea_rte = 0;
 	}
 
