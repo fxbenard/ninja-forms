@@ -237,7 +237,7 @@ require_once( NINJA_FORMS_DIR . "/includes/fields/textarea.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/password.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/rating.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/calc.php" );
-require_once( NINJA_FORMS_DIR . "/includes/fields/state.php" );
+// require_once( NINJA_FORMS_DIR . "/includes/fields/state.php" );
 
 require_once( NINJA_FORMS_DIR . "/includes/admin/save.php" );
 
