@@ -4,11 +4,6 @@
  * If the global processing variable $ninja_forms_processing is set, filter the default_value for each field.
  *
  */
-function ninja_forms_register_filter_restore_progress(){
-	add_filter( 'ninja_forms_field', 'ninja_forms_filter_restore_progress', 10, 2 );
-}
-
-add_action( 'init', 'ninja_forms_register_filter_restore_progress' );
 
 function ninja_forms_filter_restore_progress( $data, $field_id ){
 	global $ninja_forms_processing, $ninja_forms_fields;
@@ -37,3 +32,5 @@ function ninja_forms_filter_restore_progress( $data, $field_id ){
 	}
 	return $data;
 }
+
+add_filter( 'ninja_forms_field', 'ninja_forms_filter_restore_progress', 10, 2 );
