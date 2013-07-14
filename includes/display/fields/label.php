@@ -82,8 +82,10 @@ function ninja_forms_display_label_inside( $data, $field_id ){
 		$label = '';
 	}
 
-	if( $label_pos == 'inside' ){
-		$data['default_value'] = $label;
+	if ( $field_row['type'] != '_list' ) { 
+		if( $label_pos == 'inside' ){
+			$data['default_value'] = $label;
+		}
 	}
 
 	return $data;

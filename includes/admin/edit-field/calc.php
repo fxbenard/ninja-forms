@@ -125,6 +125,12 @@ function ninja_forms_output_field_calc_row( $field_id, $c = array(), $x = 0 ){
 				</select>
 				<?php
 				break;
+			case '_list':
+				_e( 'Selected Option\'s Calc Setting', 'ninja-forms' );
+				?>
+				<input type="hidden" name="ninja_forms_field_<?php echo $field_id;?>[calc][<?php echo $x;?>][value]" value="">
+				<?php
+				break;
 			default:
 				_e( 'This Value', 'ninja-forms' );
 				?>

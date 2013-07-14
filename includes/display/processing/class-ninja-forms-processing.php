@@ -56,6 +56,13 @@
  *		add_success_msg('unique_ID', 'Success Message') - Used to add a success message.
  *		remove_success_msg('unique_ID') - Used to remove a success message.
  *
+ * Calculation Methods:
+ *		get_payment() - Used to get an array that contains the value of the calculation field marked "payment" and all of the fields that contributed to that calculation.
+ *		get_calc('calc_name') - Used to get an array that contains the value of the calculation field specified and all of the fields that contributed to the calculation.
+ *		get_calc_value('field_id', 'calc_name') - Used to get the "Calc" value of a field. That is the amount it would add/subtract/multiply/divide to/from the calculation.
+ *
+ *
+ *
  */
 
 class Ninja_Forms_Processing {

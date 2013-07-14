@@ -11,47 +11,6 @@ function ninja_forms_register_field_calc(){
 		'name' => 'Calculation',
 		'sidebar' => 'template_fields',
 		'edit_function' => 'ninja_forms_field_calc_edit',
-		'edit_options' => array(
-			/*
-			array(
-				'type' => 'text',
-				'name' => 'calc_name',
-				'label' => __( 'Calculation Name', 'ninja-forms' ),
-				'class' => 'widefat ninja-forms-calc-name',
-				'desc' => __( 'This is the programmatic name of your field. Examples are: my_calc, price_total, user-total.', 'ninja-forms' ),
-				'default' => 'calc_name',
-			),			
-			array(
-				'type' => 'select',
-				'name' => 'calc_display_type',
-				'label' => __( 'Output calculation as', 'ninja-forms' ),
-				'options' => array(
-					array( 'name' => __( '- None', 'ninja-forms' ), 'value' => 'hidden' ),
-					array( 'name' => __( 'Textbox', 'ninja-forms' ), 'value' => 'text'),
-					array( 'name' => __( 'HTML', 'ninja-forms' ), 'value' => 'html'),
-				),
-				'class' => 'widefat',
-			),
-			array(
-				'type' => 'text',
-				'name' => 'label',
-				'label' => __( 'Label', 'ninja-forms' ),
-				'class' => 'widefat calc-text',
-			),
-			array(
-				'type' => 'select',
-				'name' => 'label_pos',
-				'label' => __( 'Label Position', 'ninja-forms' ),
-				'options' => array(
-					array('name' => __( 'Left of Element', 'ninja-forms' ), 'value' => 'left'),
-					array('name' => __( 'Above Element', 'ninja-forms' ), 'value' => 'above'),
-					array('name' => __( 'Below Element', 'ninja-forms' ), 'value' => 'below'),
-					array('name' => __( 'Right of Element', 'ninja-forms' ), 'value' => 'right'),
-				),
-				'class' => 'widefat calc-text',
-			),
-			*/
-		),
 		'display_function' => 'ninja_forms_field_calc_display',
 		'group' => 'standard_fields',
 		'edit_conditional' => true,
@@ -60,12 +19,8 @@ function ninja_forms_register_field_calc(){
 		'edit_label_pos' => false,
 		'edit_custom_class' => false,
 		'edit_help' => false,
-		'conditional' => array(
-			'value' => array(
-				'type' => 'text',
-			),
-		),
-		//'pre_process' => 'ninja_forms_field_text_pre_process',
+		'process_field' => false,
+		//'pre_process' => 'ninja_forms_field_calc_pre_process',
 	);
 
 	ninja_forms_register_field( '_calc', $args );
@@ -74,7 +29,26 @@ function ninja_forms_register_field_calc(){
 add_action( 'init', 'ninja_forms_register_field_calc' );
 
 /*
- * Function that outpus the edit options for our calculation field
+ *
+ * Function that filters the field LI label on the edit field back-end.
+ *
+ * @since 2.2.28
+ * @returns $li_label
+ */
+
+function ninja_forms_calc_edit_label_filter( $li_label, $field_id ) {
+	$field_row = ninja_forms_get_field_by_id( $field_id );
+	if ( $field_row['type'] == '_calc' ) {
+		$li_label = $field_row['data']['calc_name'];
+	}
+	return $li_label;
+}
+
+add_filter( 'ninja_forms_edit_field_li_label', 'ninja_forms_calc_edit_label_filter', 10, 2 );
+
+
+/*
+ * Function that outputs the edit options for our calculation field
  *
  * @since 2.2.28
  * @returns void
@@ -87,8 +61,25 @@ function ninja_forms_field_calc_edit( $field_id, $data ){
 	} else {
 		$calc_name = 'calc_name';
 	}
-	ninja_forms_edit_field_el_output($field_id, 'text', __( 'Calculation name', 'ninja-forms' ), 'calc_name', $calc_name, 'wide', '', 'widefat ninja-forms-calc-name', __( 'This is the programmatic name of your field. Examples are: my_calc, price_total, user-total.', 'ninja-forms' ));
 
+	if ( isset ( $data['default_value'] ) ) {
+		$default_value = $data['default_value'];
+	} else {
+		$default_value = '';
+	}
+
+	if ( isset ( $data['calc_payment'] ) ) {
+		$calc_payment = $data['calc_payment'];
+	} else {
+		$calc_payment = '';
+	}
+
+	ninja_forms_edit_field_el_output($field_id, 'text', __( 'Calculation name', 'ninja-forms' ), 'calc_name', $calc_name, 'wide', '', 'widefat ninja-forms-calc-name', __( 'This is the programmatic name of your field. Examples are: my_calc, price_total, user-total.', 'ninja-forms' ));
+	ninja_forms_edit_field_el_output($field_id, 'text', __( 'Default Value', 'ninja-forms' ), 'default_value', $default_value, 'wide', '', 'widefat' );
+	ninja_forms_edit_field_el_output($field_id, 'checkbox', __( 'Payment Calculation', 'ninja-forms' ), 'calc_payment', $calc_payment, 'wide', '', '' );
+	
+	echo '<hr>';
+	// Output calculation display type
 	$options = array(
 		array( 'name' => __( '- None', 'ninja-forms' ), 'value' => 'hidden' ),
 		array( 'name' => __( 'Textbox', 'ninja-forms' ), 'value' => 'text'),
@@ -148,8 +139,13 @@ function ninja_forms_field_calc_edit( $field_id, $data ){
 		$class = '';
 	}
 	// Output our RTE. This is the only extra setting needed if the calc_display_type is set to HTML.
+	if ( isset ( $data['calc_display_html'] ) ) {
+		$calc_display_html = $data['calc_display_html'];
+	} else {
+		$calc_display_html = '[ninja_forms_calc]';
+	}
 	echo '<div id="ninja_forms_field_'.$field_id.'_clac_html_display" class="'.$class.'">';
-	ninja_forms_edit_field_el_output($field_id, 'rte', '', 'calc_display_html', '[ninja_forms_calc]', '', '', $class, __( 'Use the following shortcode to insert the final calculation: [ninja_forms_calc]', 'ninja-forms' ) );
+	ninja_forms_edit_field_el_output($field_id, 'rte', '', 'calc_display_html', $calc_display_html, '', '', '', __( 'Use the following shortcode to insert the final calculation: [ninja_forms_calc]', 'ninja-forms' ) );
 	echo '</div>';
 
 	// If any option besides "none" is selected, then show our custom class and help options.
@@ -157,12 +153,6 @@ function ninja_forms_field_calc_edit( $field_id, $data ){
 		$class = 'hidden';
 	} else {
 		$class = '';
-	}
-
-	if ( isset ( $data['calc_use_js'] ) ) {
-		$calc_use_js = $data['calc_use_js'];
-	} else {
-		$calc_use_js = 1;
 	}
 
 	if ( isset ( $data['class'] ) ) {
@@ -190,9 +180,6 @@ function ninja_forms_field_calc_edit( $field_id, $data ){
 	}
 
 	echo '<div id="ninja_forms_field_'.$field_id.'_clac_extra_display" class="'.$class.'">';
-	// Output a checkbox for our "Use JS" option.
-	ninja_forms_edit_field_el_output($field_id, 'checkbox', __( 'Use Javascript calculation', 'ninja-forms' ), 'calc_use_js', $calc_use_js, 'thin', '', '');
-	
 	// Output our custom class textbox.
 	ninja_forms_edit_field_el_output($field_id, 'text', __( 'Custom CSS Class', 'ninja-forms' ), 'class', $custom_class, 'thin', '', '');
 
@@ -202,12 +189,45 @@ function ninja_forms_field_calc_edit( $field_id, $data ){
 	?>
 	<span id="ninja_forms_field_<?php echo $field_id;?>_help_span" style="<?php echo $display_span;?>">
 		<?php
-		ninja_forms_edit_field_el_output($field_id, 'textarea', 'Help Text', 'help_text', $help_text, 'wide', '', 'widefat');
-		ninja_forms_edit_field_el_output($field_id, 'desc', $help_desc, 'help_desc');
+		ninja_forms_edit_field_el_output($field_id, 'textarea', __( 'Help Text', 'ninja-forms' ), 'help_text', $help_text, 'wide', '', 'widefat', $help_desc);
 		?>
 	</span>
 	<?php
 	echo '</div>';
+	echo '<div class="description description-wide"><hr></div>';
+	
+	// Advanced equation output.
+	if ( isset ( $data['use_calc_adv'] ) ) {
+		$use_calc_adv = $data['use_calc_adv'];
+	} else {
+		$use_calc_adv = 0;
+	}
+
+	if ( isset ( $data['calc_adv'] ) ) {
+		$calc_adv = $data['calc_adv'];
+	} else {
+		$calc_adv = '';
+	}
+
+	if ( $use_calc_adv == 0 ) {
+		$class = 'hidden';
+	} else {
+		$class = '';
+	}
+
+	$desc = '<p>'.__( 'You can enter calculation equations here using field_x where x is the ID of the field you want to use. For example, <strong>field_53 + field_28 + field_65</strong>.', 'ninja-forms' ).'</p>';
+	$desc .= '<p>'.__( 'Complex equations can be created by adding parentheses: <strong>( field_45 * field_2 ) / 2</strong>.', 'ninja-forms' ).'</p>';
+	$desc .= '<p>'.__( 'Please use these operators: + - * /. This is an advanced feature. Watch out for things like division by 0.', 'ninja-forms' ).'</p>';
+
+	ninja_forms_edit_field_el_output($field_id, 'checkbox', __( 'Use Advanced Calculations', 'ninja-forms' ), 'use_calc_adv', $use_calc_adv, 'wide', '', 'ninja-forms-use-calc-adv');
+	
+	?>
+	<span id="ninja_forms_field_<?php echo $field_id;?>_calc_adv_span" class="<?php echo $class;?>">
+		<?php
+		ninja_forms_edit_field_el_output($field_id, 'textarea', '', 'calc_adv', $calc_adv, 'wide', '', 'widefat', $desc);
+		?>
+	</span>
+	<?php
 }
 
 /*
@@ -217,13 +237,51 @@ function ninja_forms_field_calc_edit( $field_id, $data ){
  * @returns void
  */
 
-function ninja_forms_field_calc_display( $data, $field_id ){
+function ninja_forms_field_calc_display( $field_id, $data ){
+	
 	if ( isset( $data['default_value'] ) ) {
 		$default_value = $data['default_value'];
 	} else {
-		$default_value = '';
+		$default_value = 0;
 	}
+
+	if ( $default_value == '' ) {
+		$default_value = 0;
+	}
+
+	if ( isset ( $data['calc_display_text_disabled'] ) AND $data['calc_display_text_disabled'] == 1 ) {
+		$disabled = "disabled";
+	} else {
+		$disabled = '';
+	}
+
+	if ( isset ( $data['calc_display_type'] ) ) {
+		$calc_display_type = $data['calc_display_type'];
+	} else {
+		$calc_display_type = 'text';
+	}
+
+	if ( isset ( $data['calc_display_html'] ) ) {
+		$calc_display_html = $data['calc_display_html'];
+	} else {
+		$calc_display_html = '';
+	}
+
+	$field_class = ninja_forms_get_field_class( $field_id );
 	?>
-	<input type="text" name="ninja_forms_field_<?php echo $field_id;?>" value="<?php echo $default_value;?>">
+	<input type="hidden" name="ninja_forms_field_<?php echo $field_id;?>" value="<?php echo $default_value;?>" class="<?php echo $field_class;?>">
 	<?php
+
+	switch ( $calc_display_type ) {
+		case 'text':
+			?>
+			<input type="text" id="ninja_forms_field_<?php echo $field_id;?>" name="ninja_forms_field_<?php echo $field_id;?>" value="<?php echo $default_value;?>" <?php echo $disabled;?> class="<?php echo $field_class;?>">
+			<?php		
+			break;
+		case 'html':
+			$calc_display_html = str_replace( '[ninja_forms_calc]', '<span id="ninja_forms_field_'.$field_id.'" class="'.$field_class.'">'.$default_value.'</span>', $calc_display_html );
+			echo $calc_display_html;
+			break;
+	}
+	
 }

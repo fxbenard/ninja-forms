@@ -5,6 +5,7 @@ jQuery(document).ready(function(jQuery) {
 	// Initiate our beforeSubmit function list variable.
 	window['ninja_forms_before_submit_function_list'] = {};
 
+	// Prevent the enter key from submitting the form.
 	jQuery(".ninja-forms-form input").bind("keypress", function(e) {
 		if (e.keyCode == 13) {
 			var type = jQuery(this).attr("type");
@@ -89,6 +90,10 @@ jQuery(document).ready(function(jQuery) {
 
 	/* * * End ajaxForm JS * * */
 
+	/* 
+	 * Password Field JS
+	 */
+
 	jQuery('.pass1').val('').keyup( function(){
 		var pass1 = this.value;
 		var pass2 = this.id.replace( "pass1", "pass2" );
@@ -101,6 +106,236 @@ jQuery(document).ready(function(jQuery) {
 		pass1 = jQuery( "#" + pass1 ).val();
 		check_pass_strength( pass1, pass2 );
 	});
+
+	/*
+	 * Calculation Field JS
+	 */
+
+	// Listen to the input elements with our calculation class for focus.
+	jQuery(".ninja-forms-field-calc-listen").live("focus", function(e){
+		jQuery(this).data( "oldValue", jQuery(this).val() );			
+	});
+
+	// Listen to the input elements with our calculation class for focus.
+	jQuery(".ninja-forms-field-calc-listen").live("mousedown", function(e){
+		jQuery(this).data( "oldValue", jQuery(this).val() );			
+	});	
+
+	// Listen to the input elements with our calculation class for focus.
+	jQuery(".ninja-forms-field-calc-listen").live("keydown", function(e){
+		if( this.type == 'select-multiple' ) {
+			jQuery(this).data( "oldValue", jQuery(this).val() );
+		}
+	});
+
+	jQuery(".ninja-forms-field-list-options-span-calc-listen").live("focus", function(e){
+		var field_id = jQuery(this).attr("rel");
+		jQuery(this).data("oldValue", jQuery("input[name='ninja_forms_field_" + field_id +"']:checked").val());
+	});
+
+	jQuery(".ninja-forms-field-list-options-span-calc-listen").live("mousedown", function(e){
+		var field_id = jQuery(this).attr("rel");
+		jQuery(this).data("oldValue", jQuery("input[name='ninja_forms_field_" + field_id +"']:checked").val());
+	});
+	
+
+	// Listen to the input elements with our calculation class for a change in their value/state.
+	jQuery(".ninja-forms-field-calc-listen").live("change", function(e){
+		var form_id = ninja_forms_get_form_id( this );
+		var field_id = jQuery(this).attr("rel");
+		var settings = window['ninja_forms_form_' + form_id + '_settings'];
+		var calc_settings = settings.calc[field_id];
+		for (var i = calc_settings.length - 1; i >= 0; i--) {
+			var calc = calc_settings[i].calc;
+			var op = calc_settings[i].operator;
+			if(typeof calc_settings[i].when !== 'undefined' ){
+				var when = calc_settings[i].when;
+			}else{
+				var when = '';
+			}
+
+			if ( typeof calc_settings[i]['value'] === 'object' ) {
+				var new_value = calc_settings[i]['value'][this.value];
+				var prev_value = calc_settings[i]['value'][jQuery(this).data('oldValue')];
+			} else {
+				var new_value = this.value;
+				var prev_value = jQuery(this).data('oldValue');
+			}
+
+			// Check the type, if we're working with a checkbox, check the state for our "When" statement.
+			if(this.type == 'checkbox'){
+				if( when != '' ) { // We are working with a regular checkbox element.
+					if(when == 'checked'){
+						new_value = calc_settings[i].value;
+						if(!this.checked){
+							op = ninja_forms_find_opposite_op(op);
+						}
+					}else if(when == 'unchecked'){
+						new_value = calc_settings[i].value;
+						if(this.checked){
+							op = ninja_forms_find_opposite_op(op);
+						}
+					}else{
+						new_value = 0;
+					}
+				} else { // We are working with a list field set to checkbox output.
+					var span = jQuery(this).parent().parent().parent().parent();
+					prev_value = jQuery(span).data('oldValue'); 
+					new_value = this.value;
+					if( !this.checked ){
+						op = ninja_forms_find_opposite_op(op);
+					}
+				}
+			}else if( this.type == 'radio' ) {
+				var span = jQuery(this).parent().parent().parent().parent();
+				prev_value = calc_settings[i]['value'][jQuery(span).data('oldValue')];
+			} else if ( this.type == 'select-multiple' ) {
+				var tmp = 0;
+				if( prev_value ){
+					for (var i = prev_value.length - 1; i >= 0; i--) {
+						tmp = tmp + parseFloat( prev_value[i] );
+					};
+					prev_value = tmp;
+				}else{
+					prev_value = 0;
+				}
+								
+				var new_value = jQuery(this).val();
+				tmp = 0;
+				if( new_value ) {
+					for (var i = new_value.length - 1; i >= 0; i--) {
+						tmp = tmp + parseFloat( new_value[i] );
+					}
+					new_value = tmp;
+				}else{
+					new_value = 0;
+				}
+			}
+
+			if( prev_value == ''){
+				prev_value = 0;
+			}
+			if(!isNaN(prev_value)){
+				prev_value = parseFloat(prev_value);
+			}else{
+				prev_value = 0;
+			}
+
+			if(new_value == ''){
+				new_value = 0;
+			}
+			if(!isNaN(new_value)){
+				new_value = parseFloat(new_value);
+			}else{
+				new_value = 0;
+			}
+			
+			if(jQuery("#ninja_forms_field_" + calc).attr("type") == 'text' ){
+				var current_value = jQuery("#ninja_forms_field_" + calc).val();
+			}else{
+				var current_value = jQuery("#ninja_forms_field_" + calc).html();
+			}
+
+			if ( current_value == '' ) {
+				current_value = 0;
+			}
+
+			if(!isNaN(current_value)){
+				current_value = parseFloat(current_value);
+			}			
+
+			if(prev_value != 0 && !isNaN(prev_value)){
+				var new_op = ninja_forms_find_opposite_op(op);
+				var tmp = new ninja_forms_var_operator(new_op);
+				var tmp_value = tmp.evaluate(current_value,prev_value);
+				current_value = tmp_value;
+			}
+			
+			if(new_value != 0){
+				tmp = new ninja_forms_var_operator(op);
+				tmp_value = tmp.evaluate(current_value,new_value);
+			}else{
+				tmp_value = current_value;
+			}
+			//tmp_value = Math.ceil(tmp_value * 100)/100;
+			if(jQuery("#ninja_forms_field_" + calc).attr("type") == 'text' ){
+				jQuery("#ninja_forms_field_" + calc).val(tmp_value);
+			}else{
+				jQuery("#ninja_forms_field_" + calc).html(tmp_value);
+			}
+			jQuery("#ninja_forms_field_" + calc).trigger('change');
+		};
+	});
+
+	// Listen to the field referenced in our calcluation fields' advanced equations.
+	jQuery(".ninja-forms-field-calc-adv-listen").live("change", function(e){
+		var form_id = ninja_forms_get_form_id( this );
+		var field_id = jQuery(this).attr("rel");
+		var settings = window['ninja_forms_form_' + form_id + '_settings'];
+		var calc_adv = settings.calc_adv;
+		for ( calc_id in calc_adv ) {
+
+			var tmp_eq = calc_adv[calc_id].eq;
+			
+			for (var i = calc_adv[calc_id].fields.length - 1; i >= 0; i--) {
+			
+				var f_id = calc_adv[calc_id].fields[i];
+
+				// There are two possibilities for the calculation field output: input or span. If this calc is a span, then the value will be in the HTML. If it's n input, it'll be in the value.
+				if ( jQuery("#ninja_forms_field_" + f_id).get(0).tagName == 'SPAN' ) {
+					var f_value = jQuery("#ninja_forms_field_" + f_id).html();
+				} else{
+					var f_value = jQuery("#ninja_forms_field_" + f_id).val();
+				}
+
+				if ( jQuery("#ninja_forms_field_" + f_id + "_type").val() == 'list' ) {
+					if ( jQuery("#ninja_forms_field_" + f_id + "_list_type").val() == 'multi' ) {
+						tmp = 0;
+						if( f_value ) {
+							for (var i = f_value.length - 1; i >= 0; i--) {
+								tmp = tmp + parseFloat( f_value[i] );
+							}
+							f_value = tmp;
+						}else{
+							f_value = 0;
+						}
+					} else if ( jQuery("#ninja_forms_field_" + f_id + "_list_type").val() == 'radio' ) {
+						f_value = jQuery("[name='ninja_forms_field_" + f_id + "']:checked").val();
+					} else if ( jQuery("#ninja_forms_field_" + f_id + "_list_type").val() == 'checkbox' ) {
+						tmp = 0;
+						jQuery(".ninja_forms_field_" + f_id + ":checked").each(function(){
+							tmp = tmp + parseFloat(this.value);
+						});
+						f_value = tmp;
+					}
+				}
+
+				if ( f_value == '' || typeof f_value == 'undefined' || !f_value ) {
+					f_value = 0;
+				}
+				var find = 'field_' + f_id;
+				var re = new RegExp(find, 'g');
+				tmp_eq = tmp_eq.replace(re, f_value);
+				
+			}
+
+			var new_value = eval(tmp_eq);
+
+			if ( isNaN(new_value) || !isFinite(new_value) ){
+				new_value = 0;
+			}
+
+			if( jQuery("#ninja_forms_field_" + calc_id).attr("type") == 'text' ){
+				jQuery("#ninja_forms_field_" + calc_id).val(new_value);
+			}else{
+				jQuery("#ninja_forms_field_" + calc_id).html(new_value);
+			}
+			jQuery("#ninja_forms_field_" + calc_id).trigger('change');
+			
+		}
+		
+	});
+
 
 }); //End document.ready
 
@@ -317,4 +552,35 @@ function passwordStrength(password1, password2) {
 		return goodPass
 
     return strongPass;
+}
+
+function ninja_forms_find_opposite_op(op) {
+	switch(op){
+		case "add":
+            return "subtract";
+        case "subtract":
+            return "add";
+        case "multiply":
+            return "divide";
+        case "divide":
+            return "multiply";
+	}
+
+}
+
+function ninja_forms_var_operator(op) {
+    this.operation = op;
+
+    this.evaluate = function evaluate(param1, param2) {
+    	switch(this.operation) {
+            case "add":
+                return param1 + param2;
+            case "subtract":
+                return param1 - param2;
+            case "multiply":
+                return param1 * param2;
+            case "divide":
+                return param1 / param2;
+        }
+    }
 }

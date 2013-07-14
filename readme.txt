@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.27
+Stable tag: 2.2.28
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -73,23 +73,23 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.27 =
-
-*Changes:*
-
-* Now includes a German translation. [Thanks to wp-buddy @ GitHub!]
+= 2.2.28 =
 
 *Bugs:*
 
-* Fixed a major bug that prevented translated strings from actually being translated. [Thanks to wp-buddy @ GitHub!]
-* Corrected several strings that weren't setup for translation.
-* Other minor bugfixes.
+* Fixed a major bug that caused a php warning to appear when downloading CSV files and submitting forms.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.28 =
+
+*Bugs:*
+
+* Fixed a major bug that caused a php warning to appear when downloading CSV files and submitting forms.
 
 = 2.2.27 =
 

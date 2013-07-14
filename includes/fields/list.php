@@ -254,6 +254,8 @@ function ninja_forms_field_list_display( $field_id, $data ){
 		$selected_value = '';
 	}
 
+	$list_options_span_class = apply_filters( 'ninja_forms_display_list_options_span_class', '', $field_id );
+
 	switch($list_type){
 		case 'dropdown':
 			?>
@@ -286,13 +288,15 @@ function ninja_forms_field_list_display( $field_id, $data ){
 
 					$label = stripslashes($label);
 
+					$field_label = $data['label'];
+
 					if($list_show_value == 0){
 						$value = $label;
 					}
 
 					if ( $selected_value == $value OR ( is_array( $selected_value ) AND in_array( $value, $selected_value ) ) ) {
 						$selected = 'selected';
-					}else if( $selected_value == '' AND isset( $option['selected'] ) AND $option['selected'] == 1 ){
+					}else if( ( $selected_value == '' OR $selected_value == $field_label ) AND isset( $option['selected'] ) AND $option['selected'] == 1 ){
 						$selected = 'selected';
 					}else{
 						$selected = '';
@@ -312,7 +316,7 @@ function ninja_forms_field_list_display( $field_id, $data ){
 				?><?php
 
 			}
-			?><input type="hidden" name="ninja_forms_field_<?php echo $field_id;?>" value=""><span id="ninja_forms_field_<?php echo $field_id;?>_options_span"><ul><?php
+			?><input type="hidden" name="ninja_forms_field_<?php echo $field_id;?>" value=""><span id="ninja_forms_field_<?php echo $field_id;?>_options_span" class="<?php echo $list_options_span_class;?>" rel="<?php echo $field_id;?>"><ul><?php
 			foreach($options as $option){
 
 				if(isset($option['value'])){
@@ -354,7 +358,7 @@ function ninja_forms_field_list_display( $field_id, $data ){
 			break;
 		case 'checkbox':
 			$x = 0;
-			?><input type="hidden" name="ninja_forms_field_<?php echo $field_id;?>" value=""><span id="ninja_forms_field_<?php echo $field_id;?>_options_span"><ul><?php
+			?><input type="hidden" name="ninja_forms_field_<?php echo $field_id;?>" value=""><span id="ninja_forms_field_<?php echo $field_id;?>_options_span" class="<?php echo $list_options_span_class;?>" rel="<?php echo $field_id;?>"><ul><?php
 			foreach($options as $option){
 
 				if(isset($option['value'])){
@@ -510,6 +514,11 @@ function ninja_forms_field_list_option_output($field_id, $x, $option = '', $hidd
 	if(is_array($option)){
 		$label = $option['label'];
 		$value = $option['value'];
+		if ( isset ( $option['calc'] ) ) {
+			$calc = $option['calc'];
+		} else {
+			$calc = '';
+		}
 		if( isset( $option['selected'] ) ){
 			$selected = $option['selected'];
 		}else{
@@ -529,19 +538,22 @@ function ninja_forms_field_list_option_output($field_id, $x, $option = '', $hidd
 	<div id="ninja_forms_field_<?php echo $field_id;?>_list_option_<?php echo $x;?>" class="ninja-forms-field-<?php echo $field_id;?>-list-option ninja-forms-field-list-option" <?php echo $hide;?>>
 		<table class="list-options">
 			<tr>
-				<td>
+				<td class="ninja-forms-delete-list-option-td">
 					<a href="#" id="ninja_forms_field_<?php echo $field_id;?>_list_remove_option" class="ninja-forms-field-remove-list-option">X</a>
 				</td>
-				<td>
-					Label: <input type="text" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][label]" id="ninja_forms_field_<?php echo $field_id;?>_list_option_label" class="ninja-forms-field-list-option-label" value="<?php echo $label;?>">
+				<td class="ninja-forms-list-option-label-td">
+					<?php _e( 'Label', 'ninja-forms' );?>: <input type="text" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][label]" id="ninja_forms_field_<?php echo $field_id;?>_list_option_label" class="ninja-forms-field-list-option-label" value="<?php echo $label;?>">
 				</td>
-				<td>
-					<span id="ninja_forms_field_<?php echo $field_id;?>_list_option_<?php echo $x;?>_value_span" name="" class="ninja-forms-field-<?php echo $field_id;?>-list-option-value" style="<?php echo $hidden;?>">Value: <input type="text" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][value]" id="ninja_forms_field_<?php echo $field_id;?>_list_option_value" class="ninja-forms-field-list-option-value" value="<?php echo $value;?>"></span>
+				<td class="ninja-forms-list-option-value-td">
+					<span id="ninja_forms_field_<?php echo $field_id;?>_list_option_<?php echo $x;?>_value_span" name="" class="ninja-forms-field-<?php echo $field_id;?>-list-option-value" style="<?php echo $hidden;?>"><?php _e( 'Value', 'ninja-forms' );?>: <input type="text" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][value]" id="ninja_forms_field_<?php echo $field_id;?>_list_option_value" class="ninja-forms-field-list-option-value" value="<?php echo $value;?>"></span>
+				</td>				
+				<td class="ninja-forms-list-option-calc-td">
+					<?php _e( 'Calc', 'ninja-forms' );?>: <input type="text" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][calc]" id="ninja_forms_field_<?php echo $field_id;?>_list_option_calc" class="ninja-forms-field-list-option-calc" value="<?php echo $calc;?>">
 				</td>
-				<td>
-					<label for="ninja_forms_field_<?php echo $field_id;?>_options_<?php echo $x;?>_selected"><input type="hidden" value="0" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][selected]"><input type="checkbox" value="1" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][selected]" id="ninja_forms_field_<?php echo $field_id;?>_options_<?php echo $x;?>_selected" <?php echo $selected;?>> Selected</label>
+				<td class="ninja-forms-list-option-selected-td">
+					<label for="ninja_forms_field_<?php echo $field_id;?>_options_<?php echo $x;?>_selected"><?php _e( 'Selected', 'ninja-forms' );?> <input type="hidden" value="0" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][selected]"><input type="checkbox" value="1" name="ninja_forms_field_<?php echo $field_id;?>[list][options][<?php echo $x;?>][selected]" id="ninja_forms_field_<?php echo $field_id;?>_options_<?php echo $x;?>_selected" <?php echo $selected;?>></label>
 				</td>
-				<td>
+				<td class="ninja-forms-list-option-drag-td">
 					<span class="ninja-forms-drag">Drag</span>
 				</td>
 			</tr>
@@ -587,10 +599,19 @@ function ninja_forms_field_filter_list_data( $data, $field_id ){
 					}
 				}
 			}
+			if ( empty( $tmp_array ) AND $data['list_type'] == 'dropdown' AND $data['label_pos'] != 'inside' ) {
+				if ( isset ( $data['list_show_value'] ) AND $data['list_show_value'] == 1 AND $data['label_pos'] != 'inside' ) {
+					$tmp_array[] = $data['list']['options'][0]['value'];
+				} else {
+					$tmp_array[] = $data['list']['options'][0]['label'];
+				}
+			} else {
+				$data['default_value'] = '';
+			}
 		}
 		$data['default_value'] = $tmp_array;
 	}
 	return $data;
 }
 
-add_filter( 'ninja_forms_field', 'ninja_forms_field_filter_list_data', 10, 2 );
+add_filter( 'ninja_forms_field', 'ninja_forms_field_filter_list_data', 9, 2 );

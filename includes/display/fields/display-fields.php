@@ -74,13 +74,12 @@ function ninja_forms_display_fields($form_id){
 				}
 
 				if ( $display_function != '' AND $show_field ) {
-					if ( $type['edit_label_pos'] ) {
-						if ( isset( $data['label_pos'] ) ) {
+					if ( isset( $data['label_pos'] ) ) {
 							$label_pos = $data['label_pos'];
-						}else{
+					}else{
 							$label_pos = '';
-						}
-					} else {
+					}
+					if( $label_pos == '' ) {
 						$label_pos = $default_label_pos;
 					}
 
@@ -230,6 +229,7 @@ function ninja_forms_get_field_class($field_id){
 	$form_id = $field_row['form_id'];
 	$watch_fields = array();
 	$field_results = ninja_forms_get_fields_by_form_id($form_id);
+	$calc_adv_listen = '';
 	foreach($field_results as $field){
 		$data = $field['data'];
 		if(isset($data['conditional']) AND is_array($data['conditional'])){
@@ -241,11 +241,25 @@ function ninja_forms_get_field_class($field_id){
 				}
 			}
 		}
+		// Check for advanced calculation fields that reference this field. If we find one, and use_calc_adv is set to 1, add a special class to this field.
+		if ( $field['type'] == '_calc' ) {
+			if ( $data['use_calc_adv'] == 1 AND $data['calc_adv'] != '' ) {
+				if (preg_match("/\bfield_".$field_id."\b/i", $data['calc_adv'] ) ) {
+					$calc_adv_listen = 'ninja-forms-field-calc-adv-listen';
+				}
+			}
+		}
 	}
 
 	$listen_class = '';
 	if(isset($watch_fields[$field_id]) AND $watch_fields[$field_id] == 1){
 		$listen_class = "ninja-forms-field-conditional-listen";
+	}
+
+	$calc_listen = '';
+	$field_row = ninja_forms_get_field_by_id( $field_id );
+	if ( isset ( $field_row['data']['calc'] ) AND !empty ( $field_row['data']['calc'] ) ) {
+		$calc_listen = 'ninja-forms-field-calc-listen';
 	}
 
 	if($req_class != ''){
@@ -258,6 +272,14 @@ function ninja_forms_get_field_class($field_id){
 
 	if($listen_class != ''){
 		$field_class .= " ".$listen_class;
+	}
+
+	if ( $calc_listen != '' ) {
+		$field_class .= ' '.$calc_listen;
+	}
+
+	if ( $calc_adv_listen != '' ) {
+		$field_class .= ' '.$calc_adv_listen;
 	}
 
 	$field_class = apply_filters( 'ninja_forms_display_field_class', $field_class, $field_id );
