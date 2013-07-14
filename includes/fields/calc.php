@@ -39,7 +39,12 @@ add_action( 'init', 'ninja_forms_register_field_calc' );
 function ninja_forms_calc_edit_label_filter( $li_label, $field_id ) {
 	$field_row = ninja_forms_get_field_by_id( $field_id );
 	if ( $field_row['type'] == '_calc' ) {
-		$li_label = $field_row['data']['calc_name'];
+		if ( isset ( $field_row['data']['calc_name'] ) ) {
+			$li_label = $field_row['data']['calc_name'];
+		} else {
+			$li_label = __( 'calc_name', 'ninja-forms' );
+		}
+
 	}
 	return $li_label;
 }
@@ -283,5 +288,11 @@ function ninja_forms_field_calc_display( $field_id, $data ){
 			echo $calc_display_html;
 			break;
 	}
-	
 }
+
+function ninja_forms_test(){
+	global $ninja_forms_processing;
+	$ninja_forms_processing->get_payment();
+}
+
+add_action( 'ninja_forms_pre_process', 'ninja_forms_test' );
