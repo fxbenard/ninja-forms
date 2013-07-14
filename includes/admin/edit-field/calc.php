@@ -26,7 +26,7 @@ function ninja_forms_edit_field_calc( $field_id ) {
 				Calculations - <a href="#" name="" id="ninja_forms_field_<?php echo $field_id;?>_add_calc" class="ninja-forms-field-add-calc" rel="<?php echo $field_id;?>"><?php _e( 'Add Calculation', 'ninja-forms' );?></a>
 				<span class="spinner" style="float:left;"></span>
 			</div>
-			
+
 			<input type="hidden" name="ninja_forms_field_<?php echo $field_id;?>[calc]" value="">
 			<div id="ninja_forms_field_<?php echo $field_id;?>_calc" class="" name="">
 				<?php
@@ -35,7 +35,7 @@ function ninja_forms_edit_field_calc( $field_id ) {
 					ninja_forms_output_field_calc_row( $field_id, $c, $x );
 				 	$x++;
 				}
-				?>				
+				?>
 			</div>
 		</div>
 		<?php
