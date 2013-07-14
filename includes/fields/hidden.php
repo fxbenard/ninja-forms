@@ -19,7 +19,11 @@ function ninja_forms_register_field_hiddenbox(){
 				'type' => 'text',
 			),
 			'action' => array(
-				'Change Value' => 'value',
+				'change_value' => array(
+					'name' => 'Change Value',
+					'js_function' => 'change_value',
+					'output' => 'text',
+				),
 			),
 		),
 		'display_label' => false,
