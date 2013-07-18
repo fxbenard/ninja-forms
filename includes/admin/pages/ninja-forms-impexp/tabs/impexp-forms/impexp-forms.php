@@ -128,7 +128,7 @@ function ninja_forms_save_impexp_forms($data){
 	}elseif($_REQUEST['submit'] == __('Import Form', 'ninja-forms')){
 		if ($_FILES['userfile']['error'] == UPLOAD_ERR_OK AND is_uploaded_file($_FILES['userfile']['tmp_name'])){
 			$file = file_get_contents($_FILES['userfile']['tmp_name']);
-			$form = unserialize( $file );
+			$form = unserialize( trim( $file ) );
 			$form_fields = $form['field'];
 
 			unset($form['field']);
