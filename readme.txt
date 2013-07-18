@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.28
+Stable tag: 2.2.30
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -47,6 +47,9 @@ Please feel free to visit our [demo site](http://demo.wpninjas.com/ninja-forms/)
 * [MailChimp](http://wpninjas.com/downloads/mail-chimp/) - The MailChimp extension allows you to quickly create newsletter signup forms for your MailChimp account using the power and flexibility that Ninja Forms provides.
 * [Campaign Monitor](http://wpninjas.com/downloads/campaign-monitor/) - The Campaign Monitor extension allows you to quickly create newsletter signup forms for your Campaign Monitor account using the power and flexibility that Ninja Forms provides.
 * [User Analytics](http://wpninjas.com/downloads/user-analytics/) - The User Analytics extension will help website owners understand how hot a lead is based on extra data automatically collected about the user.
+* [Constant Contact](http://wpninjas.com/downloads/constant-contact/) - The Constant Contact extension allows you to quickly create newsletter signup forms for your Constant Contact account using the power and flexibility that Ninja Forms provides.
+* [Pushover](http://wpninjas.com/downloads/pushover/) - When email and SMS notifications just do not cut it, send yourself push notifications of form submissions with Pushover. Pushover makes it easy to send real-time notifications to your Android and iOS devices.
+* [Freshbooks](http://wpninjas.com/downloads/freshbooks/) - Automatically insert Ninja Forms data right into Freshbooks when your potential clients submit forms. Go from lead to invoice that much quicker by having the information already in your favorite invoicing application.
 
 We have several other extensions in the works.
 
@@ -73,17 +76,65 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.28 =
+= 2.2.30 =
+
+*Features:*
+
+* Added the new Calculation field. This field allows you to perform simple to complex mathematic operations, as well as collect payment data from the user.
+* Added the new Sub Total field. This calculation field allows you to collect payment data from the user.
+* Added the new Total field. This calculation field allows you to collect payment data from the user.
+* Added the new Tax field. This calculation field allows you to collect payment data from the user.
+* Added a new sidebar to the field settings tab to hold the new Payment Fields.
+* Added several new fields for capturing a user's personal information: First Name, Last Name, Address, City, State, Country, Postal Code, Email Address, Phone.
+* Added a new sidebar to the field settings tab to hold the new Personal Information fields.
+
+*Changes:*
+
+* Removed the Defined Fields sidebar from the Field Settings tab.
+* Submit and Anti-Spam fields have been moved into the Template Fields sidebar.
 
 *Bugs:*
 
-* Fixed a major bug that caused a php warning to appear when downloading CSV files and submitting forms.
+* Fixed a bug that prevented Text Layout Elements from showing properly on Multi-Part Forms.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.30 =
+
+*Features:*
+
+* Added the new Calculation field. This field allows you to perform simple to complex mathematic operations, as well as collect payment data from the user.
+* Added the new Sub Total field. This calculation field allows you to collect payment data from the user.
+* Added the new Total field. This calculation field allows you to collect payment data from the user.
+* Added the new Tax field. This calculation field allows you to collect payment data from the user.
+* Added a new sidebar to the field settings tab to hold the new Payment Fields.
+* Added several new fields for capturing a user's personal information: First Name, Last Name, Address, City, State, Country, Postal Code, Email Address, Phone.
+* Added a new sidebar to the field settings tab to hold the new Personal Information fields.
+
+*Changes:*
+
+* Removed the Defined Fields sidebar from the Field Settings tab.
+* Submit and Anti-Spam fields have been moved into the Template Fields sidebar.
+
+*Bugs:*
+
+* Fixed a bug that prevented Text Layout Elements from showing properly on Multi-Part Forms.
+
+= 2.2.29 =
+
+*Changes:*
+
+* Added a filter to the edit field LI label on the Field Settings tab.
+* Added a field label to the layout text element. This label will not be displayed on the front-end, but will allow users to organize their forms better by naming these sections so that they are not all labelled "Text."
+
+*Bugs:*
+
+* Corrected several strings that weren't setup for translation.
+* Other minor bugfixes.
 
 = 2.2.28 =
 
