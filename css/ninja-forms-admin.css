@@ -661,13 +661,13 @@ a.tooltip span
 	width: 50px;
 }
 
-#ninja-forms-calculations .label {
+.ninja-forms-calculations .label {
 	border-radius: 4px;
 	padding: 5px;
 	overflow: hidden;
 }
 
-#ninja-forms-calculations {
+.ninja-forms-calculations {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	clear: both;
@@ -675,7 +675,7 @@ a.tooltip span
 	overflow: hidden;
 }
 
-#ninja-forms-calculations .label {
+.ninja-forms-calculations .label {
 	background: #ccc;
 	display: block;
 }

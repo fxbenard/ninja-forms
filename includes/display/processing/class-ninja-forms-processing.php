@@ -57,12 +57,15 @@
  *		remove_success_msg('unique_ID') - Used to remove a success message.
  *
  * Calculation Methods:
- *		get_payment() - Used to get an array that contains the value of the calculation field marked "payment" and all of the fields that contributed to that calculation.
- *		get_calc('calc_name') - Used to get an array that contains the value of the calculation field specified and all of the fields that contributed to the calculation.
- *		get_calc_value('field_id', 'calc_name') - Used to get the "Calc" value of a field. That is the amount it would add/subtract/multiply/divide to/from the calculation.
+ *		get_calc( name or id, return array ) - Used to get the value of the specified calculation field. Unless bool(false) is sent, returns an array including all of the fields that contributed to the value.
+ *		get_calc_fields(calc_id) - Used to get an array of the fields that contributed to the calculation. This array includes a field_id and calculation value.
+ *		get_calc_total( return array ) - Used to get the final value of the "Payment Total" if it exists. Unless bool(false) is sent, returns an array including all of the fields that contributed to the value and are marked with calc_option.
+ *		get_calc_sub_total( return array ) - Used to get the value of the "Payment Subtotal" if it exists. Unless bool(false) is sent, returns an array including all of the fields that contributed to the value and are marked with calc_option.
+ *		get_calc_tax_rate() - Used to get the value of the "Tax" field if it exists.
+ *		get_calc_tax_total() - Used to get the total amount of tax if the tax field is set.	
  *
- *
- *
+ * User Information Methods:
+ *		get_user_info() - Used to get an array of the user's information. Requires that the appropriate "User Information" fields be used.
  */
 
 class Ninja_Forms_Processing {
@@ -448,8 +451,6 @@ class Ninja_Forms_Processing {
 		}
 	}
 
-
-
 	/**
 	 * Error Reporting Methods:
 	 *
@@ -590,4 +591,399 @@ class Ninja_Forms_Processing {
 		}
 	}
 
+	/**
+	* Function that returns an array of user information fields.
+	*
+	* @since 2.2.30
+	* @returns array $user_info
+	*/
+	function get_user_info() {
+		if ( !isset ( $this->data['field_data'] ) ) {
+			return false;
+		}
+		$user_info = array();
+		foreach ( $this->data['field_data'] as $field ) {
+			$data = $field['data'];
+			$field_id = $field['id'];
+			$user_value = $this->get_field_value( $field_id );
+			if ( isset ( $data['user_info_field_group'] ) AND $data['user_info_field_group'] == 1 ) {
+				if ( isset ( $data['first_name'] ) AND $data['first_name'] == 1 ) {
+					$user_info['first_name'] = $user_value;
+				} else if ( isset ( $data['last_name'] ) AND $data['last_name'] == 1 ) {
+					$user_info['last_name'] = $user_value;
+				} else if ( isset ( $data['user_address_1'] ) AND $data['user_address_1'] == 1 ) {
+					$user_info['address_1'] = $user_value;
+				} else if ( isset ( $data['user_address_2'] ) AND $data['user_address_2'] == 1 ) {
+					$user_info['address_2'] = $user_value;
+				} else if ( isset ( $data['user_city'] ) AND $data['user_city'] == 1 ) {
+					$user_info['city'] = $user_value;
+				} else if ( isset ( $data['user_state'] ) AND $data['user_state'] == 1 ) {
+					$user_info['state'] = $user_value;
+				} else if ( isset ( $data['user_zip'] ) AND $data['user_zip'] == 1 ) {
+					$user_info['zip'] = $user_value;
+				} else if ( isset ( $data['user_email'] ) AND $data['user_email'] == 1 ) {
+					$user_info['email'] = $user_value;
+				} else if ( isset ( $data['user_phone'] ) AND $data['user_phone'] == 1 ) {
+					$user_info['phone'] = $user_value;
+				} else if ( $field['type'] == '_country' ) {
+					$user_info['country'] = $user_value;
+				}
+			}
+		}
+		return $user_info;
+	}
+
+	/**
+	* Function that returns the value of a calculation field and optionally the fields that contributed to that value.
+	*
+	* @since 2.2.30
+	* @returns $calc
+	*/
+	function get_calc( $name, $array = true ) {
+		if ( !isset ( $this->data['field_data'] ) ){
+			return false;
+		}
+
+		if ( $name == '' ){
+			return false;
+		}
+
+		// Check to see if we have a name or an ID.
+		if ( is_numeric ( $name ) AND isset ( $this->data['field_data'][$name] ) ) {
+			// We have an ID.
+			$calc_id = $name;
+		} else {
+			// Search for our field by name.
+			$calc_id = '';
+			foreach ( $this->data['field_data'] as $field ) {
+				if ( $field['type'] == '_calc' AND $field['calc_name'] == $name ) {
+					$calc_id = $field['id'];
+					$places = $field['data']['calc_places'];
+					break;
+				}
+			}
+			if ( $calc_id == '' ) {
+				return false;
+			}
+		}
+		$fields = $this->get_calc_fields( $calc_id );
+		$total = number_format( round( $this->get_field_value( $calc_id ), $places ), $places );
+
+		if ( $array ) {
+			$calc = array( 'total' => $total, 'fields' => $fields );
+		} else {
+			$calc = $total;
+		}
+
+		return $calc;
+	}
+
+	/**
+	* Function that returns the "total" field value if it exists.
+	*
+	* @since 2.2.30
+	* @returns array $total
+	*/
+	function get_calc_total( $array = true, $add_tax = true ) {
+		if ( !isset ( $this->data['field_data'] ) ) {
+			return false;
+		}
+		$total_field = '';
+
+		// Get our sub total.
+		$sub_total = $this->get_calc_sub_total( false );
+
+		// Get our tax rate.
+		$tax_rate = $this->get_calc_tax_rate();
+
+		foreach ( $this->data['field_data'] as $field ) {
+			$data = $field['data'];
+			$field_id = $field['id'];
+			$user_value = $this->get_field_value( $field_id );
+			if ( isset ( $data['payment_total'] ) AND $data['payment_total'] == 1 ) {
+				$calc_method = $data['calc_method'];
+				if ( isset ( $data['calc'] ) ) {
+					$calc_fields = $data['calc'];
+				}
+				$calc_eq = $data['calc_eq'];
+				$places = $data['calc_places'];
+				$total_field = $field_id;
+				$total_value = number_format( round( $user_value, $places ), $places );					
+
+				break;
+			}
+		}
+		if ( $total_field == '' ) {
+			return false;
+		}
+		if ( $array ) {
+			// Get the list of fields that affected this value.
+			$fields = $this->get_calc_fields( $total_field );
+
+			$tmp_array = array();
+			// Loop through the fields in that list and remove any that don't have a calc_option value of 1
+			foreach ( $fields as $field_id => $value ) {
+				$field_settings = $this->get_field_settings( $field_id );
+				$field_value = $this->get_field_value( $field_id );
+				$data = $field_settings['data'];
+				if ( isset ( $data['calc_option'] ) AND $data['calc_option'] == 1 ) {
+					$tmp_array[$field_id] = $value;
+				}
+			}
+			$fields = $tmp_array;
+			$total = array();
+
+			if ( !$sub_total AND $tax_rate AND $add_tax ) {
+				if ( is_string( $tax_rate ) AND strpos( $tax_rate, "%" ) !== false ) {
+					$tax_rate_decimal = str_replace( "%", "", $tax_rate );
+					$tax_rate_decimal = $tax_rate_decimal / 100;
+				}
+				$total['sub_total'] = $total_value;
+				$total_value = number_format( round( $user_value + ( $user_value * $tax_rate_decimal ), $places ), $places );
+			
+			}
+
+			$total['total'] = $total_value;
+			$total['fields'] = $fields;
+
+			if ( $sub_total ) {
+				$total['sub_total'] = $sub_total;
+			}
+
+			if ( $tax_rate ) {
+				$total['tax_rate'] = $tax_rate;
+			}
+
+			// Get our tax total.
+			$tax_total = $this->get_calc_tax_total();
+			if ( $tax_total ) {
+				$total['tax_total'] = $tax_total;
+			}
+
+		} else {
+			$total = $total_value;
+		}
+
+		return $total;
+	}	
+
+	/**
+	* Function that returns the "sub total" field value if it exists.
+	*
+	* @since 2.2.30
+	* @returns array $sub_total
+	*/
+	function get_calc_sub_total( $array = true ) {
+		if ( !isset ( $this->data['field_data'] ) ) {
+			return false;
+		}
+		$sub_total_value = '';
+		$sub_total_field = '';		
+		foreach ( $this->data['field_data'] as $field ) {
+			$data = $field['data'];
+			$field_id = $field['id'];
+			$user_value = $this->get_field_value( $field_id );
+
+			if ( isset ( $data['payment_sub_total'] ) AND $data['payment_sub_total'] == 1 ) {
+				$calc_method = $data['calc_method'];
+				if ( isset ( $data['calc'] ) ) {
+					$calc_fields = $data['calc'];
+				}
+				$calc_eq = $data['calc_eq'];
+				$places = $data['calc_places'];
+				$sub_total_field = $field_id;
+				$sub_total_value = number_format( round( $user_value, $places ), $places );
+				break;
+			}
+		}
+		if ( $sub_total_field == '' ) {
+			return false;
+		}
+		if ( $array ) {
+			// Get the list of fields that affected this value.
+			$fields = $this->get_calc_fields( $sub_total_field );
+			
+			$tmp_array = array();
+			// Loop through the fields in that list and remove any that don't have a calc_option value of 1
+			foreach ( $fields as $field_id => $value ) {
+				$field_settings = $this->get_field_settings( $field_id );
+				$field_value = $this->get_field_value( $field_id );
+				$data = $field_settings['data'];
+				if ( isset ( $data['calc_option'] ) AND $data['calc_option'] == 1 ) {
+					$tmp_array[$field_id] = $value;
+				}
+			}
+			$fields = $tmp_array;
+			
+
+			$sub_total = array( 'sub_total' => $sub_total_value, 'fields' => $fields );
+		} else {
+			$sub_total = $sub_total_value;
+		}
+
+		return $sub_total;
+	}
+
+	/**
+	* Function that returns the total amount of tax if the tax_rate field exists in the form.
+	*
+	* @since 2.2.30
+	* @returns int $tax_total
+	*/
+	function get_calc_tax_total() {
+		if ( !isset ( $this->data['field_data'] ) ) {
+			return false;
+		}
+		$tax_rate = $this->get_calc_tax_rate();
+		if ( !$tax_rate ) {
+			return false;
+		}
+		// Get our sub-total if it exists.
+		$sub_total = $this->get_calc_sub_total( false );
+
+		// Get our total if it exists.
+		$total = $this->get_calc_total( false, false );
+
+		if ( strpos( $tax_rate, "%" ) !== false ) {
+			$tax_rate = str_replace( "%", "", $tax_rate );
+			$tax_rate = $tax_rate / 100;
+		}
+
+		if ( $sub_total ) {
+			$tax_total = $sub_total * $tax_rate;
+		} else if ( $total ) {
+			$tax_total = $total * $tax_rate;
+		} else {
+			return false;
+		}
+
+		
+		$tax_total = number_format( round( $tax_total, 2 ), 2 );
+		return $tax_total;	
+	}
+
+	/**
+	* Function that returns tax_rate if the field exists in the form.
+	*
+	* @since 2.2.30
+	* @returns string $tax_rate;
+	*/
+	function get_calc_tax_rate() {
+		if ( !isset ( $this->data['field_data'] ) ) {
+			return false;
+		}
+		$tax_rate = '';
+		foreach ( $this->data['field_data'] as $field ) {
+			if ( $field['type'] == '_tax' ) {
+				$tax_rate = $this->get_field_value( $field['id'] );
+				break;
+			}
+		}
+		if ( $tax_rate == '' ) {
+			return false;
+		} else {
+			return $tax_rate;
+		}
+	}
+
+	/**
+	* Function that returns an array of field IDs and calc_values that contributed to the given calc id.
+	*
+	* @since 2.2.30
+	* @returns array $calc_array
+	*/
+	function get_calc_fields( $calc_id = '' ) {
+		
+		if ( $calc_id == '' OR !isset ( $this->data['field_data'] ) ) {
+			return false;
+		}
+		// Get our calculation settings.
+		$field_settings = $this->get_field_settings( $calc_id );
+		$calc_method = $field_settings['data']['calc_method'];
+
+		if ( isset ( $field_settings['data']['calc_eq'] ) ) {
+			$calc_eq = $field_settings['data']['calc_eq'];
+		} else {
+			$calc_eq = '';
+		}
+
+		if ( isset ( $field_settings['data']['calc'] ) ) {
+			$calc_fields = $field_settings['data']['calc'];
+		} else {
+			$calc_fields = '';
+		}
+
+		$tmp_array = array();
+		// Loop through the fields
+		foreach ( $this->data['field_data'] as $field ) {
+			$field_value = $this->get_field_value( $field['id'] );
+			switch ( $calc_method ) {
+				case 'auto':
+					// If this field's calc_auto_include is set to 1, then add this field's ID to the list.
+					if ( isset ( $field['data']['calc_auto_include'] ) AND $field['data']['calc_auto_include'] == 1 ) {
+						if ( $field['type'] != '_calc' ) {
+							$calc_value = ninja_forms_field_calc_value( $field['id'], $field_value, $calc_method );
+							if ( $calc_value ) {
+								$tmp_array[] = array( $field['id'] => $calc_value );
+							}
+						} else {
+							// If this is a calc field, then call this same function so that we can get all the fields that contributed to that.
+							$tmp_array[] = $this->get_calc_fields( $field['id'] );
+						}
+					}
+					break;
+				case 'fields':
+					// If this field is in our list of field operations, add this field's ID to our list.
+					if ( $calc_fields != '' ) {
+						foreach ( $calc_fields as $calc ) {
+							if ( $field['id'] == $calc['field'] ) {
+								if ( $field['type'] != '_calc' ) {
+									//echo "FIELD ID: ".$field['id'];
+									$calc_value = ninja_forms_field_calc_value( $field['id'], $field_value, $calc_method );
+									if ( $calc_value ) {
+										$tmp_array[] = array( $field['id'] => $calc_value );
+									}
+								} else {
+									// If this is a calc field, then call this same function so that we can get all the fields that contributed to that.
+									$tmp_array[] = $this->get_calc_fields( $field['id'] );
+								}
+							}
+						}
+					}
+					break;
+				case 'eq':
+					// If this field exists in our equation, then add this field's ID to our list.
+					if ( $calc_eq != '' ) {
+						if ( preg_match("/\bfield_".$field['id']."\b/i", $calc_eq ) ) {
+							if ( $field['type'] != '_calc' ) {
+								$calc_value = ninja_forms_field_calc_value( $field['id'], $field_value, $calc_method );
+								if ( $calc_value ) {
+									$tmp_array[] = array( $field['id'] => $calc_value );
+								}
+							} else {
+								// If this is a calc field, then call this same function so that we can get all the fields that contributed to that.
+								$tmp_array[] = $this->get_calc_fields( $field['id'] );
+							}
+						}
+					}
+					break;
+			}
+		}
+
+		// Loop through our array and make sure that it's not multi-dimensional.
+		$calc_array = array();
+		foreach ( $tmp_array as $key => $field ) {
+			foreach ( $field as $field_id => $value ) {
+				if ( count ( $value ) <= 1 ) {
+					$calc_array[$field_id] = $value;
+				} else {
+					foreach ( $value as $f_id => $v ) {
+						$calc_array[$f_id] = $v;
+					}
+				}
+			}
+		}
+		
+		return $calc_array;
+	}
 }
