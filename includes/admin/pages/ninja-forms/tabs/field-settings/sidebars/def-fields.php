@@ -1,5 +1,5 @@
 <?php
-add_action('admin_init', 'ninja_forms_register_sidebar_def_fields');
+//add_action('admin_init', 'ninja_forms_register_sidebar_def_fields');
 
 function ninja_forms_register_sidebar_def_fields(){
 	$args = array(
