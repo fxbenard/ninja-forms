@@ -17,8 +17,22 @@ function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name =
 
 	$class = 'code ninja-forms-'.$field_type.'-'.$name.' '.$class;
 	$id = 'ninja_forms_field_'.$field_id.'_'.$name;
-	$name = 'ninja_forms_field_'.$field_id.'['.$name.']';
-
+	if ( strpos( $name, '[' ) !== false ) {
+		str_replace( ']', '', $name );
+		$name = explode( '[', $name );
+		if ( is_array ( $name ) ) {
+			$tmp_name = 'ninja_forms_field_'.$field_id;
+			foreach ( $name as $n ) {
+				$tmp_name .= '['.$n.']';
+			}
+			$name = $tmp_name;
+		} else {
+			$name = 'ninja_forms_field_'.$field_id.'['.$name.']';
+		}
+	} else {
+		$name = 'ninja_forms_field_'.$field_id.'['.$name.']';
+	}
+	
 	?>
 	<div class="description description-<?php echo $width;?> <?php echo $type;?>" id="<?php echo $name;?>_p">
 	<?php
