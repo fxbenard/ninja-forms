@@ -103,6 +103,30 @@ function ninja_forms_tab_addons(){
             'plugin' => 'ninja-forms-user-analytics/nf-user-analytics.php',
             'docs' => '',
         ),
+        array (
+            'title' => 'Constant Contact',
+            'image' => 'http://wpninjas.com/wp-content/uploads/edd/2013/07/constant-contact-300x121.png',
+            'content' => 'The Constant Contact extension allows you to quickly create newsletter signup forms for your Constant Contact account using the power and…',
+            'link' => 'http://wpninjas.com/downloads/constant-contact/',
+            'plugin' => 'ninja-forms-constant-contact/ninja-forms-constant-contact.php',
+            'docs' => '',
+        ),
+        array (
+            'title' => 'Pushover',
+            'image' => 'http://wpninjas.com/wp-content/uploads/edd/2013/07/pushover-300x121.png',
+            'content' => 'When email and SMS notifications just do not cut it, send yourself push notifications of form submissions with Pushover. Pushover makes…',
+            'link' => 'http://wpninjas.com/downloads/pushover/',
+            'plugin' => 'ninja-forms-pushover/ninja-forms-pushover.php',
+            'docs' => '',
+        ),
+        array (
+            'title' => 'Freshbooks',
+            'image' => 'http://wpninjas.com/wp-content/uploads/edd/2013/07/freshbooks-300x121.png',
+            'content' => 'Automatically insert Ninja Forms data right into Freshbooks when your potential clients submit forms. Go from lead to invoice that much quicker…',
+            'link' => 'http://wpninjas.com/downloads/freshbooks/',
+            'plugin' => 'ninja-forms-freshbooks/ninja-forms-freshbooks.php',
+            'docs' => '',
+        ),
     );
 
     foreach ($items as $item) {
