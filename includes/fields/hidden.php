@@ -5,7 +5,7 @@ function ninja_forms_register_field_hiddenbox(){
 		'sidebar' => 'template_fields',
 		'edit_function' => 'ninja_forms_field_hidden_edit',
 		'display_function' => 'ninja_forms_field_hidden_display',
-		'save_function' => 'ninja_forms_field_hidden_save',
+		'save_function' => '',
 		'group' => 'standard_fields',
 		'edit_label' => true,
 		'edit_label_pos' => false,
@@ -111,10 +111,6 @@ function ninja_forms_field_hidden_edit($field_id, $data){
 
 	</p>
 	<?php
-}
-
-function ninja_forms_field_hidden_save(){
-	//echo "<br><br><br>hello world!";
 }
 
 function ninja_forms_field_hidden_display($field_id, $data){
