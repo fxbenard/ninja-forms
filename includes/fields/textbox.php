@@ -26,20 +26,46 @@ function ninja_forms_register_field_textbox(){
 				'label' => __( 'Use this as the "From" email address for Administrative recepients of this form?', 'ninja-forms' ),
 			),
 			array(
-				'type' => 'checkbox',
+				'type' => 'hidden',
 				'name' => 'first_name',
-				'label' => __( 'Is this a first name?', 'ninja-forms' ),
 			),
 			array(
-				'type' => 'checkbox',
+				'type' => 'hidden',
 				'name' => 'last_name',
-				'label' => __( 'Is this a last name?', 'ninja-forms' ),
 			),
 			array(
 				'type' => 'checkbox',
 				'name' => 'from_name',
 				'label' => __( 'Use this as the "From" email name for Administrative recepients of this form?', 'ninja-forms' ),
+			),				
+			array(
+				'type' => 'hidden',
+				'name' => 'user_address_1',
+			),		
+			array(
+				'type' => 'hidden',
+				'name' => 'user_address_2',
+			),						
+			array(
+				'type' => 'hidden',
+				'name' => 'user_city',
+			),				
+			array(
+				'type' => 'hidden',
+				'name' => 'user_zip',
+			),				
+			array(
+				'type' => 'hidden',
+				'name' => 'user_phone',
 			),
+			array(
+				'type' => 'hidden',
+				'name' => 'user_email',
+			),		
+			array(
+				'type' => 'hidden',
+				'name' => 'user_info_field_group',
+			),		
 		),
 		'display_function' => 'ninja_forms_field_text_display',
 		'save_function' => '',
