@@ -51,7 +51,7 @@ function ninja_forms_field_calc_filter( $calc_data, $field_id ){
 			
 			$all_fields = ninja_forms_get_fields_by_form_id( $form_id );
 
-			remove_filter( 'ninja_forms_field', 'ninja_forms_field_calc_filter', 12, 2 );
+			remove_filter( 'ninja_forms_field', 'ninja_forms_field_calc_filter', 9, 2 );
 
 			// Figure out if there is a sub_total and a tax field. If there are, and this is a total field set to calc_method auto, we're using an equation, not auto.
 			$tax = false;
@@ -138,15 +138,16 @@ function ninja_forms_field_calc_filter( $calc_data, $field_id ){
  				$places = $calc_data['calc_places'];
  				$result = number_format( round( $result, $places ), $places );
  			}
+
 			$calc_data['default_value'] = $result;
 				
-			add_filter( 'ninja_forms_field', 'ninja_forms_field_calc_filter', 12, 2 );
+			add_filter( 'ninja_forms_field', 'ninja_forms_field_calc_filter', 9, 2 );
 		//}
 	}
 	return $calc_data;
 }
 
-add_filter( 'ninja_forms_field', 'ninja_forms_field_calc_filter', 12, 2 );
+add_filter( 'ninja_forms_field', 'ninja_forms_field_calc_filter', 9, 2 );
 
 /*
  *
@@ -269,6 +270,10 @@ function ninja_forms_calc_field_loop( $field_id, $calc_eq = '', $result = '' ){
 	if ( $calc_method == 'eq' ) {
 		$eq = new eqEOS();
 		$result = $eq->solveIF($calc_eq);
+	}
+
+	if ( $result == '' ) {
+		$result = 0;
 	}
 
 	return $result;
