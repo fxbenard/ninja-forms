@@ -13,6 +13,7 @@ function ninja_forms_display_field_type( $field_id, $data ){
 	if( strpos( $field_type, '_' ) === 0 ){
 		$field_type = substr( $field_type, 1 );
 	}
+	$field_type = apply_filters( 'ninja_forms_display_field_type', $field_type, $field_id );
 ?>
 	<input type="hidden" id="ninja_forms_field_<?php echo $field_id;?>_type" value="<?php echo $field_type;?>">
 <?php
