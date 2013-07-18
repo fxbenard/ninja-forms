@@ -17,6 +17,15 @@ function ninja_forms_register_field_list(){
 					array('name' => 'Multi-Select', 'value' => 'multi'),
 				),
 			),
+			array(
+				'type' => 'checkbox',
+				'name' => 'user_state',
+				'label' => __( 'This is the user\'s state', 'ninja-forms' ),
+			),				
+			array(
+				'type' => 'hidden',
+				'name' => 'user_info_field_group',
+			),	
 		),
 		'display_function' => 'ninja_forms_field_list_display',
 		'group' => 'standard_fields',
@@ -529,6 +538,7 @@ function ninja_forms_field_list_option_output($field_id, $x, $option = '', $hidd
 		$label = '';
 		$value = '';
 		$selected = '';
+		$calc = '';
 		$hide = 'style="display:none;"';
 	}
 	if($selected == 1){
