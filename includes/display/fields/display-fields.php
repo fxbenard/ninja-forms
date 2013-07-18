@@ -200,15 +200,15 @@ function ninja_forms_get_field_wrap_class($field_id){
 
 function ninja_forms_get_field_class($field_id){
 	$field_row = ninja_forms_get_field_by_id($field_id);
-	$data = $field_row['data'];
+	$field_data = $field_row['data'];
 
 	$field_class = 'ninja-forms-field';
 
 	$x = 0;
 	$custom_class = '';
 
-	if(isset($data['class']) AND !empty($data['class'])){
-		$class_array = explode(",", $data['class']);
+	if(isset($field_data['class']) AND !empty($field_data['class'])){
+		$class_array = explode(",", $field_data['class']);
 		foreach($class_array as $class){
 			$custom_class .= $class;
 			if($x != (count($class_array) - 1)){
@@ -218,18 +218,17 @@ function ninja_forms_get_field_class($field_id){
 		}
 	}
 
-
-	$data = $field_row['data'];
-
 	$req_class = '';
-	if(isset($data['req']) AND $data['req'] == 1){
+	if(isset($field_data['req']) AND $field_data['req'] == 1){
 		$req_class = 'ninja-forms-req';
 	}
 
 	$form_id = $field_row['form_id'];
 	$watch_fields = array();
 	$field_results = ninja_forms_get_fields_by_form_id($form_id);
-	$calc_adv_listen = '';
+	$calc_listen = '';
+	$sub_total = false;
+	$tax = false;
 	foreach($field_results as $field){
 		$data = $field['data'];
 		if(isset($data['conditional']) AND is_array($data['conditional'])){
@@ -243,23 +242,62 @@ function ninja_forms_get_field_class($field_id){
 		}
 		// Check for advanced calculation fields that reference this field. If we find one, and use_calc_adv is set to 1, add a special class to this field.
 		if ( $field['type'] == '_calc' ) {
-			if ( $data['use_calc_adv'] == 1 AND $data['calc_adv'] != '' ) {
-				if (preg_match("/\bfield_".$field_id."\b/i", $data['calc_adv'] ) ) {
-					$calc_adv_listen = 'ninja-forms-field-calc-adv-listen';
-				}
+
+			// Check to see if this is a sub_total calculation
+
+
+			if ( isset ( $data['calc_method'] ) ) {
+				$calc_method = $data['calc_method'];
+			} else {
+				$calc_method = 'auto';
 			}
+
+			switch ( $calc_method ) {
+				case 'auto':
+					if ( isset ( $field_data['calc_auto_include'] ) AND $field_data['calc_auto_include'] == 1 ) {
+						$calc_listen = 'ninja-forms-field-calc-listen ninja-forms-field-calc-auto';
+					}
+					break;
+				case 'fields':
+					foreach ( $data['calc'] as $calc ) {
+						if ( $calc['field'] == $field_id ) {
+							if ( $calc_listen == '' ) {
+								$calc_listen = 'ninja-forms-field-calc-listen';
+							}
+							break;
+						}
+					}
+					break;
+				case 'eq':
+					$eq = $data['calc_eq'];
+					if (preg_match("/\bfield_".$field_id."\b/i", $eq ) ) {
+						if ( $calc_listen == '' ) {
+							$calc_listen = 'ninja-forms-field-calc-listen';
+						}
+						break;
+					}
+					break;
+			}
+		}
+		
+	}
+
+	if ( isset ( $field_data['payment_sub_total'] ) AND $field_data['payment_sub_total'] == 1 ) {
+		if ( $calc_listen == '' ) {
+			$calc_listen = 'ninja-forms-field-calc-listen';
+		}
+	}
+	
+	// Check to see if this is a tax field;
+	if ( $field_row['type'] == '_tax' ) {
+		if ( $calc_listen == '' ) {
+			$calc_listen = 'ninja-forms-field-calc-listen';
 		}
 	}
 
 	$listen_class = '';
 	if(isset($watch_fields[$field_id]) AND $watch_fields[$field_id] == 1){
 		$listen_class = "ninja-forms-field-conditional-listen";
-	}
-
-	$calc_listen = '';
-	$field_row = ninja_forms_get_field_by_id( $field_id );
-	if ( isset ( $field_row['data']['calc'] ) AND !empty ( $field_row['data']['calc'] ) ) {
-		$calc_listen = 'ninja-forms-field-calc-listen';
 	}
 
 	if($req_class != ''){
@@ -278,9 +316,6 @@ function ninja_forms_get_field_class($field_id){
 		$field_class .= ' '.$calc_listen;
 	}
 
-	if ( $calc_adv_listen != '' ) {
-		$field_class .= ' '.$calc_adv_listen;
-	}
 
 	$field_class = apply_filters( 'ninja_forms_display_field_class', $field_class, $field_id );
 
