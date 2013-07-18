@@ -10,7 +10,7 @@ function ninja_forms_register_field_submit(){
 		'edit_custom_class' => true,
 		'edit_help' => true,
 		'edit_meta' => false,
-		'sidebar' => '',
+		'sidebar' => 'template_fields',
 		'display_label' => false,
 		'edit_conditional' => true,
 		'conditional' => array(
