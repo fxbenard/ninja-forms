@@ -43,6 +43,8 @@ function ninja_forms_register_field_desc(){
 		'edit_meta' => false,
 		'edit_conditional' => true,
 		'process_field' => false,
+		'pre_process' => 'ninja_forms_field_desc_pre_process',
+		'esc_html' => false,
 	);
 
 	ninja_forms_register_field('_desc', $args);
@@ -76,4 +78,19 @@ function ninja_forms_field_desc_display( $field_id, $data ){
 	?>
 	<<?php echo $desc_el;?> class="<?php echo $field_class;?>" id="ninja_forms_field_<?php echo $field_id;?>_div_wrap" style="<?php echo $display_style;?>" rel="<?php echo $field_id;?>"><?php echo $default_value;?></<?php echo $desc_el;?>>
 	<?php
+}
+
+/*
+ *
+ * Function that adds the $data['default_value'] to the $ninja_forms_processing.
+ *
+ * @since 2.2.30
+ * @returns void
+ */
+
+function ninja_forms_field_desc_pre_process( $field_id, $user_value ){
+	global $ninja_forms_processing;
+	$field = ninja_forms_get_field_by_id( $field_id );
+	$default_value = $field['data']['default_value'];
+	$ninja_forms_processing->update_field_value( $field_id, $default_value );
 }
