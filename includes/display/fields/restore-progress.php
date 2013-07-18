@@ -11,10 +11,10 @@ function ninja_forms_filter_restore_progress( $data, $field_id ){
 	$field_row = ninja_forms_get_field_by_id( $field_id );
 	$field_type = $field_row['type'];
 
-	if ( isset( $ninja_forms_fields[$field_type]['process_field'] ) ) {
-		$process_field = $ninja_forms_fields[$field_type]['process_field'];
+	if ( isset( $ninja_forms_fields[$field_type]['esc_html'] ) ) {
+		$esc_html = $ninja_forms_fields[$field_type]['esc_html'];
 	} else {
-		$process_field = false;
+		$esc_html = true;
 	}
 
 	if ( is_object( $ninja_forms_processing ) ) {
@@ -22,11 +22,17 @@ function ninja_forms_filter_restore_progress( $data, $field_id ){
 		$process_complete = $ninja_forms_processing->get_form_setting( 'processing_complete' );
 		if ( $process_complete != 1 OR ( $process_complete == 1 AND $clear_form != 1 ) ) {
 			if ( $ninja_forms_processing->get_field_value( $field_id ) !== false ) {
-				if( is_array( $ninja_forms_processing->get_field_value( $field_id ) ) ){
-					$data['default_value'] = ninja_forms_esc_html_deep( $ninja_forms_processing->get_field_value( $field_id ) );
-				}else{
-					$data['default_value'] = esc_html( $ninja_forms_processing->get_field_value( $field_id ) );
-				}	
+				
+				if ( $esc_html ) {
+					if( is_array( $ninja_forms_processing->get_field_value( $field_id ) ) ){
+						$default_value = ninja_forms_esc_html_deep( $ninja_forms_processing->get_field_value( $field_id ) );
+					} else {
+						$default_value = esc_html( $ninja_forms_processing->get_field_value( $field_id ) );
+					}
+				} else {
+					$default_value = $ninja_forms_processing->get_field_value( $field_id );
+				}
+				$data['default_value'] = $default_value;
 			}
 		}
 	}
