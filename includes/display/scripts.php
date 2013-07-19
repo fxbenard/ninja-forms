@@ -45,7 +45,7 @@ function ninja_forms_display_js($form_id, $local_vars = ''){
 				$calc_value[$field_id] = $field['data']['calc_value'];
 			} else if ( $field_type == '_list' ) {
 				// Get a list of options and their 'calc' setting.
-				if ( isset ( $field['data']['list']['options'] ) ) {
+				if ( isset ( $field['data']['list']['options'] ) AND is_array ( $field['data']['list']['options'] ) ) {
 					$list_options = $field['data']['list']['options'];
 					foreach ( $list_options as $option ) {
 						if ( isset ( $field['data']['list_show_value'] ) AND $field['data']['list_show_value'] == 1 ) {

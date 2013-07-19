@@ -652,6 +652,8 @@ class Ninja_Forms_Processing {
 		if ( is_numeric ( $name ) AND isset ( $this->data['field_data'][$name] ) ) {
 			// We have an ID.
 			$calc_id = $name;
+			$calc_row = $this->get_field_settings( $calc_id );
+			$places = $calc_row['data']['calc_places'];
 		} else {
 			// Search for our field by name.
 			$calc_id = '';
