@@ -76,32 +76,31 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.30 =
+= 2.2.31 =
 
 *Features:*
 
-* Added the new Calculation field. This field allows you to perform simple to complex mathematic operations, as well as collect payment data from the user.
-* Added the new Sub Total field. This calculation field allows you to collect payment data from the user.
-* Added the new Total field. This calculation field allows you to collect payment data from the user.
-* Added the new Tax field. This calculation field allows you to collect payment data from the user.
-* Added a new sidebar to the field settings tab to hold the new Payment Fields.
-* Added several new fields for capturing a user's personal information: First Name, Last Name, Address, City, State, Country, Postal Code, Email Address, Phone.
-* Added a new sidebar to the field settings tab to hold the new Personal Information fields.
+* Add Danish translation files for Ninja Forms.
 
 *Changes:*
 
-* Removed the Defined Fields sidebar from the Field Settings tab.
-* Submit and Anti-Spam fields have been moved into the Template Fields sidebar.
-
-*Bugs:*
-
-* Fixed a bug that prevented Text Layout Elements from showing properly on Multi-Part Forms.
+* Sidebars and individual field settings should now remember their state (open or closed) upon page reload.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.31 =
+
+*Features:*
+
+* Add Danish translation files for Ninja Forms.
+
+*Changes:*
+
+* Sidebars and individual field settings should now remember their state (open or closed) upon page reload.
 
 = 2.2.30 =
 
