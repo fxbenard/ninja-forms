@@ -29,7 +29,7 @@ function ninja_forms_display_sidebars($data){
 		$order = $opt['sidebars'][$current_page][$current_tab];
 		$ninja_forms_sidebars[$current_page][$current_tab] = ninja_forms_sidebar_sorter( $ninja_forms_sidebars[$current_page][$current_tab], $order );
 	}
-
+	$plugin_settings = get_option( 'ninja_forms_settings' );
 ?>
 <div id="menu-settings-column" class="metabox-holder">
 	<div id="side-sortables" class="meta-box-sortables ui-sortable">
@@ -38,15 +38,21 @@ function ninja_forms_display_sidebars($data){
 			foreach($ninja_forms_sidebars[$current_page][$current_tab] as $slug => $sidebar){
 
 				if((isset($opt['screen_options']['tab'][$current_tab]['sidebars'][$slug]['visible']) AND $opt['screen_options']['tab'][$current_tab]['sidebars'][$slug]['visible'] == 1) OR !isset($opt['screen_options']['tab'][$current_tab]['sidebars'][$slug]['visible'])){
+				
+				if ( isset ( $plugin_settings['metabox_state'][$current_page][$current_tab][$slug] ) ) {
+					$state = $plugin_settings['metabox_state'][$current_page][$current_tab][$slug];
+				} else {
+					$state = '';
+				}
 		?>
-		<div id="<?php echo $slug;?>" class="postbox">
+		<div id="ninja_forms_metabox_<?php echo $slug;?>" class="postbox">
 			<h3 class="hndl">
 				<span><?php _e($sidebar['name'], 'ninja-forms');?></span>
 			</h3>
-				<span class="item-controls">
-					<a class="item-edit" id="edit_id" title="<?php _e('Edit Menu Item', 'ninja-forms'); ?>" href="#"><?php _e( 'Edit Menu Item' , 'ninja-forms'); ?></a>
-				</span>
-			<div class="inside" id="ninja_forms_sidebar_<?php echo $slug;?>">
+			<span class="item-controls">
+				<a class="item-edit metabox-item-edit" id="edit_id" title="<?php _e('Edit Menu Item', 'ninja-forms'); ?>" href="#"><?php _e( 'Edit Menu Item' , 'ninja-forms'); ?></a>
+			</span>
+			<div class="inside" id="ninja_forms_sidebar_<?php echo $slug;?>" style="<?php echo $state;?>">
 				<?php
 				if(isset($sidebar['display_function']) AND !empty($sidebar['display_function'])){
 					$sidebar_callback = $sidebar['display_function'];

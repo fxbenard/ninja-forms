@@ -3,10 +3,12 @@
 function ninja_forms_edit_field_output_li( $field_id ) {
 	global $wpdb, $ninja_forms_fields;
 	$field_row = ninja_forms_get_field_by_id( $field_id );
-
+	$current_tab = ninja_forms_get_current_tab();
+	$current_page = $_REQUEST['page'];
 	$field_type = $field_row['type'];
 	$field_data = $field_row['data'];
-
+	$plugin_settings = get_option( 'ninja_forms_settings' );
+	
 	if ( isset( $ninja_forms_fields[$field_type]['use_li'] ) and $ninja_forms_fields[$field_type]['use_li'] ) {
 
 		if ( isset( $field_row['fav_id'] ) and $field_row['fav_id'] != 0 ) {
@@ -91,16 +93,24 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 				<input type="hidden" id="ninja_forms_field_<?php echo $field_id;?>_conditional_value_type" value="<?php echo $conditional_value_type;?>">
 				<input type="hidden" id="ninja_forms_field_<?php echo $field_id;?>_fav_id" name="" class="ninja-forms-field-fav-id" value="<?php echo $fav_id;?>">
 				<dl class="menu-item-bar">
-					<dt class="menu-item-handle" >
+					<dt class="menu-item-handle" id="ninja_forms_metabox_field_<?php echo $field_id;?>" >
 						<span class="item-title ninja-forms-field-title" id="ninja_forms_field_<?php echo $field_id;?>_title"><?php echo $li_label;?></span>
 						<span class="item-controls">
 							<span class="item-type"><?php echo $type_name;?></span>
-							<a class="item-edit" id="ninja_forms_field_<?php echo $field_id;?>_toggle" title="<?php _e( 'Edit Menu Item', 'ninja-forms' ); ?>" href="#"><?php _e( 'Edit Menu Item' , 'ninja-forms' ); ?></a>
+							<a class="item-edit metabox-item-edit" id="ninja_forms_field_<?php echo $field_id;?>_toggle" title="<?php _e( 'Edit Menu Item', 'ninja-forms' ); ?>" href="#"><?php _e( 'Edit Menu Item' , 'ninja-forms' ); ?></a>
 						</span>
 					</dt>
 				</dl>
-
-				<div class="menu-item-settings type-class inside" id="ninja_forms_field_<?php echo $field_id;?>_inside" style="display:none;">
+				<?php
+				$slug = 'field_'.$field_id;
+				if ( isset ( $plugin_settings['metabox_state'][$current_page][$current_tab][$slug] ) ) {
+					$state = $plugin_settings['metabox_state'][$current_page][$current_tab][$slug];
+				} else {
+					$state = 'display:none;';
+				}
+								
+				?>
+				<div class="menu-item-settings type-class inside" id="ninja_forms_field_<?php echo $field_id;?>_inside" style="<?php echo $state;?>">
 					<table id="field-info"><tr><td width="65%">Field ID: <strong><?php echo $field_id;?></strong></td><!-- <td width="15%"><a href="#" class="ninja-forms-field-add-def" id="ninja_forms_field_<?php echo $field_id;?>_def" class="ninja-forms-field-add-def">Add Defined</a></td><td width="15%"><a href="#" class="ninja-forms-field-remove-def" id="ninja_forms_field_<?php echo $field_id;?>_def">Remove Defined</a></td> --> <td width="5%"><a href="#" class="<?php echo $fav_class;?>" id="ninja_forms_field_<?php echo $field_id;?>_fav">Star</a></td></tr></table>
 			<?php
 
