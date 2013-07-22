@@ -862,7 +862,7 @@ msgid "Ninja Forms"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://ninjaforms.com"
+msgid "http://wpninjas.com"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -875,5 +875,5 @@ msgid "The WP Ninjas"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://wpninjas.net"
+msgid "http://wpninjas.com"
 msgstr ""
