@@ -3,7 +3,7 @@ add_action('init', 'ninja_forms_register_tab_impexp_forms');
 
 function ninja_forms_register_tab_impexp_forms(){
 	$args = array(
-		'name' => 'Forms',
+		'name' => __( 'Forms', 'ninja-forms' ),
 		'page' => 'ninja-forms-impexp',
 		'display_function' => '',
 		'save_function' => 'ninja_forms_save_impexp_forms',
@@ -19,12 +19,12 @@ function ninja_forms_register_imp_forms_metabox(){
 		'page' => 'ninja-forms-impexp',
 		'tab' => 'impexp_forms',
 		'slug' => 'imp_form',
-		'title' => __('Import a form', 'ninja-forms'),
+		'title' => __( 'Import a form', 'ninja-forms' ),
 		'settings' => array(
 			array(
 				'name' => 'userfile',
 				'type' => 'file',
-				'label' => __('Select a file', 'ninja-forms'),
+				'label' => __( 'Select a file', 'ninja-forms' ),
 				'desc' => '',
 				'max_file_size' => 5000000,
 				'help_text' => '',
@@ -32,7 +32,7 @@ function ninja_forms_register_imp_forms_metabox(){
 			array(
 				'name' => 'submit',
 				'type' => 'submit',
-				'label' => __('Import Form', 'ninja-forms'),
+				'label' => __( 'Import Form', 'ninja-forms' ),
 				'class' => 'button-secondary',
 			),
 		),

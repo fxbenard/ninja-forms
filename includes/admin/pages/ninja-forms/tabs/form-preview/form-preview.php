@@ -10,7 +10,7 @@ function ninja_forms_register_tab_form_preview(){
 	}
 
 	$args = array(
-		'name' => 'Form Preview',
+		'name' => __( 'Form Preview', 'ninja-forms' ),
 		'page' => 'ninja-forms',
 		'display_function' => '',
 		'save_function' => '',

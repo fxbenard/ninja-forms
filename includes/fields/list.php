@@ -183,8 +183,8 @@ function ninja_forms_field_list_edit($field_id, $data){
 	<?php add_thickbox(); ?>
 		<div id="ninja_forms_field_<?php echo $field_id;?>_import_options_div" style="display:none;">
 			<textarea id="test" class="list-import-textarea"></textarea>
-			<input type="button" class="save-list-import button-secondary" value="<?php _e( 'Import', 'ninja-forms-style' );?>" rel="<?php echo $field_id;?>">
-			<input type="button" class="cancel-list-import button-secondary" value="<?php _e( 'Cancel', 'ninja-forms-style' );?>">
+			<input type="button" class="save-list-import button-secondary" value="<?php _e( 'Import', 'ninja-forms' ); ?>" rel="<?php echo $field_id;?>">
+			<input type="button" class="cancel-list-import button-secondary" value="<?php _e( 'Cancel', 'ninja-forms' ); ?>">
 			<p><?php _e( 'To use this feature, you can paste your CSV into the textarea above.', 'ninja-forms' );?></p>
 			<p><?php _e( 'The format should look like the following:', 'ninja-forms' );?></p>
 <pre>

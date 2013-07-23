@@ -4,7 +4,7 @@ add_action('init', 'ninja_forms_register_tab_license_settings');
 
 function ninja_forms_register_tab_license_settings(){
 	$args = array(
-		'name' => 'Licenses',
+		'name' => __( 'Licenses', 'ninja-forms' ),
 		'page' => 'ninja-forms-settings',
 		'display_function' => '',
 		'save_function' => 'ninja_forms_save_license_settings',
@@ -19,7 +19,7 @@ function ninja_forms_register_license_settings_metabox(){
 		'page' => 'ninja-forms-settings',
 		'tab' => 'license_settings',
 		'slug' => 'license_settings',
-		'title' => __('Licenses', 'ninja-forms'),
+		'title' => __( 'Licenses', 'ninja-forms' ),
 		'settings' => array(
 			//array(
 				//'name' => 'license_key',

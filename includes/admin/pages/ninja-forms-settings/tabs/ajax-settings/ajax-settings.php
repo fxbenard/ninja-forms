@@ -9,7 +9,7 @@
 
 function ninja_forms_register_tab_ajax_settings(){
 	$args = array(
-		'name' => 'Ajax Settings',
+		'name' => __( 'Ajax Settings', 'ninja-forms' ),
 		'page' => 'ninja-forms-settings',
 		'display_function' => '',
 		'save_function' => 'ninja_forms_save_ajax_settings',
@@ -25,19 +25,19 @@ function ninja_forms_register_ajax_settings_metabox(){
 		'page' => 'ninja-forms-settings',
 		'tab' => 'ajax_settings',
 		'slug' => 'msg_format',
-		'title' => __('Ajax Message Settings', 'ninja-forms'),
+		'title' => __( 'Ajax Message Settings', 'ninja-forms' ),
 		'settings' => array(
 			array(
 				'name' => 'msg_format',
 				'type' => 'radio',
-				'label' => __('Ajax Message Format', 'ninja-forms'),
-				'desc' => __('(Advanced setting: Ninja Forms will require you to create two javascript functions: one to handle the beforeSubmit call and one to handle the server response. These should be named ninja_forms_custom_ajax_before_submit and ninja_forms_custom_ajax_response.)', 'ninja-forms'),
+				'label' => __( 'Ajax Message Format', 'ninja-forms' ),
+				'desc' => __( '(Advanced setting: Ninja Forms will require you to create two javascript functions: one to handle the beforeSubmit call and one to handle the server response. These should be named ninja_forms_custom_ajax_before_submit and ninja_forms_custom_ajax_response.)', 'ninja-forms' ),
 				'options' => array(
-					array('name' => 'Inline Messages (Default)', 'value' => 'inline'),
+					array('name' => __( 'Inline Messages (Default)', 'ninja-forms' ), 'value' => 'inline'),
 					//array('name' => 'jQuery Modal Messages', 'value' => 'modal'),
-					array('name' => 'Custom Message Display (Advanced)', 'value' => 'custom'),
+					array('name' => __( 'Custom Message Display (Advanced)', 'ninja-forms' ), 'value' => 'custom'),
 				),
-				'help_text' => __('Ninja Forms Test', 'ninja-forms'),
+				'help_text' => __( 'Ninja Forms Test', 'ninja-forms' ),
 				'default' => 'inline',
 			),
 			/*

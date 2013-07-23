@@ -2,7 +2,7 @@
 add_action( 'init', 'ninja_forms_register_tab_view_subs', 999 );
 function ninja_forms_register_tab_view_subs(){
 	$args = array(
-		'name' => 'View Submissions', 
+		'name' => __( 'View Submissions', 'ninja-forms' ), 
 		'page' => 'ninja-forms-subs',
 		'display_function' => 'ninja_forms_tab_view_subs', 
 		'save_function' => 'ninja_forms_save_view_subs',
@@ -70,7 +70,7 @@ function ninja_forms_tab_view_subs(){
 
 	if($form_id == ''){
 		?>
-		<h2><?php _e('View Form Submissions', 'ninja-forms');?></h2>
+		<h2><?php _e( 'View Form Submissions', 'ninja-forms' );?></h2>
 		<p class="description description-wide">
 			
 		</p>
@@ -145,11 +145,11 @@ function ninja_forms_tab_view_subs(){
 			<div id="" class="tablenav top">
 				<div class="alignleft actions">
 				<select id="" class="" name="bulk_action">
-					<option value=""><?php _e('Bulk Actions', 'ninja-forms');?></option>
-					<option value="delete"><?php _e('Delete', 'ninja-forms');?></option>
-					<option value="export"><?php _e('Export', 'ninja-forms');?></option>
+					<option value=""><?php _e( 'Bulk Actions', 'ninja-forms' );?></option>
+					<option value="delete"><?php _e( 'Delete', 'ninja-forms' );?></option>
+					<option value="export"><?php _e( 'Export', 'ninja-forms' );?></option>
 				</select>
-				<input type="submit" name="submit" value="Apply" class="button-secondary">
+				<input type="submit" name="submit" value="<?php _e( 'Apply', 'ninja-forms' ); ?>" class="button-secondary">
 			</div>
 			<div class="alignleft actions">
 				<select id="" name="limit">
@@ -158,16 +158,16 @@ function ninja_forms_tab_view_subs(){
 					<option value="100" <?php selected($saved_limit, 100);?>>100</option>
 				</select>
 				<?php _e('Submissions Per Page', 'ninja-forms');?>
-				<input type="submit" name="submit" value="Go" class="button-secondary">
+				<input type="submit" name="submit" value="<?php _e( 'Go', 'ninja-forms' ); ?>" class="button-secondary">
 			</div>
 				<div class="alignleft actions">
- 					<input type="submit" name="submit" class="ninja-forms-download-all-subs button-secondary" value="<?php _e('Download All Submissions', 'ninja-forms');?>">
+ 					<input type="submit" name="submit" class="ninja-forms-download-all-subs button-secondary" value="<?php _e( 'Download All Submissions', 'ninja-forms' );?>">
 				</div>
 				<div id="" class="alignright navtable-pages">
 					<?php
 					if($sub_count != 0 AND $current_page <= $page_count){
 					?>
-					<span class="displaying-num"><?php if($start == 0){ echo 1; }else{ echo $start + 1; }?> - <?php echo $end;?> of <?php echo $sub_count;?> <?php if($sub_count == 1){ _e('Submission', 'ninja-forms'); }else{ _e('Submissions', 'ninja-forms');}?></span>
+					<span class="displaying-num"><?php if($start == 0){ echo 1; }else{ echo $start + 1; }?> - <?php echo $end;?> of <?php echo $sub_count;?> <?php if($sub_count == 1){ _e('Submission', 'ninja-forms'); }else{ _e( 'Submissions', 'ninja-forms' );}?></span>
 					<?php
 					}
 						if($page_count > 1){
@@ -190,11 +190,11 @@ function ninja_forms_tab_view_subs(){
 							
 					?>
 					<span class="pagination-links">
-						<a class="first-page disabled" title="Go to the first page" href="<?php echo $first_page;?>">«</a>
-						<a class="prev-page disabled" title="Go to the previous page" href="<?php echo $prev_page;?>">‹</a>
-						<span class="paging-input"><input class="current-page" title="Current page" type="text" name="paged" value="<?php echo $current_page;?>" size="2"> of <span class="total-pages"><?php echo $page_count;?></span></span>
-						<a class="next-page" title="Go to the next page" href="<?php echo $next_page;?>">›</a>
-						<a class="last-page" title="Go to the last page" href="<?php echo $last_page;?>">»</a>
+						<a class="first-page disabled" title="<?php _e( 'Go to the first page', 'ninja-forms' ); ?>" href="<?php echo $first_page;?>">«</a>
+						<a class="prev-page disabled" title="<?php _e( 'Go to the previous page', 'ninja-forms' ); ?>" href="<?php echo $prev_page;?>">‹</a>
+						<span class="paging-input"><input class="current-page" title="<?php _e( 'Current page', 'ninja-forms' ); ?>" type="text" name="paged" value="<?php echo $current_page;?>" size="2"> of <span class="total-pages"><?php echo $page_count;?></span></span>
+						<a class="next-page" title="<?php _e( 'Go to the next page', 'ninja-forms' ); ?>" href="<?php echo $next_page;?>">›</a>
+						<a class="last-page" title="<?php _e( 'Go to the last page', 'ninja-forms' ); ?>" href="<?php echo $last_page;?>">»</a>
 					</span>
 					<?php
 						}
@@ -203,10 +203,10 @@ function ninja_forms_tab_view_subs(){
 			</div>
 			<?php
 			}else{
-				$back_link = remove_query_arg(array('edit_sub_form'));
+				$back_link = remove_query_arg( array( 'edit_sub_form' ) );
 			?>
 			<div id="" class="">
-				<a href="<?php echo $back_link;?>"><input type="button" class="button-primary" value="Back To Sub List"></a>
+				<a href="<?php echo $back_link;?>"><input type="button" class="button-primary" value="<?php _e( 'Back To Sub List', 'ninja-forms' ); ?>"></a>
 			</div>
 			<?php
 			} 
@@ -279,9 +279,9 @@ function ninja_forms_tab_view_subs(){
 							echo $date;
 						?>
 						<div class="row-actions">
-							<span class="edit"><a href="<?php echo $edit_link;?>" id="ninja_forms_sub_<?php echo $sub['id'];?>" class="ninja-forms-view-sub"><?php _e('Edit', 'ninja-forms');?></a> | </span>
-							<span class="trash"><a href="#" id="ninja_forms_sub_<?php echo $sub['id'];?>" class="ninja-forms-delete-sub"><?php _e('Delete', 'ninja-forms');?></a> | </span>
-							<span class="export"><a href="<?php echo $download_link;?>" id="ninja_forms_sub_<?php echo $sub['id'];?>" class="ninja-forms-export-sub"><?php _e('Export to CSV', 'ninja-forms');?></a></span>
+							<span class="edit"><a href="<?php echo $edit_link;?>" id="ninja_forms_sub_<?php echo $sub['id'];?>" class="ninja-forms-view-sub"><?php _e('Edit', 'ninja-forms' ); ?></a> | </span>
+							<span class="trash"><a href="#" id="ninja_forms_sub_<?php echo $sub['id'];?>" class="ninja-forms-delete-sub"><?php _e( 'Delete', 'ninja-forms' ); ?></a> | </span>
+							<span class="export"><a href="<?php echo $download_link;?>" id="ninja_forms_sub_<?php echo $sub['id'];?>" class="ninja-forms-export-sub"><?php _e( 'Export to CSV', 'ninja-forms' ); ?></a></span>
 
 						</div>
 					</td>
@@ -348,14 +348,14 @@ function ninja_forms_tab_view_subs(){
 				ninja_forms_display_form($form_id);
 				?>
 				<tr id="">
-					<td colspan="2"><input type="submit" name="submit" value="Save Sub" class="button-secondary"></td>
+					<td colspan="2"><input type="submit" name="submit" value="<?php _e( 'Save Sub', 'ninja-forms' ); ?>" class="button-secondary"></td>
 				</tr>
 			<?php
 		}else{
 			?>
 			<tr id="ninja_forms_subs_empty" style="">
 				<td colspan="7">
-					<?php _e("No submissions found", "ninja-forms");?>
+					<?php _e( 'No submissions found', 'ninja-forms' ); ?>
 				</td>
 			</tr>
 			<?php
@@ -387,7 +387,7 @@ function ninja_forms_tab_view_subs(){
 				<tfoot>
 					<tr>
 						<th class="check-column"><input type="checkbox" id="" class="ninja-forms-select-all" title="ninja-forms-subs-bulk-action"></th>
-						<th><?php _e('Date', 'ninja-forms');?></th>
+						<th><?php _e( 'Date', 'ninja-forms' ); ?></th>
 				<?php
 				$x = 0;
 				while($x <= $col_count){
@@ -406,14 +406,14 @@ function ninja_forms_tab_view_subs(){
 			?>
 			</table>
 		<div id="ninja_forms_sub_info_wrap" class="form-section" style="display:none;">
-			<a href="#" id="" class="ninja-forms-back-sub"><?php _e('Back', 'ninja-forms');?></a>
+			<a href="#" id="" class="ninja-forms-back-sub"><?php _e( 'Back', 'ninja-forms' ); ?></a>
 			<br />
 			<br />
 			<div id="ninja_forms_sub_info">
 			
 			
 			</div>
-			<input type="button" id="ninja_forms_edit_sub" value="Save" class="button-primary"> &nbsp;&nbsp; <span id="ninja_forms_edit_sub_loading" style="display:none;"><img src="<?php echo NINJA_FORMS_URL."/images/loading.gif";?>"></span>
+			<input type="button" id="ninja_forms_edit_sub" value="<?php _e( 'Save', 'ninja-forms' ); ?>" class="button-primary"> &nbsp;&nbsp; <span id="ninja_forms_edit_sub_loading" style="display:none;"><img src="<?php echo NINJA_FORMS_URL."/images/loading.gif";?>"></span>
 		</div>
 			<?php
 	
@@ -564,9 +564,9 @@ function ninja_forms_save_view_subs($form_id, $data){
 					ninja_forms_export_subs_to_csv($sub_ids);
 				}
 				break;
-			case __('Save Sub', 'ninja-forms'):
+			case __( 'Save Sub', 'ninja-forms' ):
 				break;
-			case __('View Submissions', 'ninja-forms'):
+			case __( 'View Submissions', 'ninja-forms' ):
 				break;
 		}
 	}

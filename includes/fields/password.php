@@ -124,8 +124,8 @@ function ninja_forms_field_profile_pass_display( $field_id, $data ){
 		echo '</div>';
 		if( $adv_pass == 1 ){
 			?>
-			<div id="pass-strength-result"><?php _e('Strength indicator'); ?></div>
-				<p class="description indicator-hint"><?php _e('Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! " ? $ % ^ &amp; ).'); ?></p>
+			<div id="pass-strength-result"><?php _e( 'Strength indicator', 'ninja-forms' ); ?></div>
+				<p class="description indicator-hint"><?php _e( 'Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! " ? $ % ^ &amp; ).', 'ninja-forms' ); ?></p>
 			<?php
 		}
 

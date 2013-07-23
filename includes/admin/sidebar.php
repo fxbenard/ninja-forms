@@ -151,7 +151,7 @@ function ninja_forms_display_sidebars($data){
 									break;
 								case 'submit':
 									?>
-									<input type="submit" name="submit" id="" class="<?php echo $class;?>" value="<?php _e('View Submissions', 'ninja-forms');?>">
+									<input type="submit" name="submit" id="" class="<?php echo $class;?>" value="<?php _e( 'View Submissions', 'ninja-forms' );?>">
 									<?php
 									break;
 							}
