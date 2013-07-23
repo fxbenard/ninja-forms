@@ -4,7 +4,7 @@ function ninja_forms_register_form_settings_help(){
 	$args = array(
 		'page' => 'ninja-forms',
 		'tab' => 'form_settings',
-		'title' => 'Basic Settings',
+		'title' => __( 'Basic Settings', 'ninja-forms' ),
 		'display_function' => 'ninja_forms_help_form_settings',
 	);
 	ninja_forms_register_help_screen_tab('basic_settings', $args);

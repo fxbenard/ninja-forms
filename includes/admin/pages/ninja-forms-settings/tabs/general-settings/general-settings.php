@@ -3,7 +3,7 @@ add_action( 'init', 'ninja_forms_register_tab_general_settings', 9 );
 
 function ninja_forms_register_tab_general_settings(){
 	$args = array(
-		'name' => 'General',
+		'name' => __( 'General', 'ninja-forms' ),
 		'page' => 'ninja-forms-settings',
 		'display_function' => '',
 		'save_function' => 'ninja_forms_save_general_settings',
@@ -21,7 +21,7 @@ function ninja_forms_register_general_settings_metabox(){
 		'page' => 'ninja-forms-settings',
 		'tab' => 'general_settings',
 		'slug' => 'general_settings',
-		'title' => __('General Settings', 'ninja-forms'),
+		'title' => __( 'General Settings', 'ninja-forms' ),
 		'settings' => array(
 			array(
 				'name' => 'version',
@@ -32,14 +32,14 @@ function ninja_forms_register_general_settings_metabox(){
 			array(
 				'name' => 'date_format',
 				'type' => 'text',
-				'label' => __('Date Format', 'ninja-forms'),
-				'desc' => __('e.g. m/d/Y, d/m/Y - Tries to follow the <a href="http://www.php.net/manual/en/function.date.php" target="_blank">PHP date() function</a> specifications, but not every format is supported.', 'ninja-forms'),
+				'label' => __( 'Date Format', 'ninja-forms' ),
+				'desc' => __( 'e.g. m/d/Y, d/m/Y - Tries to follow the <a href="http://www.php.net/manual/en/function.date.php" target="_blank">PHP date() function</a> specifications, but not every format is supported.', 'ninja-forms' ),
 			),
 			array(
 				'name' => 'currency_symbol',
 				'type' => 'text',
-				'label' => __('Currency Symbol', 'ninja-forms'),
-				'desc' => __('e.g. $, &pound;, &euro;', 'ninja-forms'),
+				'label' => __( 'Currency Symbol', 'ninja-forms' ),
+				'desc' => __( 'e.g. $, &pound;, &euro;', 'ninja-forms' ),
 			),
 		),
 	);

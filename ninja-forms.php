@@ -6,6 +6,8 @@ Description: Ninja Forms is a webform builder with unparalleled ease of use and 
 Version: 2.2.31
 Author: The WP Ninjas
 Author URI: http://wpninjas.com
+Text Domain: ninja-forms
+Domain Path: /lang/
 */
 
 /*
@@ -250,9 +252,27 @@ $_SESSION['NINJA_FORMS_DIR'] = NINJA_FORMS_DIR;
 $_SESSION['NINJA_FORMS_URL'] = NINJA_FORMS_URL;
 
 function ninja_forms_load_lang() {
-	$plugin_dir = basename(dirname(__FILE__));
-	$lang_dir = $plugin_dir.'/lang/';
-	load_plugin_textdomain( 'ninja-forms', false, $lang_dir );
+
+	/** Set our unique textdomain string */
+	$textdomain = 'ninja-forms';
+
+	/** The 'plugin_locale' filter is also used by default in load_plugin_textdomain() */
+	$locale = apply_filters( 'plugin_locale', get_locale(), $textdomain );
+
+	/** Set filter for WordPress languages directory */
+	$wp_lang_dir = apply_filters(
+		'ninja_forms_wp_lang_dir',
+		WP_LANG_DIR . '/ninja-forms/' . $textdomain . '-' . $locale . '.mo'
+	);
+
+	/** Translations: First, look in WordPress' "languages" folder = custom & update-secure! */
+	load_textdomain( $textdomain, $wp_lang_dir );
+
+	/** Translations: Secondly, look in plugin's "lang" folder = default */
+	$plugin_dir = basename( dirname( __FILE__ ) );
+	$lang_dir = apply_filters( 'ninja_forms_lang_dir', $plugin_dir . '/lang/' );
+	load_plugin_textdomain( $textdomain, FALSE, $lang_dir );
+
 }
 add_action('plugins_loaded', 'ninja_forms_load_lang');
 

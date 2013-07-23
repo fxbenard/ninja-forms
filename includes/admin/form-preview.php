@@ -41,7 +41,7 @@ function ninja_forms_preview_link( $form_id = '', $echo = true ) {
 	}
 
 	if( $echo ){
-		$preview_link = '<a target="_blank" href="' . $base . '/?page_id=' . $page_id . '&preview=true&form_id=' . $form_id . '">Preview Form</a>';
+		$preview_link = '<a target="_blank" href="' . $base . '/?page_id=' . $page_id . '&preview=true&form_id=' . $form_id . '">' . __( 'Preview Form', 'ninja-forms' ) . '</a>';
 	}else{
 		$preview_link = $base . '/?page_id=' . $page_id . '&preview=true&form_id=' . $form_id;
 	}

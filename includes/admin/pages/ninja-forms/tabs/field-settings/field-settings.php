@@ -9,7 +9,7 @@ function ninja_forms_register_tab_field_settings(){
 	}
 
 	$args = array(
-		'name' => 'Field Settings',
+		'name' => __( 'Field Settings', 'ninja-forms' ),
 		'page' => 'ninja-forms',
 		'display_function' => 'ninja_forms_tab_field_settings',
 		'save_function' => 'ninja_forms_save_field_settings',

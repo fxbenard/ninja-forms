@@ -3,7 +3,7 @@ add_action( 'init', 'ninja_forms_register_tab_label_settings' );
 
 function ninja_forms_register_tab_label_settings(){
 	$args = array(
-		'name' => 'Labels',
+		'name' => __( 'Labels', 'ninja-forms' ),
 		'page' => 'ninja-forms-settings',
 		'display_function' => '',
 		'save_function' => 'ninja_forms_save_label_settings',
@@ -20,7 +20,7 @@ function ninja_forms_register_label_settings_metabox(){
 		'page' => 'ninja-forms-settings',
 		'tab' => 'label_settings',
 		'slug' => 'label_labels',
-		'title' => __('Message Labels', 'ninja-forms'),
+		'title' => __( 'Message Labels', 'ninja-forms' ),
 		'settings' => array(
 			array(
 				'name' => 'req_div_label',
@@ -60,8 +60,8 @@ function ninja_forms_register_label_settings_metabox(){
 			array(
 				'name' => 'process_label',
 				'type' => 'text',
-				'label' => __('Ajax submitting message', 'ninja-forms'),
-				'desc' => __('If your form is submitted via ajax, what message should appear to let users know it is being processed?', 'ninja-forms'),
+				'label' => __( 'Ajax submitting message', 'ninja-forms' ),
+				'desc' => __( 'If your form is submitted via ajax, what message should appear to let users know it is being processed?', 'ninja-forms' ),
 			),
 		),
 	);

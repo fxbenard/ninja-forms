@@ -213,13 +213,13 @@ function ninja_forms_display_js($form_id, $local_vars = ''){
 	wp_localize_script( 'ninja-forms-display', 'ninja_forms_form_'.$form_id.'_calc_settings', $calc_settings );
 
 	wp_localize_script( 'ninja-forms-display', 'ninja_forms_password_strength', array(
-		'empty' => __('Strength indicator'),
-		'short' => __('Very weak'),
-		'bad' => __('Weak'),
+		'empty' => __( 'Strength indicator', 'ninja-forms' ),
+		'short' => __( 'Very weak', 'ninja-forms' ),
+		'bad' => __( 'Weak', 'ninja-forms' ),
 		/* translators: password strength */
-		'good' => _x('Medium', 'password strength'),
-		'strong' => __('Strong'),
-		'mismatch' => __('Mismatch')
+		'good' => _x( 'Medium', 'password strength', 'ninja-forms' ),
+		'strong' => __( 'Strong', 'ninja-forms' ),
+		'mismatch' => __( 'Mismatch', 'ninja-forms' )
 		) );
 
 }
