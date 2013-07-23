@@ -67,6 +67,7 @@ function ninja_forms_display_fields($form_id){
 				}else{
 					$show_field = true;
 				}
+				
 				if( isset( $data['display_style'] ) ){
 					$display_style = $data['display_style'];
 				}else{
