@@ -1,5 +1,4 @@
 <?php
-add_action( 'init', 'ninja_forms_admin_save', 999 );
 
 function ninja_forms_admin_save(){
 	global $ninja_forms_tabs, $ninja_forms_sidebars, $ninja_forms_tabs_metaboxes, $ninja_forms_admin_update_message;
@@ -115,3 +114,5 @@ function ninja_forms_admin_save(){
 		}
 	}
 }
+
+add_action( 'admin_init', 'ninja_forms_admin_save', 999 );

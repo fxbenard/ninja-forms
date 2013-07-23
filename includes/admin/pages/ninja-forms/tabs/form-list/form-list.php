@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'init', 'ninja_forms_register_form_export' );
+
 function ninja_forms_register_form_export(){
 	if( isset( $_REQUEST['export_form'] ) AND $_REQUEST['export_form'] == 1 ){
 		$form_id = $_REQUEST['form_id'];
@@ -8,8 +8,9 @@ function ninja_forms_register_form_export(){
 	}
 }
 
+add_action( 'admin_init', 'ninja_forms_register_form_export' );
 
-add_action('init', 'ninja_forms_register_tab_form_list');
+
 
 function ninja_forms_register_tab_form_list(){
 	$new_link = esc_url(add_query_arg(array('form_id' => 'new', 'tab' => 'form_settings')));
@@ -27,6 +28,8 @@ function ninja_forms_register_tab_form_list(){
 	);
 	ninja_forms_register_tab('form_list', $args);
 }
+
+add_action('admin_init', 'ninja_forms_register_tab_form_list');
 
 function ninja_forms_tab_form_list($form_id, $data){
 	global $wpdb;

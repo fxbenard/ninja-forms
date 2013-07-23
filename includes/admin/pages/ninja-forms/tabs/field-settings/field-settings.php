@@ -1,5 +1,4 @@
 <?php
-add_action('init', 'ninja_forms_register_tab_field_settings');
 
 function ninja_forms_register_tab_field_settings(){
 	if(isset($_REQUEST['form_id'])){
@@ -19,6 +18,8 @@ function ninja_forms_register_tab_field_settings(){
 	);
 	ninja_forms_register_tab('field_settings', $args);
 }
+
+add_action('admin_init', 'ninja_forms_register_tab_field_settings');
 
 function ninja_forms_tab_field_settings(){
 	global $wpdb;

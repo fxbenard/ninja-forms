@@ -1,5 +1,5 @@
 <?php
-add_action('init', 'ninja_forms_register_tab_form_settings');
+
 
 function ninja_forms_register_tab_form_settings(){
 	$all_forms_link = esc_url(remove_query_arg(array('form_id', 'tab')));
@@ -12,8 +12,9 @@ function ninja_forms_register_tab_form_settings(){
 		//'title' => '<h2>Forms <a href="'.$all_forms_link.'" class="add-new-h2">'.__('View All Forms', 'ninja-forms').'</a></h2>',
 	);
 	ninja_forms_register_tab('form_settings', $args);
-
 }
+
+add_action( 'admin_init', 'ninja_forms_register_tab_form_settings' );
 
 function ninja_forms_display_form_settings($form_id, $data){
 	if(isset($data['form_title'])){
@@ -39,7 +40,6 @@ function ninja_forms_display_form_settings($form_id, $data){
 <?php
 }
 
-add_action('init', 'ninja_forms_register_form_settings_basic_metabox' );
 function ninja_forms_register_form_settings_basic_metabox(){
 
 	if( isset( $_REQUEST['form_id'] ) ){
@@ -182,7 +182,8 @@ function ninja_forms_register_form_settings_basic_metabox(){
 	ninja_forms_register_tab_metabox($args);
 }
 
-add_action('init', 'ninja_forms_register_form_settings_basic_email_metabox');
+add_action( 'admin_init', 'ninja_forms_register_form_settings_basic_metabox' );
+
 function ninja_forms_register_form_settings_basic_email_metabox(){
 	$args = array(
 		'page' => 'ninja-forms',
@@ -218,8 +219,8 @@ function ninja_forms_register_form_settings_basic_email_metabox(){
 	ninja_forms_register_tab_metabox($args);
 }
 
+add_action( 'admin_init', 'ninja_forms_register_form_settings_basic_email_metabox' );
 
-add_action('init', 'ninja_forms_register_form_settings_user_email_metabox');
 function ninja_forms_register_form_settings_user_email_metabox(){
 	$args = array(
 		'page' => 'ninja-forms',
@@ -250,7 +251,8 @@ function ninja_forms_register_form_settings_user_email_metabox(){
 	ninja_forms_register_tab_metabox($args);
 }
 
-add_action( 'init', 'ninja_forms_register_form_settings_admin_email_metabox' );
+add_action( 'admin_init', 'ninja_forms_register_form_settings_user_email_metabox' );
+
 function ninja_forms_register_form_settings_admin_email_metabox(){
 	$args = array(
 		'page' => 'ninja-forms',
@@ -296,6 +298,8 @@ function ninja_forms_register_form_settings_admin_email_metabox(){
 	);
 	ninja_forms_register_tab_metabox($args);
 }
+
+add_action( 'admin_init', 'ninja_forms_register_form_settings_admin_email_metabox' );
 
 function ninja_forms_admin_email($form_id, $data){
 	if(isset($data['admin_mailto'])){
