@@ -76,21 +76,31 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.31 =
-
-*Features:*
-
-* Add Danish translation files for Ninja Forms.
+= 2.2.32 =
 
 *Changes:*
 
-* Sidebars and individual field settings should now remember their state (open or closed) upon page reload.
+* Added translation ability to many, many previously untranslatable strings. 
+* Added an improved German translation file.
+* Improved the way that Ninja Forms handles translations so that translation files may be placed in the WP_LANG_DIR/ninja-forms/ directory rather than the main plugin directory. This will make them safe from plugin updates.
+* Thank you very much to David Decker for these changes!
+* Moved the Forms Setting metabox registration from 'init' to 'admin_init' so that it is only called on the admin-side.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.32 =
+
+*Changes:*
+
+* Added translation ability to many, many previously untranslatable strings. 
+* Added an improved German translation file.
+* Improved the way that Ninja Forms handles translations so that translation files may be placed in the WP_LANG_DIR/ninja-forms/ directory rather than the main plugin directory. This will make them safe from plugin updates.
+* Thank you very much to David Decker for these changes!
+* Moved the Forms Setting metabox registration from 'init' to 'admin_init' so that it is only called on the admin-side.
 
 = 2.2.31 =
 
