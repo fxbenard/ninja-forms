@@ -3,11 +3,6 @@
  * Outputs the HTML of the field label if it is set to display.
  * Also outputs the required symbol if it is set.
 **/
-add_action('init', 'ninja_forms_register_display_field_label');
-function ninja_forms_register_display_field_label(){
-	add_filter( 'ninja_forms_field', 'ninja_forms_display_label_inside', 10, 2 );
-	add_action('ninja_forms_display_field_label', 'ninja_forms_display_field_label', 10, 2);
-}
 
 function ninja_forms_display_field_label( $field_id, $data ){
 	$plugin_settings = get_option("ninja_forms_settings");
@@ -60,6 +55,8 @@ function ninja_forms_display_field_label( $field_id, $data ){
 	}
 }
 
+add_action('ninja_forms_display_field_label', 'ninja_forms_display_field_label', 10, 2);
+
 function ninja_forms_display_label_inside( $data, $field_id ){
 	global $ninja_forms_processing;
 
@@ -90,3 +87,5 @@ function ninja_forms_display_label_inside( $data, $field_id ){
 
 	return $data;
 }
+
+add_filter( 'ninja_forms_field', 'ninja_forms_display_label_inside', 10, 2 );
