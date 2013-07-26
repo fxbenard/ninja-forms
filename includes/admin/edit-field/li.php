@@ -4,7 +4,12 @@ function ninja_forms_edit_field_output_li( $field_id ) {
 	global $wpdb, $ninja_forms_fields;
 	$field_row = ninja_forms_get_field_by_id( $field_id );
 	$current_tab = ninja_forms_get_current_tab();
-	$current_page = $_REQUEST['page'];
+	if ( isset ( $_REQUEST['page'] ) ) {
+		$current_page = $_REQUEST['page'];
+	} else {
+		$current_page = '';
+	}
+	
 	$field_type = $field_row['type'];
 	$field_data = $field_row['data'];
 	$plugin_settings = get_option( 'ninja_forms_settings' );
