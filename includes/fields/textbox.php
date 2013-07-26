@@ -230,10 +230,6 @@ function ninja_forms_field_text_display( $field_id, $data ){
 		$label = '';
 	}
 
-	if($label_pos == 'inside'){
-		$default_value = $label;
-	}
-
 	if( isset( $data['mask'] ) ){
 		$mask = $data['mask'];
 	}else{
