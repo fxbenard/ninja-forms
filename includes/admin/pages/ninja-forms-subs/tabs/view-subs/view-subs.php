@@ -339,7 +339,7 @@ function ninja_forms_tab_view_subs(){
 				<input type="hidden" name="_form_id" value="<?php echo $form_id;?>">
 				<?php
 
-				add_filter('ninja_forms_field', 'ninja_forms_edit_sub_default_value', 10, 2);
+				add_filter('ninja_forms_field', 'ninja_forms_edit_sub_default_value', 15, 2);
 				add_filter('ninja_forms_field', 'ninja_forms_edit_sub_hide_fields', 99, 2);
 				remove_action('ninja_forms_display_before_fields', 'ninja_forms_display_req_items');
 				remove_action('ninja_forms_display_open_form_tag', 'ninja_forms_display_open_form_tag');
@@ -586,6 +586,7 @@ function ninja_forms_edit_sub_default_value($data, $field_id){
 		foreach($sub_data as $d){
 			if($d['field_id'] == $field_id){
 				$data['default_value'] = $d['user_value'];
+				break;
 			}
 		}
 	}
