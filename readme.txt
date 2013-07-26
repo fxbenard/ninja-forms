@@ -91,6 +91,15 @@ If you have any feature requests, please feel free to visit [wpninjas.com](http:
 
 == Changelog ==
 
+= 2.2.33 =
+
+*Bugs:*
+
+* Fixed a bug that prevented submissions from being edited if the label position was set to inside.
+* Fixed a bug that generated a PHP Notice when adding new fields.
+* Fixed a bug that prevented ninja_forms_get_subs() from working properly when a field => value pair was sent.
+* Code cleanup.
+
 = 2.2.32 =
 
 *Changes:*
