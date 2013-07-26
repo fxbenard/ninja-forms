@@ -317,18 +317,21 @@ function ninja_forms_get_subs($args = array()){
 
 						if(isset($args[$d['field_id']])){ //If the field id is found within the args array, then we should check its value.
 							if($args[$d['field_id']] != $d['user_value']){ //If the values are not equal, we set $unset to true.
+								
 								$unset = true;
 							}
 						}
 
 						if($x == count($data)){ //If we are on the last item, this is our last chance to find the field id in the args array.
 							if(!isset($args[$d['field_id']])){ //If the field id is not found within the args array, then we know it doesn't exist.
-								$unset = true; //We've reached the last item without finding our field id in the sent args array. Set $untrue to true.
+								
+								//$unset = true; //We've reached the last item without finding our field id in the sent args array. Set $untrue to true.
 							}
 						}
 
 						$x++;
 					}
+
 					if($unset){
 						unset($subs_results[$key]); //If $unset ias been set to true above, unset the given submission before returning the results.
 					}
