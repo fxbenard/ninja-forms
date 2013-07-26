@@ -3,16 +3,14 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://wpninjas.com/ninja-forms/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 2.2.32
+Version: 2.2.33
 Author: The WP Ninjas
 Author URI: http://wpninjas.com
 Text Domain: ninja-forms
 Domain Path: /lang/
-*/
 
-/*
 Copyright 2011 WP Ninjas/Kevin Stover.
-/*
+
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -52,7 +50,7 @@ global $wpdb, $wp_version;
 
 define("NINJA_FORMS_DIR", WP_PLUGIN_DIR."/".basename( dirname( __FILE__ ) ) );
 define("NINJA_FORMS_URL", plugins_url()."/".basename( dirname( __FILE__ ) ) );
-define("NINJA_FORMS_VERSION", "2.2.32");
+define("NINJA_FORMS_VERSION", "2.2.33");
 define("NINJA_FORMS_TABLE_NAME", $wpdb->prefix . "ninja_forms");
 define("NINJA_FORMS_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fields");
 define("NINJA_FORMS_FAV_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fav_fields");

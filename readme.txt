@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.32
+Stable tag: 2.2.33
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -76,15 +76,14 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.32 =
+= 2.2.33 =
 
-*Changes:*
+*Bugs:*
 
-* Added translation ability to many, many previously untranslatable strings. 
-* Added an improved German translation file.
-* Improved the way that Ninja Forms handles translations so that translation files may be placed in the WP_LANG_DIR/ninja-forms/ directory rather than the main plugin directory. This will make them safe from plugin updates.
-* Thank you very much to David Decker for these changes!
-* Moved the Forms Setting metabox registration from 'init' to 'admin_init' so that it is only called on the admin-side.
+* Fixed a bug that prevented submissions from being edited if the label position was set to inside.
+* Fixed a bug that generated a PHP Notice when adding new fields.
+* Fixed a bug that prevented ninja_forms_get_subs() from working properly when a field => value pair was sent.
+* Code cleanup.
 
 == Requested Features ==
 
