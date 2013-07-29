@@ -3,7 +3,7 @@ Contributors: kstover, jameslaws
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 2.2.33
+Stable tag: 2.2.34
 License: GPLv2 or later
 
 Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site.
@@ -76,20 +76,25 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.2.33 =
+= 2.2.34 =
 
-*Bugs:*
+*Changes:*
 
-* Fixed a bug that prevented submissions from being edited if the label position was set to inside.
-* Fixed a bug that generated a PHP Notice when adding new fields.
-* Fixed a bug that prevented ninja_forms_get_subs() from working properly when a field => value pair was sent.
-* Code cleanup.
+* Added the ability to make Country fields required.
+* Added the ability to add a custom first option to the Country field.
 
 == Requested Features ==
 
 If you have any feature requests, please feel free to visit [wpninjas.com](http://wpninjas.com/downloads/category/ninja-forms/) and let us know about it.
 
 == Changelog ==
+
+= 2.2.34 =
+
+*Changes:*
+
+* Added the ability to make Country fields required.
+* Added the ability to add a custom first option to the Country field.
 
 = 2.2.33 =
 

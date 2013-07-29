@@ -8,6 +8,7 @@
 
 function ninja_forms_register_field_country(){
 	$countries = array(
+		"- Select One" => "",
 		"Afghanistan" => "AF",
 		"Albania" => "AL",
 		"Algeria" => "DZ",
@@ -259,7 +260,6 @@ function ninja_forms_register_field_country(){
 		'display_function' => 'ninja_forms_field_country_display',
 		'group' => 'standard_fields',
 		'edit_conditional' => true,
-		'edit_req' => false,
 		'edit_options' => array(
 			array(
 				'type' => 'select',
@@ -267,6 +267,19 @@ function ninja_forms_register_field_country(){
 				'label' => __( 'Default Country', 'ninja-forms' ),
 				'class' => 'widefat',
 				'options' => $tmp_array,
+			),
+			array(
+				'type' => 'checkbox',
+				'name' => 'country_use_custom_first',
+				'label' => __( 'Use a custom first option', 'ninja-forms' ),
+				'width' => 'thin',
+			),
+			array(
+				'type' => 'text',
+				'name' => 'country_custom_first',
+				'label' => __( 'Custom first option', 'ninja-forms' ),
+				'width' => 'thin',
+				'class' => 'widefat',
 			),
 			array(
 				'type' => 'hidden',
@@ -541,6 +554,16 @@ function ninja_forms_field_country_display( $field_id, $data ) {
 		$default_value = $data['default_value'];
 	}else{
 		$default_value = '';
+	}
+
+	if ( isset ( $data['country_custom_first'] ) ) {
+		$country_custom_first = $data['country_custom_first'];
+	} else {
+		$country_custom_first = '';
+	}
+
+	if ( isset ( $data['country_use_custom_first'] ) AND $data['country_use_custom_first'] == 1 ) {
+		$countries = array_merge( array( $country_custom_first => $country_custom_first ), $countries );
 	}
 
 	$field_class = ninja_forms_get_field_class( $field_id );
