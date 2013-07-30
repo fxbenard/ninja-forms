@@ -112,34 +112,34 @@ jQuery(document).ready(function(jQuery) {
 	 */
 
 	// Listen to the input elements with our calculation class for focus.
-	jQuery(".ninja-forms-field-calc-listen").live("focus", function(e){
+	jQuery(document).on( 'focus', '.ninja-forms-field-calc-listen', function(e){
 		jQuery(this).data( "oldValue", jQuery(this).val() );
 	});
 
 	// Listen to the input elements with our calculation class for focus.
-	jQuery(".ninja-forms-field-calc-listen").live("mousedown", function(e){
+	jQuery(document).on( 'mousedown', '.ninja-forms-field-calc-listen', function(e){
 		jQuery(this).data( "oldValue", jQuery(this).val() );
 	});	
 
 	// Listen to the input elements with our calculation class for focus.
-	jQuery(".ninja-forms-field-calc-listen").live("keydown", function(e){
+	jQuery(document).on( 'keydown', '.ninja-forms-field-calc-listen', function(e){
 		if( this.type == 'select-multiple' ) {
 			jQuery(this).data( "oldValue", jQuery(this).val() );
 		}
 	});
 
-	jQuery(".ninja-forms-field-list-options-span-calc-listen").live("focus", function(e){
+	jQuery(document).on( 'focus', '.ninja-forms-field-list-options-span-calc-listen', function(e){
 		var field_id = jQuery(this).attr("rel");
 		jQuery(this).data("oldValue", jQuery("input[name='ninja_forms_field_" + field_id +"']:checked").val());
 	});
 
-	jQuery(".ninja-forms-field-list-options-span-calc-listen").live("mousedown", function(e){
+	jQuery(document).on( 'mousedown', '.ninja-forms-field-list-options-span-calc-listen', function(e){
 		var field_id = jQuery(this).attr("rel");
 		jQuery(this).data("oldValue", jQuery("input[name='ninja_forms_field_" + field_id +"']:checked").val());
 	});
 
 	// Listen to the input elements for our auto-calculation fields and change the total.
-	jQuery('.ninja-forms-field-calc-listen').live('change', function(event){
+	jQuery(document).on( 'change', '.ninja-forms-field-calc-listen', function(event){
 		if ( this == event.target ) {
 			// Get our calc settings.
 			var form_id = ninja_forms_get_form_id( this );
