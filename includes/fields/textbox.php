@@ -37,23 +37,23 @@ function ninja_forms_register_field_textbox(){
 				'type' => 'checkbox',
 				'name' => 'from_name',
 				'label' => __( 'Use this as the "From" email name for Administrative recepients of this form?', 'ninja-forms' ),
-			),				
+			),
 			array(
 				'type' => 'hidden',
 				'name' => 'user_address_1',
-			),		
+			),
 			array(
 				'type' => 'hidden',
 				'name' => 'user_address_2',
-			),						
+			),
 			array(
 				'type' => 'hidden',
 				'name' => 'user_city',
-			),				
+			),
 			array(
 				'type' => 'hidden',
 				'name' => 'user_zip',
-			),				
+			),
 			array(
 				'type' => 'hidden',
 				'name' => 'user_phone',
@@ -61,11 +61,11 @@ function ninja_forms_register_field_textbox(){
 			array(
 				'type' => 'hidden',
 				'name' => 'user_email',
-			),		
+			),
 			array(
 				'type' => 'hidden',
 				'name' => 'user_info_field_group',
-			),		
+			),
 		),
 		'display_function' => 'ninja_forms_field_text_display',
 		'save_function' => '',
@@ -272,7 +272,7 @@ function ninja_forms_field_text_pre_process( $field_id, $user_value ){
 	$field_row = $ninja_forms_processing->get_field_settings( $field_id );
 	$data = $field_row['data'];
 	if( isset( $data['email'] ) AND $data['email'] == 1 AND isset( $data['req'] ) AND $data['req'] == 1 AND $user_value != '' ){
-		if ( !filter_var($user_value, FILTER_VALIDATE_EMAIL) ) {
+		if ( ! is_email( $user_value ) ) {
     		$ninja_forms_processing->add_error( 'email-'.$field_id, $invalid_email, $field_id );
 		}
 	}
