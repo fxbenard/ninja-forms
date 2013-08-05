@@ -8,7 +8,7 @@ function ninja_forms_edit_field($field_id){
 
 }
 
-function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name = '', $value = '', $width = 'wide', $options = '', $class = '', $desc = ''){
+function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name = '', $value = '', $width = 'wide', $options = '', $class = '', $desc = '', $label_class = ''){
 	global $ninja_forms_fields;
 
 	$field_row = ninja_forms_get_field_by_id($field_id);
@@ -44,7 +44,7 @@ function ninja_forms_edit_field_el_output($field_id, $type, $label = '', $name =
 	}
 	if($type != 'checkbox' AND $type != 'desc'){
 		?>
-		<label for="<?php echo $id;?>" id="<?php echo $id;?>_label">
+		<label for="<?php echo $id;?>" id="<?php echo $id;?>_label" class="<?php echo $label_class;?>">
 			<?php _e( $label , 'ninja-forms'); ?></label><br/>
 		<?php
 	}
