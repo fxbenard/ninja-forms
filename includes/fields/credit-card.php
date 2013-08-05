@@ -7,7 +7,7 @@
  */
 
 function ninja_forms_register_field_credit_card(){
-	
+
 	$reg_field = apply_filters( 'ninja_forms_enable_credit_card_field', false );
 
 	$args = array(
@@ -21,10 +21,11 @@ function ninja_forms_register_field_credit_card(){
 		'post_process' => 'ninja_forms_field_credit_card_test',
 		'save_sub' => false,
 		'process_field' => false,
+		'edit_label_pos' => false,
 	);
 
 	if ( $reg_field ) {
-		ninja_forms_register_field( '_credit_card', $args );	
+		ninja_forms_register_field( '_credit_card', $args );
 	}
 }
 
@@ -44,7 +45,7 @@ add_filter( 'ninja_forms_enable_credit_card_field', 'my_cool_function' );
  */
 
 function ninja_forms_field_credit_card_display( $field_id, $data ) {
-	
+
 	if( isset( $data['default_value'] ) ) {
 		$default_value = $data['default_value'];
 	}else{
@@ -55,36 +56,24 @@ function ninja_forms_field_credit_card_display( $field_id, $data ) {
 	$post_field = apply_filters( 'ninja_forms_post_credit_card_field', false );
 	?>
 		<div class="ninja-forms-credit-card-number"> <!-- Open Credit Card Wrap -->
-			<label> <!-- [label for credit card] -->
-			<?php _e( 'The (typically) 16 digits on the front of your credit card.', 'ninja-forms' ); ?>
-			<div>
-				<input type="text" <?php if ( $post_field ){ ;?>name="_credit_card_number"<?php } ?> class="">
-			</div>
-			</label> <!-- [field for credit card] -->
-		</div> <!-- Close Credit Card Wrap -->
+			<label><?php _e( 'Card Number', 'ninja-forms' ); ?></label>
+			<span><?php _e( 'The (typically) 16 digits on the front of your credit card.', 'ninja-forms' ); ?></span>
+			<input type="text" <?php if ( $post_field ){ echo 'name="_credit_card_number"'; } ?> class="">
+		</div>
 		<div class="ninja-forms-credit-card-cvc"> <!-- [open_cvc_wrap] -->
-			<label> <!-- [label for cvc] -->
-			<?php _e( 'The 3 digit (back) or 4 digit (front) value on your card.', 'ninja-forms' ); ?>
-			<div>
-				<input type="text" <?php if ( $post_field ){ ;?>name="_credit_card_cvc"<?php } ?> class="">
-			</div>
-			</label> <!-- [field for cvc] -->
-		</div> <!-- [/close_cvc_wrap] -->
+			<label><?php _e( 'CVC', 'ninja-forms' ); ?></label>
+			<span><?php _e( 'The 3 digit (back) or 4 digit (front) value on your card.', 'ninja-forms' ); ?></span>
+			<input type="text" <?php if ( $post_field ){ echo 'name="_credit_card_cvc"'; } ?> class="">
+		</div>
 		<div class="ninja-forms-credit-card-name"> <!-- [open_nameoncard_wrap] -->
-			<label> <!-- [label for nameoncard] -->
-			<?php _e( 'The name printed on the front of your credit card.', 'ninja-forms' ); ?>
-			<div>
-				<input type="text" <?php if ( $post_field ){ ;?>name="_credit_card_name"<?php } ?> class="">
-			</div>
-			</label> <!-- [field for nameoncard] -->
-		</div> <!-- [/close_nameoncard_wrap] -->
+			<label><?php _e( 'Name on the Card', 'ninja-forms' ); ?></label>
+			<span><?php _e( 'The name printed on the front of your credit card.', 'ninja-forms' ); ?></span>
+			<input type="text" <?php if ( $post_field ){ echo 'name="_credit_card_name"'; } ?> class="">
+		</div>
 		<div class="ninja-forms-credit-card-expires"> <!-- [open_expires_wrap] -->
-			<label> <!-- [label for expires] -->
-			<?php _e( 'The date your credit card expires, typically on the front of the card.', 'ninja-forms' ); ?>
-			<div>
-				<input type="text" <?php if ( $post_field ){ ;?>name="_credit_card_expires"<? } ?> class="ninja-forms-mask" title="99/9999">
-			</div>
-			</label> <!-- [month_dropdown] / [year_dropdown] -->
+			<label><?php _e( 'Expiration (MM/YYYY', 'ninja-forms' ); ?></label>
+			<span><?php _e( 'The date your credit card expires, typically on the front of the card.', 'ninja-forms' ); ?></span>
+			<input type="text" <?php if ( $post_field ){ echo 'name="_credit_card_expires"'; } ?> class="ninja-forms-mask" title="99/9999">
 		</div> <!-- [close_expires_wrap] -->
 	<?php
 }
