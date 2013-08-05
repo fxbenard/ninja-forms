@@ -810,6 +810,19 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	/* User Info Fields JS */
+
+	// Listen to the user info field group name select list and show the custom name box if custom is selected.
+	$(document).on( 'change', '.user-info-group-name', function(e){
+		if ( this.value == 'custom' ) {
+			$(this).parent().parent().next().find('.user-info-custom-group').show();
+			$(this).parent().parent().next().find('label').show();
+		} else {
+			$(this).parent().parent().next().find('label').hide();
+			$(this).parent().parent().next().find('.user-info-custom-group').hide();
+		}
+	});
+
 	/* * * End Field Specific JS * * */
 	
 	/* * * Favorite Fields JS * * */
