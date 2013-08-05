@@ -3,7 +3,7 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://wpninjas.com/ninja-forms/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 2.2.35
+Version: 2.2.36
 Author: The WP Ninjas
 Author URI: http://wpninjas.com
 Text Domain: ninja-forms
@@ -50,7 +50,7 @@ global $wpdb, $wp_version;
 
 define("NINJA_FORMS_DIR", WP_PLUGIN_DIR."/".basename( dirname( __FILE__ ) ) );
 define("NINJA_FORMS_URL", plugins_url()."/".basename( dirname( __FILE__ ) ) );
-define("NINJA_FORMS_VERSION", "2.2.35");
+define("NINJA_FORMS_VERSION", "2.2.36");
 define("NINJA_FORMS_TABLE_NAME", $wpdb->prefix . "ninja_forms");
 define("NINJA_FORMS_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fields");
 define("NINJA_FORMS_FAV_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fav_fields");
@@ -109,6 +109,7 @@ require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/li.php" );
 require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/remove-button.php" );
 require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/save-button.php" );
 require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/calc.php" );
+require_once( NINJA_FORMS_DIR . "/includes/admin/edit-field/user-info-fields.php" );
 
 //Display Form Functions
 require_once( NINJA_FORMS_DIR . "/includes/display/form/display-form.php" );
@@ -232,6 +233,7 @@ require_once( NINJA_FORMS_DIR . "/includes/fields/rating.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/calc.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/country.php" );
 require_once( NINJA_FORMS_DIR . "/includes/fields/tax.php" );
+require_once( NINJA_FORMS_DIR . "/includes/fields/credit-card.php" );
 
 require_once( NINJA_FORMS_DIR . "/includes/admin/save.php" );
 

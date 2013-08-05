@@ -66,6 +66,9 @@
  *
  * User Information Methods:
  *		get_user_info() - Used to get an array of the user's information. Requires that the appropriate "User Information" fields be used.
+ *
+ * Credit Card Information Methods:
+ *		get_credit_card() - Used to get an array of the user's credit card information.
  */
 
 class Ninja_Forms_Processing {
@@ -607,26 +610,67 @@ class Ninja_Forms_Processing {
 			$field_id = $field['id'];
 			$user_value = $this->get_field_value( $field_id );
 			if ( isset ( $data['user_info_field_group'] ) AND $data['user_info_field_group'] == 1 ) {
-				if ( isset ( $data['first_name'] ) AND $data['first_name'] == 1 ) {
-					$user_info['first_name'] = $user_value;
-				} else if ( isset ( $data['last_name'] ) AND $data['last_name'] == 1 ) {
-					$user_info['last_name'] = $user_value;
-				} else if ( isset ( $data['user_address_1'] ) AND $data['user_address_1'] == 1 ) {
-					$user_info['address_1'] = $user_value;
-				} else if ( isset ( $data['user_address_2'] ) AND $data['user_address_2'] == 1 ) {
-					$user_info['address_2'] = $user_value;
-				} else if ( isset ( $data['user_city'] ) AND $data['user_city'] == 1 ) {
-					$user_info['city'] = $user_value;
-				} else if ( isset ( $data['user_state'] ) AND $data['user_state'] == 1 ) {
-					$user_info['state'] = $user_value;
-				} else if ( isset ( $data['user_zip'] ) AND $data['user_zip'] == 1 ) {
-					$user_info['zip'] = $user_value;
-				} else if ( isset ( $data['user_email'] ) AND $data['user_email'] == 1 ) {
-					$user_info['email'] = $user_value;
-				} else if ( isset ( $data['user_phone'] ) AND $data['user_phone'] == 1 ) {
-					$user_info['phone'] = $user_value;
-				} else if ( $field['type'] == '_country' ) {
-					$user_info['country'] = $user_value;
+
+				if ( isset ( $data['user_info_field_group_name'] ) ) {
+					$group_name = $data['user_info_field_group_name'];
+				} else {
+					$group_name = '';
+				}
+
+				if ( isset ( $data['user_info_field_group_custom'] ) ) {
+					$custom_group = $data['user_info_field_group_custom'];
+				} else {
+					$custom_group = '';
+				}
+
+				if ( $group_name == 'custom' ) {
+					$group_name = $custom_group;
+				}
+
+				if ( $group_name != '' ) {
+					if ( isset ( $data['first_name'] ) AND $data['first_name'] == 1 ) {
+						$user_info[$group_name]['first_name'] = $user_value;
+					} else if ( isset ( $data['last_name'] ) AND $data['last_name'] == 1 ) {
+						$user_info[$group_name]['last_name'] = $user_value;
+					} else if ( isset ( $data['user_address_1'] ) AND $data['user_address_1'] == 1 ) {
+						$user_info[$group_name]['address_1'] = $user_value;
+					} else if ( isset ( $data['user_address_2'] ) AND $data['user_address_2'] == 1 ) {
+						$user_info[$group_name]['address_2'] = $user_value;
+					} else if ( isset ( $data['user_city'] ) AND $data['user_city'] == 1 ) {
+						$user_info[$group_name]['city'] = $user_value;
+					} else if ( isset ( $data['user_state'] ) AND $data['user_state'] == 1 ) {
+						$user_info[$group_name]['state'] = $user_value;
+					} else if ( isset ( $data['user_zip'] ) AND $data['user_zip'] == 1 ) {
+						$user_info[$group_name]['zip'] = $user_value;
+					} else if ( isset ( $data['user_email'] ) AND $data['user_email'] == 1 ) {
+						$user_info[$group_name]['email'] = $user_value;
+					} else if ( isset ( $data['user_phone'] ) AND $data['user_phone'] == 1 ) {
+						$user_info[$group_name]['phone'] = $user_value;
+					} else if ( $field['type'] == '_country' ) {
+						$user_info[$group_name]['country'] = $user_value;
+					}					
+				} else {
+					if ( isset ( $data['first_name'] ) AND $data['first_name'] == 1 ) {
+						$user_info['first_name'] = $user_value;
+					} else if ( isset ( $data['last_name'] ) AND $data['last_name'] == 1 ) {
+						$user_info['last_name'] = $user_value;
+					} else if ( isset ( $data['user_address_1'] ) AND $data['user_address_1'] == 1 ) {
+						$user_info['address_1'] = $user_value;
+					} else if ( isset ( $data['user_address_2'] ) AND $data['user_address_2'] == 1 ) {
+						$user_info['address_2'] = $user_value;
+					} else if ( isset ( $data['user_city'] ) AND $data['user_city'] == 1 ) {
+						$user_info['city'] = $user_value;
+					} else if ( isset ( $data['user_state'] ) AND $data['user_state'] == 1 ) {
+						$user_info['state'] = $user_value;
+					} else if ( isset ( $data['user_zip'] ) AND $data['user_zip'] == 1 ) {
+						$user_info['zip'] = $user_value;
+					} else if ( isset ( $data['user_email'] ) AND $data['user_email'] == 1 ) {
+						$user_info['email'] = $user_value;
+					} else if ( isset ( $data['user_phone'] ) AND $data['user_phone'] == 1 ) {
+						$user_info['phone'] = $user_value;
+					} else if ( $field['type'] == '_country' ) {
+						$user_info['country'] = $user_value;
+					}
 				}
 			}
 		}
@@ -988,4 +1032,25 @@ class Ninja_Forms_Processing {
 		
 		return $calc_array;
 	}
+
+	/**
+	* Function that returns an array of field IDs and calc_values that contributed to the given calc id.
+	*
+	* @since 2.2.37
+	* @returns array $credit_card
+	*/
+	function get_credit_card() {
+		$credit_card = array();
+		if ( empty( $this->data ) OR !isset ( $this->data['extra']['_credit_card_number'] ) ) {
+			return false;
+		}else{
+			$number = str_replace( ' ', '', $this->data['extra']['_credit_card_number'] );
+			$credit_card['number'] = $number;
+			$credit_card['cvc'] = $this->data['extra']['_credit_card_cvc'];
+			$credit_card['name'] = $this->data['extra']['_credit_card_name'];
+			$credit_card['expires'] = $this->data['extra']['_credit_card_expires'];
+			return $credit_card;
+		}
+	}
+
 }
