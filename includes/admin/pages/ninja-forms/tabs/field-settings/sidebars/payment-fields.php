@@ -28,14 +28,17 @@ function ninja_forms_sidebar_payment_fields(){
 				$name = $field['name'];
 				$field_id = $field['id'];
 				$type = $field['type'];
-				$reg_field = $ninja_forms_fields[$type];
-				$limit = '';
+				if ( isset ( $ninja_forms_fields[$type] ) ) {
+					$reg_field = $ninja_forms_fields[$type];
+				
+					$limit = '';
 
-				?>
-				<p class="button-controls" id="ninja_forms_insert_def_field_<?php echo $field_id;?>_p">
-					<a class="button-secondary ninja-forms-insert-def-field" id="ninja_forms_insert_def_field_<?php echo $field_id;?>" name="_<?php echo $limit;?>"  href="#" rel="<?php echo $type;?>"><?php _e($name, 'ninja-forms');?></a>
-				</p>
-				<?php				
+					?>
+					<p class="button-controls" id="ninja_forms_insert_def_field_<?php echo $field_id;?>_p">
+						<a class="button-secondary ninja-forms-insert-def-field" id="ninja_forms_insert_def_field_<?php echo $field_id;?>" name="_<?php echo $limit;?>"  href="#" rel="<?php echo $type;?>"><?php _e($name, 'ninja-forms');?></a>
+					</p>
+					<?php
+				}		
 			}
 		}
 	}

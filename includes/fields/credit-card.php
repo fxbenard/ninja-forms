@@ -12,7 +12,7 @@ function ninja_forms_register_field_credit_card(){
 
 	$args = array(
 		'name' => 'Credit Card',
-		'sidebar' => 'template_fields',
+		'sidebar' => '',
 		'display_function' => 'ninja_forms_field_credit_card_display',
 		'group' => 'standard_fields',
 		'edit_conditional' => true,
@@ -22,6 +22,13 @@ function ninja_forms_register_field_credit_card(){
 		'save_sub' => false,
 		'process_field' => false,
 		'edit_label_pos' => false,
+		'edit_options' => array(
+			array(
+				'type' => 'hidden',
+				'name' => 'payment_field_group',
+				'default' => 1,
+			),
+		),
 	);
 
 	if ( $reg_field ) {
