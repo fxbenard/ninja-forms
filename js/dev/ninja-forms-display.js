@@ -123,11 +123,15 @@ jQuery(document).ready(function(jQuery) {
 			jQuery(this).on('beforeSubmit.default', function(e, formData, jqForm, options){
 				return ninja_forms_default_before_submit( formData, jqForm, options );
 			});
-
+		} else {
+			jQuery(this).submit( function(e){
+				var formData = jQuery(this).serialize();
+				var jqForm = this;
+				var options = '';
+				return ninja_forms_before_submit(formData, jqForm, options);
+			});
 		}
 	});
-	
-	//jQuery(document).off('beforeSubmit');
 
 	/* * * End ajaxForm JS * * */
 
