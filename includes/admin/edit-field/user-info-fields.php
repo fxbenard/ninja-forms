@@ -42,12 +42,3 @@ function ninja_forms_user_info_fields_groups( $field_id ){
 }
 
 add_action( 'ninja_forms_edit_field_after_registered', 'ninja_forms_user_info_fields_groups', 10 );
-
-function my_test_function(){
-	global $ninja_forms_processing;
-	echo "<pre>";
-	print_r( $ninja_forms_processing->get_user_info() );
-	echo "</pre>";
-}
-
-add_action( 'ninja_forms_pre_process', 'my_test_function' );
