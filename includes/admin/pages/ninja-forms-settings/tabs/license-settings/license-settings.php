@@ -8,6 +8,7 @@ function ninja_forms_register_tab_license_settings(){
 		'page' => 'ninja-forms-settings',
 		'display_function' => '',
 		'save_function' => 'ninja_forms_save_license_settings',
+		'tab_reload' => true,
 	);
 	ninja_forms_register_tab('license_settings', $args);
 }
