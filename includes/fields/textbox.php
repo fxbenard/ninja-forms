@@ -179,10 +179,6 @@ function ninja_forms_field_text_edit( $field_id, $data ){
 	<?php
 }
 
-function ninja_forms_field_text_save(){
-
-}
-
 function ninja_forms_field_text_display( $field_id, $data ){
 	global $current_user;
 	$field_class = ninja_forms_get_field_class( $field_id );
@@ -271,7 +267,7 @@ function ninja_forms_field_text_pre_process( $field_id, $user_value ){
 	}
 	$field_row = $ninja_forms_processing->get_field_settings( $field_id );
 	$data = $field_row['data'];
-	if( isset( $data['email'] ) AND $data['email'] == 1 AND isset( $data['req'] ) AND $data['req'] == 1 AND $user_value != '' ){
+	if( isset( $data['email'] ) AND $data['email'] == 1 AND $user_value != '' ){
 		if ( ! is_email( $user_value ) ) {
     		$ninja_forms_processing->add_error( 'email-'.$field_id, $invalid_email, $field_id );
 		}
