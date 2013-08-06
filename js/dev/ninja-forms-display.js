@@ -67,6 +67,40 @@ jQuery(document).ready(function(jQuery) {
 
 	/* * * Begin ajaxForms JS * * */
 
+	/* 
+	 * Attaching events to these elements can allow devs to mimic a priority system for event firing.
+	 * Priority is handled by the element that the event handlers are attached to: 
+	 * 1) Event handlers attached to the form itself will be fired first.
+	 * 2) Event handlers attached to the 'body' element will be fired second.
+	 * 3) Event handlers attached to the document element will be fired last.
+	 * These lines give examples of the elements that can have events attached to them for beforeSubmit actions.
+
+	jQuery("#ninja_forms_form_2").on('beforeSubmit.example', function(e, formData, jqForm, options){
+		alert('hello world');
+		return true;
+	});
+
+	jQuery(".ninja-forms-form").on('beforeSubmit.example', function(e, formData, jqForm, options){
+		alert('hello world');
+		return true;
+	});
+
+	jQuery('body').on('beforeSubmit.example', function(e, formData, jqForm, options ){
+		alert('hello world');
+		return true;
+	});	
+
+	jQuery(document).on('beforeSubmit.example', function(e, formData, jqForm, options ){
+		alert('world');
+		return true;
+	});
+
+	* If you want to remove an event handler, you can use the jQuery .off() method.
+
+	jQuery(document).off('beforeSubmit.example');
+
+	*/
+
 	jQuery(".ninja-forms-form").each(function(){
 		var form_id = this.id.replace("ninja_forms_form_", "");
 		var settings = window['ninja_forms_form_' + form_id + '_settings'];
@@ -81,12 +115,19 @@ jQuery(document).ready(function(jQuery) {
 			jQuery(this).ajaxForm(options);
 
 			// Add our default response handler if "custom" hasn't been selected.
-			ninja_forms_register_response_function( form_id, 'ninja_forms_default_response' );
+			jQuery(this).on('submitResponse.default', function(e, response){
+				return ninja_forms_default_response( response );
+			});
 
-			// Add our default beforeSubmit handler if "custom" hasn't been selected.
-			ninja_forms_register_before_submit_function( form_id, 'ninja_forms_default_before_submit' );
+			// Add our default beforeSubmit handler.
+			jQuery(this).on('beforeSubmit.default', function(e, formData, jqForm, options){
+				return ninja_forms_default_before_submit( formData, jqForm, options );
+			});
+
 		}
 	});
+	
+	//jQuery(document).off('beforeSubmit');
 
 	/* * * End ajaxForm JS * * */
 
@@ -112,34 +153,34 @@ jQuery(document).ready(function(jQuery) {
 	 */
 
 	// Listen to the input elements with our calculation class for focus.
-	jQuery(document).on( 'focus', '.ninja-forms-field-calc-listen', function(e){
+	jQuery('body').on( 'focus', '.ninja-forms-field-calc-listen', function(e){
 		jQuery(this).data( "oldValue", jQuery(this).val() );
 	});
 
 	// Listen to the input elements with our calculation class for focus.
-	jQuery(document).on( 'mousedown', '.ninja-forms-field-calc-listen', function(e){
+	jQuery('body').on( 'mousedown', '.ninja-forms-field-calc-listen', function(e){
 		jQuery(this).data( "oldValue", jQuery(this).val() );
 	});	
 
 	// Listen to the input elements with our calculation class for focus.
-	jQuery(document).on( 'keydown', '.ninja-forms-field-calc-listen', function(e){
+	jQuery('body').on( 'keydown', '.ninja-forms-field-calc-listen', function(e){
 		if( this.type == 'select-multiple' ) {
 			jQuery(this).data( "oldValue", jQuery(this).val() );
 		}
 	});
 
-	jQuery(document).on( 'focus', '.ninja-forms-field-list-options-span-calc-listen', function(e){
+	jQuery('body').on( 'focus', '.ninja-forms-field-list-options-span-calc-listen', function(e){
 		var field_id = jQuery(this).attr("rel");
 		jQuery(this).data("oldValue", jQuery("input[name='ninja_forms_field_" + field_id +"']:checked").val());
 	});
 
-	jQuery(document).on( 'mousedown', '.ninja-forms-field-list-options-span-calc-listen', function(e){
+	jQuery('body').on( 'mousedown', '.ninja-forms-field-list-options-span-calc-listen', function(e){
 		var field_id = jQuery(this).attr("rel");
 		jQuery(this).data("oldValue", jQuery("input[name='ninja_forms_field_" + field_id +"']:checked").val());
 	});
 
 	// Listen to the input elements for our auto-calculation fields and change the total.
-	jQuery(document).on( 'change', '.ninja-forms-field-calc-listen', function(event){
+	jQuery('body').on( 'change', '.ninja-forms-field-calc-listen', function(event){
 		if ( this == event.target ) {
 			// Get our calc settings.
 			var form_id = ninja_forms_get_form_id( this );
@@ -416,41 +457,51 @@ jQuery(document).ready(function(jQuery) {
 					}
 				}
 			}
-		}
-		
+		}	
 	});
-
 }); //End document.ready
 
 function ninja_forms_before_submit(formData, jqForm, options){
-	var form_id = formData[1].value;
-	var result = true;
-	for( var name in window['ninja_forms_before_submit_function_list'][form_id] ){
-		var function_name = window['ninja_forms_before_submit_function_list'][form_id][name];
-		if( result ){
-			result = window[function_name](formData, jqForm, options);
-		}
+	var result = jQuery(jqForm).triggerHandler('beforeSubmit', [ formData, jqForm, options ]);
+	if ( result !== false ) {
+		result = jQuery('body').triggerHandler('beforeSubmit', [ formData, jqForm, options ]);
 	}
+	if( result !== false ) {
+		result = jQuery(document).triggerHandler('beforeSubmit', [ formData, jqForm, options ]);
+	}
+	return result;
 }
 
 function ninja_forms_response(responseText, statusText, xhr, jQueryform){
 	//alert(responseText);
 	if( ninja_forms_settings.ajax_msg_format == 'inline' ){
-		//var response = jQuery.parseJSON( responseText );
-		var response = responseText;
-		var form_id = response.form_id;
-		var result = true;
-		for( var name in window['ninja_forms_response_function_list'][form_id] ){
-			var function_name = window['ninja_forms_response_function_list'][form_id][name];
-			if( result ){
-				result = window[function_name](response);
-			}
+		var result = jQuery(jQueryform).triggerHandler('submitResponse', [ responseText ]);
+		if ( result !== false ) {
+			result = jQuery('body').triggerHandler('submitResponse', [ responseText ]);
 		}
+		if( result !== false ) {
+			result = jQuery(document).triggerHandler('submitResponse', [ responseText ]);
+		}
+		return result;
 	}
 }
 
+function ninja_forms_register_response_function(form_id, name){
+	if( typeof window['ninja_forms_response_function_list'][form_id] == 'undefined' ){
+		window['ninja_forms_response_function_list'][form_id] = {};
+	}
+	window['ninja_forms_response_function_list'][form_id][name] = name;
+}
+
+function ninja_forms_register_before_submit_function(form_id, name){
+	if( typeof window['ninja_forms_before_submit_function_list'][form_id] == 'undefined' ){
+		window['ninja_forms_before_submit_function_list'][form_id] = {};
+	}
+	window['ninja_forms_before_submit_function_list'][form_id][name] = name;
+}
+
 function ninja_forms_default_before_submit(formData, jqForm, options){
-	var form_id = formData[1].value;
+	var form_id = jQuery(jqForm).prop("id").replace("ninja_forms_form_", "" );
 
 	// Show the ajax spinner and processing message.
 	jQuery("#ninja_forms_form_" + form_id + "_process_msg").show();
@@ -470,20 +521,6 @@ function ninja_forms_default_response(response){
 	ninja_forms_update_error_msgs(response)
 	ninja_forms_update_success_msg(response)
 	return true;
-}
-
-function ninja_forms_register_response_function(form_id, name){
-	if( typeof window['ninja_forms_response_function_list'][form_id] == 'undefined' ){
-		window['ninja_forms_response_function_list'][form_id] = {};
-	}
-	window['ninja_forms_response_function_list'][form_id][name] = name;
-}
-
-function ninja_forms_register_before_submit_function(form_id, name){
-	if( typeof window['ninja_forms_before_submit_function_list'][form_id] == 'undefined' ){
-		window['ninja_forms_before_submit_function_list'][form_id] = {};
-	}
-	window['ninja_forms_before_submit_function_list'][form_id][name] = name;
 }
 
 function ninja_forms_update_success_msg(response){
