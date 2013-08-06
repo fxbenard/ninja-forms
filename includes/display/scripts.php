@@ -19,6 +19,7 @@ function ninja_forms_display_js($form_id, $local_vars = ''){
 		foreach( $fields as $field ){
 			$field_id = $field['id'];
 			$field_type = $field['type'];
+			$field['data'] = apply_filters( 'ninja_forms_display_script_field_data', $field['data'], $field_id );
 			if( isset( $field['data']['datepicker'] ) AND $field['data']['datepicker'] == 1 ){
 				$datepicker = 1;
 			}
