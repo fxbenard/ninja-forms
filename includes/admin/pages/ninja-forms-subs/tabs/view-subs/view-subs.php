@@ -413,7 +413,7 @@ function ninja_forms_tab_view_subs(){
 			
 			
 			</div>
-			<input type="button" id="ninja_forms_edit_sub" value="<?php _e( 'Save', 'ninja-forms' ); ?>" class="button-primary"> &nbsp;&nbsp; <span id="ninja_forms_edit_sub_loading" style="display:none;"><img src="<?php echo NINJA_FORMS_URL."/images/loading.gif";?>"></span>
+			<input type="button" id="ninja_forms_edit_sub" value="<?php _e( 'Save', 'ninja-forms' ); ?>" class="button-primary"> &nbsp;&nbsp; <span id="ninja_forms_edit_sub_loading" style="display:none;"><img src="<?php echo NINJA_FORMS_URL."/images/loading.gif";?>" alt="loading"></span>
 		</div>
 			<?php
 	

@@ -19,7 +19,7 @@ function ninja_forms_display_process_message($form_id){
 	if($ajax == 1){
 	?>
 	<div id="ninja_forms_form_<?php echo $form_id;?>_process_msg" style="display:none;">
-		<?php echo $process_label;?> <img src="<?php echo NINJA_FORMS_URL;?>/images/loading.gif">
+		<?php echo $process_label;?> <img src="<?php echo NINJA_FORMS_URL;?>/images/loading.gif" alt="loading">
 	</div>
 	<?php
 	}
