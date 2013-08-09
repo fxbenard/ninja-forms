@@ -11,7 +11,7 @@ function ninja_forms_subs_bulk_export(){
 }
 
 function ninja_forms_export_subs_to_csv( $sub_ids = '', $return = false ){
-	global $ninja_forms_fields;
+	global $ninja_forms_fields, $ninja_forms_processing;
 	$plugin_settings = get_option("ninja_forms_settings");
 	if(isset($plugin_settings['date_format'])){
 		$date_format = $plugin_settings['date_format'];
@@ -20,7 +20,9 @@ function ninja_forms_export_subs_to_csv( $sub_ids = '', $return = false ){
 	}
 	//Create a $label_array that contains all of the field labels.
 	//Get the Form ID.
-	if(isset($_REQUEST['form_id'])){
+	if ( isset ( $ninja_forms_processing ) ) {
+		$form_id = $ninja_forms_processing->get_form_ID();
+	} else if ( isset($_REQUEST['form_id'] ) ){
 		$form_id = $_REQUEST['form_id'];
 	}
 	//Get the fields attached to the Form ID
