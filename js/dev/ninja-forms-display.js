@@ -343,14 +343,14 @@ jQuery(document).ready(function(jQuery) {
 							}
 
 							// If our old value exists and isn't empty or 0, then carry out the old_op on it.
-							if ( old_value && !isNaN( old_value ) && old_value != 0 && old_value != '' ) {
+							if ( old_value && !isNaN( old_value ) && old_value != 0 && old_value != '' && !jQuery(this).hasClass('ninja-forms-field-calc-no-old-op') ) {
 								old_value = parseFloat( old_value );
 								tmp = new ninja_forms_var_operator(old_op);
 								current_value = tmp.evaluate( current_value, old_value );
 							}
 
 							// If our new value exists and isn't empty or 0, then carry out the new_op on it.
-							if ( new_value && !isNaN( new_value ) && new_value != 0 && new_value != '' ) {
+							if ( new_value && !isNaN( new_value ) && new_value != 0 && new_value != '' && !jQuery(this).hasClass('ninja-forms-field-calc-no-new-op') ) {
 								new_value = parseFloat( new_value );
 								tmp = new ninja_forms_var_operator(new_op);
 								var calc_value = tmp.evaluate( current_value, new_value );
@@ -461,7 +461,7 @@ jQuery(document).ready(function(jQuery) {
 					}
 				}
 			}
-		}	
+		}
 	});
 }); //End document.ready
 

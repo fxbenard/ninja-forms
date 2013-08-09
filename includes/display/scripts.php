@@ -184,9 +184,7 @@ function ninja_forms_display_js($form_id, $local_vars = ''){
 		$calc_settings['calc_value'] = $calc_value;
 	}
 
-	if ( !empty ( $calc_value ) ) {
-		$calc_settings['calc_fields'] = $calc_fields;
-	}
+	$calc_settings['calc_fields'] = $calc_fields;
 
 	$plugin_settings = get_option("ninja_forms_settings");
 	if(isset($plugin_settings['date_format'])){
