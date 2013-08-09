@@ -178,6 +178,7 @@ function ninja_forms_activation(){
 			'req_error_label' => __( 'Please ensure all required fields are completed.', 'ninja-forms' ),
 			'req_field_error' => __('This is a required field', 'ninja-forms'),
 			'spam_error' => __('Please answer the anti-spam question correctly.', 'ninja-forms'),
+			'invalid_email' => __( 'Please enter a valid email address.', 'ninja-forms' ),
 			'process_label' => __('Processing', 'ninja-forms'),
 			'login_link' => __('Login', 'ninja-forms'),
 			'username_label' => __('Username', 'ninja-forms'),
